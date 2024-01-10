@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="Ubuntu 物理机部署与配置1、使用U盘安装Ubuntu（Linux系统）保姆教程一、准备工作 需要一个8GB或者8GB以上的空U盘（由于制作启动盘需要格式化U盘，建议提前备份U盘数据）  1.1下载Ubuntu系统镜像文件 浏览器搜索Ubuntu或者直接复制网址进入网站选择对应的版本进行下载（官网默认最新版本且下载速度较慢，建议使用镜像站下载） 官网网址：https:&#x2F;&#x2F;cn.ubuntu.c">
+  <meta name="description" content="使用U盘安装Ubuntu准备工作 需要一个8GB或者8GB以上的空U盘（由于制作启动盘需要格式化U盘，建议提前备份U盘数据）  下载系统镜像文件 浏览器搜索Ubuntu或者直接复制网址进入网站选择对应的版本进行下载（官网默认最新版本且下载速度较慢，建议使用镜像站下载） 官网网址：https:&#x2F;&#x2F;cn.ubuntu.com&#x2F;download&#x2F;desktop    清华大学镜像站：https:&#x2F;&#x2F;mi">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Ubuntu20部署">
 <meta property="og:url" content="http://example.com/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/index.html">
 <meta property="og:site_name" content="夏蝉之家">
-<meta property="og:description" content="Ubuntu 物理机部署与配置1、使用U盘安装Ubuntu（Linux系统）保姆教程一、准备工作 需要一个8GB或者8GB以上的空U盘（由于制作启动盘需要格式化U盘，建议提前备份U盘数据）  1.1下载Ubuntu系统镜像文件 浏览器搜索Ubuntu或者直接复制网址进入网站选择对应的版本进行下载（官网默认最新版本且下载速度较慢，建议使用镜像站下载） 官网网址：https:&#x2F;&#x2F;cn.ubuntu.c">
+<meta property="og:description" content="使用U盘安装Ubuntu准备工作 需要一个8GB或者8GB以上的空U盘（由于制作启动盘需要格式化U盘，建议提前备份U盘数据）  下载系统镜像文件 浏览器搜索Ubuntu或者直接复制网址进入网站选择对应的版本进行下载（官网默认最新版本且下载速度较慢，建议使用镜像站下载） 官网网址：https:&#x2F;&#x2F;cn.ubuntu.com&#x2F;download&#x2F;desktop    清华大学镜像站：https:&#x2F;&#x2F;mi">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/c995d143ad4bd113fe5811337dcd02044afb0583-1704895158881-1.png">
 <meta property="og:image" content="http://example.com/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/9f2f070828381f303516d6918363ea036e06f06d-1704895158883-2.png">
@@ -86,7 +86,7 @@
 <meta property="og:image" content="http://example.com/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/image-20231027131201590-1704895158886-54.png">
 <meta property="og:image" content="http://example.com/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/image-20231028165617795-1704895158887-55.png">
 <meta property="article:published_time" content="2024-01-10T13:58:04.000Z">
-<meta property="article:modified_time" content="2024-01-10T14:05:00.675Z">
+<meta property="article:modified_time" content="2024-01-10T14:43:19.277Z">
 <meta property="article:author" content="阿呆">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/c995d143ad4bd113fe5811337dcd02044afb0583-1704895158881-1.png">
@@ -268,7 +268,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2024-01-10 21:58:04 / 修改时间：22:05:00" itemprop="dateCreated datePublished" datetime="2024-01-10T21:58:04+08:00">2024-01-10</time>
+              <time title="创建时间：2024-01-10 21:58:04 / 修改时间：22:43:19" itemprop="dateCreated datePublished" datetime="2024-01-10T21:58:04+08:00">2024-01-10</time>
             </span>
 
           
@@ -303,10 +303,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="Ubuntu-物理机部署与配置"><a href="#Ubuntu-物理机部署与配置" class="headerlink" title="Ubuntu 物理机部署与配置"></a>Ubuntu 物理机部署与配置</h1><h3 id="1、使用U盘安装Ubuntu（Linux系统）保姆教程"><a href="#1、使用U盘安装Ubuntu（Linux系统）保姆教程" class="headerlink" title="1、使用U盘安装Ubuntu（Linux系统）保姆教程"></a>1、使用U盘安装Ubuntu（Linux系统）保姆教程</h3><h4 id="一、准备工作"><a href="#一、准备工作" class="headerlink" title="一、准备工作"></a>一、准备工作</h4><ul>
+        <h1 id="使用U盘安装Ubuntu"><a href="#使用U盘安装Ubuntu" class="headerlink" title="使用U盘安装Ubuntu"></a>使用U盘安装Ubuntu</h1><h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><ul>
 <li><strong>需要一个8GB或者8GB以上的空U盘（由于制作启动盘需要格式化U盘，建议提前备份U盘数据）</strong></li>
 </ul>
-<h4 id="1-1下载Ubuntu系统镜像文件"><a href="#1-1下载Ubuntu系统镜像文件" class="headerlink" title="1.1下载Ubuntu系统镜像文件"></a>1.1下载Ubuntu系统镜像文件</h4><ul>
+<h3 id="下载系统镜像文件"><a href="#下载系统镜像文件" class="headerlink" title="下载系统镜像文件"></a>下载系统镜像文件</h3><ul>
 <li><strong>浏览器搜索Ubuntu或者直接复制网址进入网站选择对应的版本进行下载（官网默认最新版本且下载速度较慢，建议使用镜像站下载）</strong></li>
 <li><strong>官网网址：<a target="_blank" rel="noopener" href="https://cn.ubuntu.com/download/desktop">https://cn.ubuntu.com/download/desktop</a></strong></li>
 </ul>
@@ -316,17 +316,17 @@
 </ul>
 <p><img src="/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/9f2f070828381f303516d6918363ea036e06f06d-1704895158883-2.png" alt="img"></p>
 <p><img src="/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/58ee3d6d55fbb2fb5efd2e6d7f2886af4723dc6c-1704895158883-3.png" alt="img"></p>
-<h4 id="1-2下载rufus启动盘制作工具"><a href="#1-2下载rufus启动盘制作工具" class="headerlink" title="1.2下载rufus启动盘制作工具"></a>1.2下载rufus启动盘制作工具</h4><ul>
-<li><strong>官网网址：<a target="_blank" rel="noopener" href="http://rufus.ie/zh/">http://rufus.ie/zh/</a></strong></li>
+<h3 id="下载启动盘制作工具"><a href="#下载启动盘制作工具" class="headerlink" title="下载启动盘制作工具"></a>下载启动盘制作工具</h3><ul>
+<li><strong>rufus 官网网址：<a target="_blank" rel="noopener" href="http://rufus.ie/zh/">http://rufus.ie/zh/</a></strong></li>
 </ul>
 <p><img src="/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/e7cd7b899e510fb3b9042467fd516e9ed0430c8a-1704895158883-4.png" alt="img"></p>
 <p><strong>然后就有如图所示下载得到的2个文件</strong></p>
 <p><img src="/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/6f061d950a7b020809fae29340bb54d8572cc87b-1704895158883-5.png" alt="img"></p>
-<h4 id="1-3制作Ubuntu启动盘"><a href="#1-3制作Ubuntu启动盘" class="headerlink" title="1.3制作Ubuntu启动盘"></a>1.3制作Ubuntu启动盘</h4><p><strong>双击打开下载好的rufus程序，设备选择插入的U盘，引导类型选择下载好的Ubuntu镜像文件，其他保持默认，点击开始</strong></p>
+<h3 id="制作启动盘"><a href="#制作启动盘" class="headerlink" title="制作启动盘"></a>制作启动盘</h3><p><strong>双击打开下载好的rufus程序，设备选择插入的U盘，引导类型选择下载好的Ubuntu镜像文件，其他保持默认，点击开始</strong></p>
 <p><img src="/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/d009b3de9c82d158cbebba97a568bfd3bc3e421c-1704895158883-6.png" alt="img"></p>
 <p><strong>当状态提示准备就绪后表示制作完成，点击关闭，U盘内显示以下文件</strong></p>
 <p><img src="/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/902397dda144ad34e4bc505cf8c0aaff30ad855c-1704895158884-7.png" alt="img"></p>
-<h4 id="二、磁盘查看及建议分区"><a href="#二、磁盘查看及建议分区" class="headerlink" title="二、磁盘查看及建议分区"></a>二、磁盘查看及建议分区</h4><h4 id="2-1查看计算机磁盘格式"><a href="#2-1查看计算机磁盘格式" class="headerlink" title="2.1查看计算机磁盘格式"></a>2.1查看计算机磁盘格式</h4><ol>
+<h3 id="查看计算机磁盘格式"><a href="#查看计算机磁盘格式" class="headerlink" title="查看计算机磁盘格式"></a>查看计算机磁盘格式</h3><ol>
 <li><strong>Windows系统的磁盘格式一般分为2种：MBR和GPT格式，分别对应主板Bios的Legacy和UEFI的启动方式，同时在linux分区里面对应&#x2F;boot和&#x2F;efi分区</strong></li>
 </ol>
 <p><img src="/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/bf096b63f6246b60fa670ba4cb9abc47500fa267-1704895158884-8.png" alt="img"></p>
@@ -334,14 +334,14 @@
 <p><img src="/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/fd039245d688d43f9be7791d4d7c74100ff43b04-1704895158884-9.png" alt="img"></p>
 <p><strong>对应分区形式如下：</strong></p>
 <p><img src="/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/cf1b9d16fdfaaf515c2eaebead3632e5f11f7a4b-1704895158884-10.png" alt="img"></p>
-<h4 id="2-2磁盘分区"><a href="#2-2磁盘分区" class="headerlink" title="2.2磁盘分区"></a>2.2磁盘分区</h4><ul>
+<h3 id="磁盘分区"><a href="#磁盘分区" class="headerlink" title="磁盘分区"></a>磁盘分区</h3><ul>
 <li><strong>Linux的磁盘分区和windows不同，一般常见分区方案如下：</strong></li>
 </ul>
 <p><img src="/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/2f738bd4b31c8701779ff749001d38240608ffe6-1704895158884-11.png" alt="img"></p>
 <p>若磁盘空间较小，可以只划分引导区、内存交换区和系统区三个，不建立home分区也可以。</p>
-<h4 id="三、使用U盘安装Ubuntu系统"><a href="#三、使用U盘安装Ubuntu系统" class="headerlink" title="三、使用U盘安装Ubuntu系统"></a>三、使用U盘安装Ubuntu系统</h4><p>Ubuntu安装分为两种MBR分区和GPT分区，分别对应Legacy和UEFI引导，注意选择正确的引导启动。</p>
+<h2 id="Ubuntu系统安装"><a href="#Ubuntu系统安装" class="headerlink" title="Ubuntu系统安装"></a>Ubuntu系统安装</h2><p>Ubuntu安装分为两种MBR分区和GPT分区，分别对应Legacy和UEFI引导，注意选择正确的引导启动。</p>
 <p><img src="/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/8694a4c27d1ed21b2d4bf23c8c0c7bcf53da3fd2-1704895158884-12.png" alt="img"></p>
-<h4 id="3-1进入BIOS设置U盘启动"><a href="#3-1进入BIOS设置U盘启动" class="headerlink" title="3.1进入BIOS设置U盘启动"></a>3.1进入BIOS设置U盘启动</h4><ol>
+<h3 id="进入BIOS设置U盘启动"><a href="#进入BIOS设置U盘启动" class="headerlink" title="进入BIOS设置U盘启动"></a>进入BIOS设置U盘启动</h3><ol>
 <li>电脑开机或者重启，不停的按对应的启动快捷键，进入BIOS设置面板</li>
 <li>找到<strong>Security</strong>（安全）-<strong>Secure Boot</strong>（安全启动）改为改成<strong>Disabled</strong>（关闭）</li>
 <li>找到<strong>Boot</strong>（启动）-<strong>Boot Mode</strong>（启动模式）选项按照自己硬盘格式改为<strong>Legacy</strong> 或者<strong>UEFI</strong>然后按<strong>F10</strong>保存退出</li>
@@ -350,7 +350,7 @@
 <p><img src="/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/38dbb6fd5266d0160b88a7e0be49720c37fa35d5-1704895158884-13.png" alt="img"></p>
 <p>选择第一项进入安装界面</p>
 <p><img src="/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/2f738bd4b31c87011f5f00200f1d38240508fffd-1704895158884-14.png" alt="img"></p>
-<h4 id="3-2正式安装并进行系列设置"><a href="#3-2正式安装并进行系列设置" class="headerlink" title="3.2正式安装并进行系列设置"></a>3.2正式安装并进行系列设置</h4><p>语言选择中文简体（当然如果英文很好可以选择English）</p>
+<h3 id="正式安装并进行系列设置"><a href="#正式安装并进行系列设置" class="headerlink" title="正式安装并进行系列设置"></a>正式安装并进行系列设置</h3><p>语言选择中文简体（当然如果英文很好可以选择English）</p>
 <p><img src="/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/dbb44aed2e738bd483cb94a089e921dd267ff922-1704895158884-15.jpeg" alt="img"></p>
 <p>键盘布局按照自己喜好选择即可</p>
 <p><img src="/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/c83d70cf3bc79f3d41e7fa4b8dc36b1a728b2930-1704895158884-16.jpeg" alt="img"></p>
@@ -382,84 +382,74 @@
 <p><img src="/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/f11f3a292df5e0fecabfc968760292a35fdf72a5-1704895158885-33.jpeg" alt="img"></p>
 <p><img src="/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/562c11dfa9ec8a13902d3489cc613784a0ecc016-1704895158886-34.jpeg" alt="img"></p>
 <p>以上大功告成，#Ubuntu系统顺利安装成功。小伙伴儿们不要忘记点赞收藏哦！</p>
-<h3 id="2、ssh设置"><a href="#2、ssh设置" class="headerlink" title="2、ssh设置"></a>2、ssh设置</h3><ol>
-<li>安装SSH</li>
-</ol>
+<h1 id="linux-环境配置"><a href="#linux-环境配置" class="headerlink" title="linux 环境配置"></a>linux 环境配置</h1><h2 id="ssh-设置"><a href="#ssh-设置" class="headerlink" title="ssh 设置"></a>ssh 设置</h2><p>安装SSH</p>
 <p>在Ubuntu系统中安装SSH是配置SSH的第一步。可以通过以下命令来安装SSH：</p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="keyword">get</span> install openssh-server</span><br></pre></td></tr></table></figure>
 
 <p>安装完成后，SSH服务将自动启动，并且会在系统启动时自动启动。</p>
-<p>1.1 SSH服务的启动和停止</p>
+<p>SSH服务的启动和停止</p>
 <p>安装完成后，SSH服务将自动启动，可以使用以下命令来手动启动或停止SSH服务：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo service ssh <span class="keyword">start</span></span><br><span class="line">sudo service ssh stop</span><br></pre></td></tr></table></figure>
 
-<p>1.2 SSH配置文件</p>
+<p>SSH配置文件</p>
 <p>SSH的配置文件位于&#x2F;etc&#x2F;ssh&#x2F;sshd_config，可以使用文本编辑器来修改配置文件。在配置文件中，可以修改SSH的端口、允许登录的用户、禁止root用户登录等。</p>
-<p>1.3 SSH服务的重启</p>
+<p>SSH服务的重启</p>
 <p>在修改了SSH的配置文件后，需要重启SSH服务才能使修改生效。可以使用以下命令来重启SSH服务：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service ssh restart</span><br></pre></td></tr></table></figure>
 
-<ol start="2">
-<li>生成SSH密钥</li>
-</ol>
+<p>生成SSH密钥</p>
 <p>在配置SSH之前，需要生成SSH密钥对。可以使用以下命令来生成SSH密钥对：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
 
 <p>生成的密钥对将保存在用户的~&#x2F;.ssh目录下，其中id_rsa为私钥，id_rsa.pub为公钥。</p>
-<p>2.1 密钥的添加和删除</p>
+<p>密钥的添加和删除</p>
 <p>生成的SSH密钥对可以通过以下命令来添加到SSH代理中：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-add ~<span class="regexp">/.ssh/i</span>d_rsa</span><br></pre></td></tr></table></figure>
 
 <p>如果需要删除已添加的密钥，可以使用以下命令：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-add -d ~<span class="regexp">/.ssh/i</span>d_rsa</span><br></pre></td></tr></table></figure>
 
-<p>2.2 公钥的复制</p>
+<p>公钥的复制</p>
 <p>将公钥复制到要连接的远程服务器上，可以使用以下命令：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh<span class="operator">-</span><span class="keyword">copy</span><span class="operator">-</span>id <span class="keyword">user</span><span class="variable">@remote_host</span></span><br></pre></td></tr></table></figure>
 
 <p>这将把公钥添加到远程服务器的~&#x2F;.ssh&#x2F;authorized_keys文件中，从而实现无密码登录。</p>
-<p>2.3 密钥的保护</p>
+<p>密钥的保护</p>
 <p>生成的SSH密钥对是非常重要的，需要妥善保护。可以通过设置密钥的权限和使用密码来加强密钥的安全性。</p>
-<ol start="3">
-<li>使用SSH连接远程服务器</li>
-</ol>
+<p>使用SSH连接远程服务器</p>
 <p>配置好SSH后，可以使用SSH来连接远程服务器。可以使用以下命令来连接远程服务器：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh <span class="keyword">user</span><span class="variable">@remote_host</span></span><br></pre></td></tr></table></figure>
 
 <p>在连接时，可以选择使用不同的身份验证方式，如密码验证、公钥验证等。</p>
-<p>3.1 公钥验证</p>
+<p>公钥验证</p>
 <p>使用公钥验证可以实现无密码登录，只需要将公钥添加到远程服务器的~&#x2F;.ssh&#x2F;authorized_keys文件中即可。</p>
-<p>3.2 密码验证</p>
+<p>密码验证</p>
 <p>使用密码验证需要输入远程服务器的密码，可以通过以下命令来连接远程服务器：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh <span class="keyword">user</span><span class="variable">@remote_host</span></span><br></pre></td></tr></table></figure>
 
-<p>3.3 其他身份验证方式</p>
+<p>其他身份验证方式</p>
 <p>除了公钥验证和密码验证外，还可以使用其他身份验证方式，如密钥卡、证书等。</p>
-<ol start="4">
-<li>配置SSH防火墙</li>
-</ol>
+<p>配置SSH防火墙</p>
 <p>为了加强SSH的安全性，可以配置防火墙来限制对SSH服务的访问。可以使用以下命令来配置防火墙：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw allow OpenSSH</span><br></pre></td></tr></table></figure>
 
 <p>这将允许来自任何IP地址的SSH连接。</p>
-<p>4.1 配置特定IP地址的访问</p>
+<p>配置特定IP地址的访问</p>
 <p>可以使用以下命令来允许特定IP地址的SSH连接：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw allow <span class="selector-tag">from</span> <span class="number">192.168</span>.<span class="number">0.1</span> <span class="selector-tag">to</span> any port <span class="number">22</span></span><br></pre></td></tr></table></figure>
 
 <p>这将允许来自IP地址为192.168.0.1的主机的SSH连接。</p>
-<p>4.2 配置防火墙的其他规则</p>
+<p>配置防火墙的其他规则</p>
 <p>除了配置SSH的访问规则外，还可以配置其他防火墙规则来进一步加强系统的安全性。</p>
-<ol start="5">
-<li>加强SSH安全</li>
-</ol>
+<p>加强SSH安全</p>
 <p>为了加强SSH的安全性，可以采取一些措施来防止未授权访问和恶意攻击。</p>
-<p>5.1 禁止root用户登录</p>
+<p>禁止root用户登录</p>
 <p>禁止root用户登录可以防止未授权访问和恶意攻击。可以通过修改SSH的配置文件来禁止root用户登录。</p>
-<p>5.2 使用SSH密钥登录</p>
+<p>使用SSH密钥登录</p>
 <p>使用SSH密钥登录可以实现无密码登录，提高系统的安全性。</p>
-<p>5.3 使用防火墙限制访问</p>
+<p> 使用防火墙限制访问</p>
 <p>使用防火墙可以限制对SSH服务的访问，防止未授权访问和恶意攻击。</p>
-<h4 id="内容补充"><a href="#内容补充" class="headerlink" title="内容补充;"></a>内容补充;</h4><p>非root用户开启ssh服务</p>
+<h3 id="内容补充"><a href="#内容补充" class="headerlink" title="内容补充;"></a>内容补充;</h3><p>非root用户开启ssh服务</p>
 <p>&#x2F;etc&#x2F;ssh&#x2F;ssh_config 配置文件对 root 无效用户，单独修改该配置文件可开启非 root 用户 ssh 访问</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/ssh/ssh_config</span><br></pre></td></tr></table></figure>
 
@@ -474,38 +464,38 @@
 
 
 
-<h4 id="SSH-常见问题"><a href="#SSH-常见问题" class="headerlink" title="SSH 常见问题"></a>SSH 常见问题</h4><p>ssh链接远程服务器出现错误:</p>
+<h3 id="SSH-常见问题"><a href="#SSH-常见问题" class="headerlink" title="SSH 常见问题"></a>SSH 常见问题</h3><p>ssh链接远程服务器出现错误:</p>
 <p><img src="/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/image-20231121140233416-1704895158886-35.png" alt="image-20231121140233416"></p>
 <p>原因：第一次ssh链接的时候会生成一个认证凭据，存储在客户端中的known_hosts，如果服务器地址重置or重新安装了，就会产生这个问题，巴拉巴拉。。。</p>
 <p>解决：</p>
 <p>ssh-keygen -R 服务器地址</p>
 <p>然后重新链接</p>
-<h3 id="3、-gitlab安装"><a href="#3、-gitlab安装" class="headerlink" title="3、 gitlab安装"></a>3、 gitlab安装</h3><p>参考：</p>
+<h2 id="gitlab-安装"><a href="#gitlab-安装" class="headerlink" title="gitlab 安装"></a>gitlab 安装</h2><p>参考：</p>
 <p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/37796391">https://www.zhihu.com/question/37796391</a></p>
-<h4 id="1、更新系统包"><a href="#1、更新系统包" class="headerlink" title="1、更新系统包"></a>1、更新系统包</h4><p>让我们首先更新<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E8%BD%AF%E4%BB%B6%E5%8C%85&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:3155487140%7D">软件包</a>列表并将任何现有软件包升级到最新版本。</p>
+<h3 id="更新系统包"><a href="#更新系统包" class="headerlink" title="更新系统包"></a>更新系统包</h3><p>让我们首先更新<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E8%BD%AF%E4%BB%B6%E5%8C%85&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:3155487140%7D">软件包</a>列表并将任何现有软件包升级到最新版本。</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt update</span><br><span class="line">$ sudo apt upgrade -y</span><br></pre></td></tr></table></figure>
 
 <p>应用更新后重新启动系统。</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo reboot</span><br></pre></td></tr></table></figure>
 
-<h4 id="2、安装依赖项"><a href="#2、安装依赖项" class="headerlink" title="2、安装依赖项"></a>2、安装依赖项</h4><p>GitLab 需要一些依赖项才能正常运行。使用以下命令安装它们：</p>
+<h3 id="安装依赖项"><a href="#安装依赖项" class="headerlink" title="安装依赖项"></a>安装依赖项</h3><p>GitLab 需要一些依赖项才能正常运行。使用以下命令安装它们：</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt install -y curl openssh-server ca-certificates postfix</span><br></pre></td></tr></table></figure>
 
 <p>在 postfix 安装过程中，会出现一个配置窗口。选择 “Internet Site”并输入服务器的主机名作为<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E9%82%AE%E4%BB%B6%E6%9C%8D%E5%8A%A1%E5%99%A8&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:3155487140%7D">邮件服务器</a>名称。这将允许 GitLab 发送电子邮件通知。</p>
 <p>选择 “Internet Site”，然后选择 “OK”。</p>
-<h4 id="3、添加-GitLab-Apt-存储库"><a href="#3、添加-GitLab-Apt-存储库" class="headerlink" title="3、添加 GitLab Apt 存储库"></a>3、添加 GitLab Apt 存储库</h4><p>现在，我们将添加 GitLab 仓库，运行以下 <code>curl</code> 命令。它将自动检测你的 Ubuntu 版本并相应地设置仓库。</p>
+<h3 id="添加-GitLab-Apt-存储库"><a href="#添加-GitLab-Apt-存储库" class="headerlink" title="添加 GitLab Apt 存储库"></a>添加 GitLab Apt 存储库</h3><p>现在，我们将添加 GitLab 仓库，运行以下 <code>curl</code> 命令。它将自动检测你的 Ubuntu 版本并相应地设置仓库。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ curl -sS https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh | sudo bash</span><br></pre></td></tr></table></figure>
 
 
 
-<h4 id="4、安装-Gitlab"><a href="#4、安装-Gitlab" class="headerlink" title="4、安装 Gitlab"></a>4、安装 Gitlab</h4><p>运行以下命令在你的 ubuntu 系统上自动安装和配置 gitlab-ce，将服务器的主机名替换为你的设置，</p>
+<h2 id="安装-Gitlab"><a href="#安装-Gitlab" class="headerlink" title="安装 Gitlab"></a>安装 Gitlab</h2><p>运行以下命令在你的 ubuntu 系统上自动安装和配置 gitlab-ce，将服务器的主机名替换为你的设置，</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo EXTERNAL_URL=&quot;http://gitlab.linuxtechi.net&quot; apt install gitlab-ce</span><br></pre></td></tr></table></figure>
 
 <p>上面的输出确认 GitLab 已成功安装。gitlab web 界面的用户名是 root，密码存储在 <code>/etc/gitlab/initial_root_password</code>。</p>
 <p>注意：如果你的 ubuntu 系统上启用了<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:3155487140%7D">操作系统</a>防火墙，那请允许 80 和 443 端口。</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo ufw allow http</span><br><span class="line">$ sudo ufw allow https</span><br></pre></td></tr></table></figure>
 
-<h4 id="5、访问-GitLab-Web-界面"><a href="#5、访问-GitLab-Web-界面" class="headerlink" title="5、访问 GitLab Web 界面"></a>5、访问 GitLab Web 界面</h4><p>安装并配置 GitLab 后，打开 Web 浏览器并输入服务器的 IP 地址或主机名。</p>
+<h3 id="访问-GitLab-Web-界面"><a href="#访问-GitLab-Web-界面" class="headerlink" title="访问 GitLab Web 界面"></a>访问 GitLab Web 界面</h3><p>安装并配置 GitLab 后，打开 Web 浏览器并输入服务器的 IP 地址或主机名。</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://&lt;Server-IP-Address-or-Hostname&gt;</span><br></pre></td></tr></table></figure>
 
 <ul>
@@ -515,13 +505,13 @@
 <p>密码：</p>
 <p>gitlab 192.168.0.126:80</p>
 <p>root  &#x2F;  xiaobai_123!@#</p>
-<h4 id="6、修改gitlab默认端口为8088："><a href="#6、修改gitlab默认端口为8088：" class="headerlink" title="6、修改gitlab默认端口为8088："></a>6、修改gitlab默认端口为8088：</h4><p>第一步：修改&#x2F;etc&#x2F;gitlab&#x2F;gitlab.rb文件，如果有如下参数直接修改，如果没有就新增</p>
-<p>nginx[‘listen_port’] &#x3D; 8088<br>1<br>第二步：修改默认的gitlab nginx的web服务80端 &#x2F;var&#x2F;opt&#x2F;gitlab&#x2F;nginx&#x2F;conf&#x2F;gitlab-http.conf</p>
-<p>server { ## HTTPS server<br>  listen *:8088;<br>1<br>2<br>第三步：初始化并重启组件：</p>
-<p>gitlab-ctl reconfigure<br>gitlab-ctl restart<br>1<br>2<br>第四步：浏览器访问<a target="_blank" rel="noopener" href="http://ip:8088/">http://ip:8088</a><br>————————————————<br>版权声明：本文为CSDN博主「热爱技术的小陈」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44371237/article/details/129165419">https://blog.csdn.net/weixin_44371237/article/details/129165419</a></p>
-<h3 id="4、mysql-安装"><a href="#4、mysql-安装" class="headerlink" title="4、mysql 安装"></a>4、mysql 安装</h3><p>参考：</p>
+<h3 id="修改gitlab默认端口为8088："><a href="#修改gitlab默认端口为8088：" class="headerlink" title="修改gitlab默认端口为8088："></a>修改gitlab默认端口为8088：</h3><p>第一步：修改&#x2F;etc&#x2F;gitlab&#x2F;gitlab.rb文件，如果有如下参数直接修改，如果没有就新增</p>
+<p>nginx[‘listen_port’] &#x3D; 8088<br>第二步：修改默认的gitlab nginx的web服务80端 &#x2F;var&#x2F;opt&#x2F;gitlab&#x2F;nginx&#x2F;conf&#x2F;gitlab-http.conf</p>
+<p>server { ## HTTPS server<br>  listen *:8088;<br>第三步：初始化并重启组件：</p>
+<p>gitlab-ctl reconfigure<br>gitlab-ctl restart<br>第四步：浏览器访问<a target="_blank" rel="noopener" href="http://ip:8088/">http://ip:8088</a></p>
+<h2 id="mysql-安装"><a href="#mysql-安装" class="headerlink" title="mysql 安装"></a>mysql 安装</h2><p>参考：</p>
 <p><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000039203507">https://segmentfault.com/a/1190000039203507</a></p>
-<h4 id="安装命令："><a href="#安装命令：" class="headerlink" title="安装命令："></a>安装命令：</h4><p> <code>sudo apt install mysql-server</code></p>
+<h3 id="安装命令："><a href="#安装命令：" class="headerlink" title="安装命令："></a>安装命令：</h3><p> <code>sudo apt install mysql-server</code></p>
 <p>不需要做的事情：</p>
 <ul>
 <li>启动</li>
@@ -532,20 +522,20 @@
 <p><strong>MySQL服务管理</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo service mysql status <span class="comment"># 查看服务状态</span></span><br><span class="line">sudo service mysql start <span class="comment"># 启动服务</span></span><br><span class="line">sudo service mysql stop <span class="comment"># 停止服务</span></span><br><span class="line">sudo service mysql restart <span class="comment"># 重启服务</span></span><br></pre></td></tr></table></figure>
 </blockquote>
-<h4 id="查看mysql状态"><a href="#查看mysql状态" class="headerlink" title="查看mysql状态"></a>查看mysql状态</h4><p>输入<code>service mysql status</code>就可以看到mysql正在运行中了，差不多要占350MB的内存</p>
+<h3 id="查看mysql状态"><a href="#查看mysql状态" class="headerlink" title="查看mysql状态"></a>查看mysql状态</h3><p>输入<code>service mysql status</code>就可以看到mysql正在运行中了，差不多要占350MB的内存</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">bot@ubuntu:~/Desktop/python/django/2$ service mysql status</span><br><span class="line">● mysql.service - MySQL Community Server</span><br><span class="line">     Loaded: loaded (/lib/systemd/system/mysql.service; enabled; vendor preset: enabled)</span><br><span class="line">     Active: active (running) since Wed 2021-02-10 16:15:50 CST; 17min ago</span><br><span class="line">    Process: 1008 ExecStartPre=/usr/share/mysql/mysql-systemd-start pre (code=exited, status=0/SUCCESS)</span><br><span class="line">   Main PID: 1168 (mysqld)</span><br><span class="line">     Status: <span class="string">&quot;Server is operational&quot;</span></span><br><span class="line">      Tasks: 37 (<span class="built_in">limit</span>: 4620)</span><br><span class="line">     Memory: 395.2M</span><br><span class="line">     CGroup: /system.slice/mysql.service</span><br><span class="line">             └─1168 /usr/sbin/mysqld</span><br><span class="line"></span><br><span class="line">2月 10 16:15:45 ubuntu systemd[1]: Starting MySQL Community Server...</span><br><span class="line">2月 10 16:15:50 ubuntu systemd[1]: Started MySQL Community Server.</span><br></pre></td></tr></table></figure>
 
 
 
 
 
-<h4 id="权限设置"><a href="#权限设置" class="headerlink" title="权限设置"></a>权限设置</h4><p><strong>直接进入mysql</strong><br>命令：<code>sudo mysql</code></p>
+<h3 id="权限设置"><a href="#权限设置" class="headerlink" title="权限设置"></a>权限设置</h3><p><strong>直接进入mysql</strong><br>命令：<code>sudo mysql</code></p>
 <p>重置root账户密码</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER USER <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span> IDENTIFIED WITH mysql_native_password BY <span class="string">&#x27;新密码&#x27;</span>;</span><br></pre></td></tr></table></figure>
 
 <p>刷新权限</p>
 <p>FLUSH PRIVILEGES;</p>
-<h4 id="远程root-用户"><a href="#远程root-用户" class="headerlink" title="远程root 用户"></a>远程root 用户</h4><p>如果需要远程登陆：</p>
+<h3 id="远程root-用户"><a href="#远程root-用户" class="headerlink" title="远程root 用户"></a>远程root 用户</h3><p>如果需要远程登陆：</p>
 <ul>
 <li>创建一个 <code>host</code> 字段为 <code>%</code> 的 root 用户（创建用户的同时设置密码）</li>
 <li>授权所有数据库的访问权限</li>
@@ -562,7 +552,7 @@
 
 
 
-<h5 id="远程连接"><a href="#远程连接" class="headerlink" title="远程连接"></a>远程连接</h5><p>光设置需要登陆用户的 host 为 % 是不够的，因为 mysql 的配置文件中静止了远程登录，需要去修改一下配置文件。<br>👇👇👇</p>
+<h3 id="远程连接"><a href="#远程连接" class="headerlink" title="远程连接"></a>远程连接</h3><p>光设置需要登陆用户的 host 为 % 是不够的，因为 mysql 的配置文件中静止了远程登录，需要去修改一下配置文件。<br>👇👇👇</p>
 <p>如果你遇到了这个问题，并不需要修改防火墙等等，只需按我如下的操作即可</p>
 <p><img src="/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/image-20231025202453987.png" alt="image-20231025202453987"></p>
 <p>先关停mysql服务</p>
@@ -579,7 +569,7 @@
 
 
 
-<h3 id="5、在Ubuntu中安装Redis"><a href="#5、在Ubuntu中安装Redis" class="headerlink" title="5、在Ubuntu中安装Redis"></a>5、在Ubuntu中安装Redis</h3><h4 id="1-安装redis"><a href="#1-安装redis" class="headerlink" title="1.安装redis"></a>1.安装redis</h4><p>执行以下命令</p>
+<h2 id="安装redis"><a href="#安装redis" class="headerlink" title="安装redis"></a>安装redis</h2><p>执行以下命令</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install redis-server</span><br></pre></td></tr></table></figure>
 
 
@@ -599,7 +589,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">requirepass juihui@redis</span><br></pre></td></tr></table></figure>
 
 <p>wq保存退出，重启服务器即可</p>
-<h4 id="2-配置远程访问"><a href="#2-配置远程访问" class="headerlink" title="2.配置远程访问"></a>2.配置远程访问</h4><p>如下步骤<br>1.通过sudo打开配置文件</p>
+<h3 id="配置远程访问"><a href="#配置远程访问" class="headerlink" title="配置远程访问"></a>配置远程访问</h3><p>如下步骤<br>1.通过sudo打开配置文件</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/redis/redis.conf</span><br></pre></td></tr></table></figure>
 
 
@@ -647,19 +637,19 @@
 <p>例如：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-cli -h 192.168.1.1</span><br></pre></td></tr></table></figure>
 
-<h3 id="6-安装nginx"><a href="#6-安装nginx" class="headerlink" title="6.安装nginx"></a>6.安装nginx</h3><h4 id="安装命令"><a href="#安装命令" class="headerlink" title="安装命令"></a>安装命令</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install nginx</span><br></pre></td></tr></table></figure>
+<h2 id="安装nginx"><a href="#安装nginx" class="headerlink" title="安装nginx"></a>安装nginx</h2><h3 id="安装命令"><a href="#安装命令" class="headerlink" title="安装命令"></a>安装命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install nginx</span><br></pre></td></tr></table></figure>
 
-<h4 id="Ubuntu-设置Nginx开机自启"><a href="#Ubuntu-设置Nginx开机自启" class="headerlink" title="Ubuntu 设置Nginx开机自启"></a>Ubuntu 设置Nginx开机自启</h4><h5 id="2-命令"><a href="#2-命令" class="headerlink" title="2.命令"></a>2.命令</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">disable</span> nginx.service 关闭开机自启</span><br><span class="line">systemctl <span class="built_in">enable</span> nginx.service 开启开机自启</span><br><span class="line">systemctl status nginx.service 查看状态</span><br><span class="line">systemctl restart nginx.service 重启服务</span><br><span class="line">systemctl list-units --<span class="built_in">type</span>=service 查看所有服务</span><br></pre></td></tr></table></figure>
+<h3 id="Ubuntu-设置Nginx开机自启"><a href="#Ubuntu-设置Nginx开机自启" class="headerlink" title="Ubuntu 设置Nginx开机自启"></a>Ubuntu 设置Nginx开机自启</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">disable</span> nginx.service 关闭开机自启</span><br><span class="line">systemctl <span class="built_in">enable</span> nginx.service 开启开机自启</span><br><span class="line">systemctl status nginx.service 查看状态</span><br><span class="line">systemctl restart nginx.service 重启服务</span><br><span class="line">systemctl list-units --<span class="built_in">type</span>=service 查看所有服务</span><br></pre></td></tr></table></figure>
 
-<h3 id="7-安装java"><a href="#7-安装java" class="headerlink" title="7 安装java"></a>7 安装java</h3><h4 id="前提条件"><a href="#前提条件" class="headerlink" title="前提条件"></a><strong>前提条件</strong></h4><p>在你打算安装 <strong>Java 17（OpenJDK 17）</strong> 的 Ubuntu 桌面或服务器上，我们不需要任何特殊配置。我们只需要系统管理员权限（也称为 sudo 权限）以及一个正常的网络连接。所以，如果你都有，只需打开 Ubuntu 的命令终端，按照以下步骤操作：</p>
-<h4 id="步骤-1：更新-Ubuntu-软件包列表"><a href="#步骤-1：更新-Ubuntu-软件包列表" class="headerlink" title="步骤 1：更新 Ubuntu 软件包列表"></a><strong>步骤 1：更新 Ubuntu 软件包列表</strong></h4><p>在安装新软件包之前，有必要对 Linux 系统进行更新。这将确保系统拥有已安装软件包的最新版本，并刷新 APT 索引缓存，使其能够下载和安装最新的应用程序。</p>
+<h2 id="安装java"><a href="#安装java" class="headerlink" title="安装java"></a>安装java</h2><h3 id="前提条件"><a href="#前提条件" class="headerlink" title="前提条件"></a><strong>前提条件</strong></h3><p>在你打算安装 <strong>Java 17（OpenJDK 17）</strong> 的 Ubuntu 桌面或服务器上，我们不需要任何特殊配置。我们只需要系统管理员权限（也称为 sudo 权限）以及一个正常的网络连接。所以，如果你都有，只需打开 Ubuntu 的命令终端，按照以下步骤操作：</p>
+<h3 id="步骤-1：更新-Ubuntu-软件包列表"><a href="#步骤-1：更新-Ubuntu-软件包列表" class="headerlink" title="步骤 1：更新 Ubuntu 软件包列表"></a><strong>步骤 1：更新 Ubuntu 软件包列表</strong></h3><p>在安装新软件包之前，有必要对 Linux 系统进行更新。这将确保系统拥有已安装软件包的最新版本，并刷新 APT 索引缓存，使其能够下载和安装最新的应用程序。</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br></pre></td></tr></table></figure>
 
-<h4 id="步骤-2：在-Ubuntu-22-04-或-20-04-上安装-OpenJDK-17"><a href="#步骤-2：在-Ubuntu-22-04-或-20-04-上安装-OpenJDK-17" class="headerlink" title="步骤 2：在 Ubuntu 22.04 或 20.04 上安装 OpenJDK 17"></a><strong>步骤 2：在 Ubuntu 22.04 或 20.04 上安装 OpenJDK 17</strong></h4><p>与 Oracle 的 Java 不同，OpenJDK 完全由开源社区维护，因此可以直接通过 Ubuntu Linux 官方软件仓库获得。这意味着我们无需添加任何额外的内容到系统中。只需在终端中使用给定的命令，OpenJDK 17 版本将被安装在你的 Ubuntu 系统上。</p>
+<h3 id="步骤-2：在-Ubuntu-22-04-或-20-04-上安装-OpenJDK-17"><a href="#步骤-2：在-Ubuntu-22-04-或-20-04-上安装-OpenJDK-17" class="headerlink" title="步骤 2：在 Ubuntu 22.04 或 20.04 上安装 OpenJDK 17"></a><strong>步骤 2：在 Ubuntu 22.04 或 20.04 上安装 OpenJDK 17</strong></h3><p>与 Oracle 的 Java 不同，OpenJDK 完全由开源社区维护，因此可以直接通过 Ubuntu Linux 官方软件仓库获得。这意味着我们无需添加任何额外的内容到系统中。只需在终端中使用给定的命令，OpenJDK 17 版本将被安装在你的 Ubuntu 系统上。</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install openjdk-17-jdk</span><br></pre></td></tr></table></figure>
 
 <p>当系统要求输入密码时，请输入密码。然后键入 ‘<strong>Y</strong>‘ 并按 ‘<strong>Enter</strong>‘ 继续安装。</p>
-<h4 id="步骤-3：确认-OpenJDK-已安装"><a href="#步骤-3：确认-OpenJDK-已安装" class="headerlink" title="步骤 3：确认 OpenJDK 已安装"></a><strong>步骤 3：确认 OpenJDK 已安装</strong></h4><p>虽然通过上面的命令，OpenJDK 17 已经安装在我们的系统上，但仍有人想要确认一下。你可以使用以下命令查看 Ubuntu 上当前安装的 Java 版本。</p>
+<h3 id="步骤-3：确认-OpenJDK-已安装"><a href="#步骤-3：确认-OpenJDK-已安装" class="headerlink" title="步骤 3：确认 OpenJDK 已安装"></a><strong>步骤 3：确认 OpenJDK 已安装</strong></h3><p>虽然通过上面的命令，OpenJDK 17 已经安装在我们的系统上，但仍有人想要确认一下。你可以使用以下命令查看 Ubuntu 上当前安装的 Java 版本。</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
 
 <p><strong>你应该看到类似以下的输出：</strong></p>
@@ -667,12 +657,12 @@
 
 
 
-<h4 id="步骤-4：设置默认-Java-版本（可选）"><a href="#步骤-4：设置默认-Java-版本（可选）" class="headerlink" title="步骤 4：设置默认 Java 版本（可选）"></a><strong>步骤 4：设置默认 Java 版本（可选）</strong></h4><p>如果你的系统上已经安装了多个 OpenJDK 版本，你可以使用 <strong>update-alternatives</strong> 命令将某个特定版本的 JAVA 设置为全局默认版本，适用于所有应用程序。该命令帮助用户管理多个 Java 安装。</p>
+<h3 id="步骤-4：设置默认-Java-版本（可选）"><a href="#步骤-4：设置默认-Java-版本（可选）" class="headerlink" title="步骤 4：设置默认 Java 版本（可选）"></a><strong>步骤 4：设置默认 Java 版本（可选）</strong></h3><p>如果你的系统上已经安装了多个 OpenJDK 版本，你可以使用 <strong>update-alternatives</strong> 命令将某个特定版本的 JAVA 设置为全局默认版本，适用于所有应用程序。该命令帮助用户管理多个 Java 安装。</p>
 <p>要配置默认的 Java 版本，请使用以下命令：</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo update-alternatives --config java</span><br></pre></td></tr></table></figure>
 
 <p>上述命令将显示所有已安装的 Java 版本列表。输入对应于 OpenJDK 条目的编号，即可将其设置为默认版本，然后按 ‘<strong>Enter</strong>‘。</p>
-<h4 id="步骤-5：设置-JAVA-HOME-环境变量（可选）"><a href="#步骤-5：设置-JAVA-HOME-环境变量（可选）" class="headerlink" title="步骤 5：设置 JAVA_HOME 环境变量（可选）"></a><strong>步骤 5：设置 JAVA_HOME 环境变量（可选）</strong></h4><p>与前面的步骤一样，这一步也不是必须的，但某些应用程序或工具，特别是开发人员使用的工具，可能需要设置 <strong>JAVA_HOME</strong> 环境变量。要将 JAVA_HOME 变量设置为 OpenJDK 17，请按照以下步骤进行：</p>
+<h3 id="步骤-5：设置-JAVA-HOME-环境变量（可选）"><a href="#步骤-5：设置-JAVA-HOME-环境变量（可选）" class="headerlink" title="步骤 5：设置 JAVA_HOME 环境变量（可选）"></a><strong>步骤 5：设置 JAVA_HOME 环境变量（可选）</strong></h3><p>与前面的步骤一样，这一步也不是必须的，但某些应用程序或工具，特别是开发人员使用的工具，可能需要设置 <strong>JAVA_HOME</strong> 环境变量。要将 JAVA_HOME 变量设置为 OpenJDK 17，请按照以下步骤进行：</p>
 <p>找到 OpenJDK 17 的安装路径。你可以使用 update-alternatives 命令来查找：</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo update-alternatives --list java</span><br></pre></td></tr></table></figure>
 
@@ -714,14 +704,14 @@
 <p>如果不太清楚安装在哪里的话，可以打开&#x2F;usr&#x2F;lib&#x2F;jvm文件夹下看一看。设置完成后</p>
 <p>1| sudo update-alternatives –config java</p>
 <p><img src="/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/87b871ee15b5489fae6e9ac1e72f7966-1704895158886-37.png" alt="img"><br>输入编号2，回车。再查看java版本<br><img src="/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/562ae6ca146d48a5902bc964453cd69c-1704895158886-38.png" alt="img"><br>切换成功！</p>
-<h3 id="项目启动教程"><a href="#项目启动教程" class="headerlink" title="项目启动教程"></a>项目启动教程</h3><h4 id="1-部署-常用命令"><a href="#1-部署-常用命令" class="headerlink" title="1 部署 常用命令"></a>1 部署 常用命令</h4><p>通过ssh命令 在项目地址下传输文件的命令</p>
+<h1 id="项目部署"><a href="#项目部署" class="headerlink" title="项目部署"></a>项目部署</h1><h2 id="部署-常用命令"><a href="#部署-常用命令" class="headerlink" title="部署 常用命令"></a>部署 常用命令</h2><p>通过ssh命令 在项目地址下传输文件的命令</p>
 <p>在对应的文件下的地址栏目输入cmd </p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># 将后端jar包传到服务器输入如下代码</span><br><span class="line">scp -r forward-admin.<span class="property">jar</span> root@<span class="number">192.168</span><span class="number">.0</span><span class="number">.103</span>:<span class="regexp">/usr/</span>local/project/forward/server/</span><br><span class="line"></span><br><span class="line">    scp -r dts-admin-api.<span class="property">jar</span> root@<span class="number">192.168</span><span class="number">.0</span><span class="number">.112</span>:<span class="regexp">/usr/</span>local/project/shopping/admin-server/</span><br><span class="line">        nohup  java -jar /usr/local/project/shopping/admin-server/dts-admin-api.<span class="property">jar</span>  &amp;</span><br><span class="line">            </span><br><span class="line">     scp -r dts-merchant-api.<span class="property">jar</span> root@<span class="number">192.168</span><span class="number">.0</span><span class="number">.112</span>:<span class="regexp">/usr/</span>local/project/shopping/merchant-server/    </span><br><span class="line">            nohup  java -jar /usr/local/project/shopping/merchant-server/dts-merchant-api.<span class="property">jar</span>  &amp;</span><br><span class="line">    </span><br><span class="line">     scp -r dts-wx-api.<span class="property">jar</span> root@<span class="number">192.168</span><span class="number">.0</span><span class="number">.112</span>:<span class="regexp">/usr/</span>local/project/shopping/wx-server/ </span><br><span class="line">          nohup  java -jar /usr/local/project/shopping/wx-server/dts-wx-api.<span class="property">jar</span>  &amp;</span><br><span class="line">         </span><br><span class="line">#将前端的dist输入如下的代码</span><br><span class="line">scp -r dist root@<span class="number">192.168</span><span class="number">.0</span><span class="number">.133</span>:<span class="regexp">/usr/</span>local/project/forward/web/</span><br></pre></td></tr></table></figure>
 
 
 
-<h4 id="2-后端部署"><a href="#2-后端部署" class="headerlink" title="2 后端部署"></a>2 后端部署</h4><p>2.1 首先将springBoot的项目进行打包 -&gt; 参考网络教程</p>
-<p>2.2 将jar包的License文件进行替换操作</p>
+<h2 id="后端部署"><a href="#后端部署" class="headerlink" title="后端部署"></a>后端部署</h2><p>首先将springBoot的项目进行打包 -&gt; 参考网络教程</p>
+<p>将jar包的License文件进行替换操作</p>
 <p><img src="/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/image-20231018200412155-1697766901131-5-1698138207603-35-1704895158886-39.png" alt="image-20231018200412155"></p>
 <p>2.3 找到jar包文件夹</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 将打包的 forward-admin.<span class="property">jar</span> 远程传送到linux服务器的”/usr/local/project/forward/server/“  目录下</span><br><span class="line"></span><br><span class="line">scp -r forward-admin.<span class="property">jar</span> root@<span class="number">192.168</span><span class="number">.0</span><span class="number">.103</span>:<span class="regexp">/usr/</span>local/project/forward/server/</span><br></pre></td></tr></table></figure>
@@ -748,26 +738,26 @@
 <p> （2）强制杀掉进程</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kill -<span class="number">9</span> xxx</span><br></pre></td></tr></table></figure>
 
-<h4 id="3-前端部署"><a href="#3-前端部署" class="headerlink" title="3 前端部署"></a>3 前端部署</h4><p>3.1 将前端的vue项目进行打包 -&gt;参考网路</p>
+<h2 id="前端部署"><a href="#前端部署" class="headerlink" title="前端部署"></a>前端部署</h2><p>将前端的vue项目进行打包 -&gt;参考网路</p>
 <p>打包命令:  npm run build:test</p>
 <p><img src="/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/image-20231019211338924-1697766887567-1-1698138207603-37-1704895158886-41.png" alt="image-20231019211338924"></p>
-<p>3.2 将dist文件上传到服务器</p>
+<p>将dist文件上传到服务器</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 将打包的 dist 远程传送到linux服务器的”/usr/local/project/forward/web/“  目录下</span><br><span class="line"></span><br><span class="line">scp -r dist root@192.168.0.112:/usr/local/project/forward/web/</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">scp -r dist root@192.168.0.112:/usr/local/project/shopping/admin-web/</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p><img src="/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/image-20231018203917602-1698138207603-36-1704895158886-42.png" alt="image-20231018203917602"></p>
-<p>3.3 设置nginx的配置 的Server下 插入如下代码</p>
-<p>3.3.1 server的配置代码</p>
+<p>设置nginx的配置 的Server下 插入如下代码</p>
+<p>server的配置代码</p>
 <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">        <span class="attribute">listen</span>       <span class="number">8082</span>;</span><br><span class="line">        <span class="attribute">server_name</span>  localhost;</span><br><span class="line"></span><br><span class="line">		<span class="section">location</span> / &#123;</span><br><span class="line">            <span class="attribute">root</span>   /usr/local/project/forward/web/dist;</span><br><span class="line">			<span class="attribute">try_files</span> <span class="variable">$uri</span> <span class="variable">$uri</span>/ /index.html;</span><br><span class="line">            <span class="attribute">index</span>  index.html index.htm;</span><br><span class="line">        &#125;</span><br><span class="line">		</span><br><span class="line">        <span class="section">location</span> /test-api/&#123;</span><br><span class="line">            <span class="attribute">proxy_set_header</span> Host <span class="variable">$http_host</span>;</span><br><span class="line">            <span class="attribute">proxy_set_header</span> X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">            <span class="attribute">proxy_set_header</span> REMOTE-HOST <span class="variable">$remote_addr</span>;</span><br><span class="line">            <span class="attribute">proxy_set_header</span> X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">            <span class="attribute">proxy_pass</span> http://localhost:8081/;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="section">location</span> /profile/ &#123;</span><br><span class="line">            <span class="attribute">proxy_pass</span> http://localhost:8081/profile/;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="attribute">error_page</span>   <span class="number">500</span> <span class="number">502</span> <span class="number">503</span> <span class="number">504</span>  /50x.html;</span><br><span class="line">        <span class="section">location</span> = /50x.html &#123;</span><br><span class="line">            <span class="attribute">root</span>   html;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
 <p> 将上面的代码保存到   -&gt;  nginx下的cnfig下的nginx.conf，保存到server同级下，设置如下图所示，</p>
 <p><img src="/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/image-20231018210959644-1698138207603-39-1704895158886-43.png" alt="image-20231018210959644"></p>
-<p>3.3.2 重启nginx </p>
+<p>重启nginx </p>
 <p>重启一下nginx -s reload 即可</p>
 <hr>
 <p>图片地址问题：</p>
 <p>图片问题一般需要再后端的 （ 对图片等数据订单一个配置 ）修改后打包。</p>
 <p><img src="/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/image-20231103160112329-1704895158886-44.png" alt="image-20231103160112329"></p>
-<h4 id="ssh扩展："><a href="#ssh扩展：" class="headerlink" title="ssh扩展："></a>ssh扩展：</h4><p>从服务器下载东西到本地windos</p>
+<h3 id="ssh扩展"><a href="#ssh扩展" class="headerlink" title="ssh扩展"></a>ssh扩展</h3><p>从服务器下载东西到本地windos</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -r -P 9000  root@192.168.0.119:~/storage/pictures/1.jpg   D:/</span><br></pre></td></tr></table></figure>
 
 <p><img src="/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/image-20231107202542223-1704895158886-45.png" alt="image-20231107202542223"></p>
@@ -778,7 +768,7 @@
 
 
 
-<h3 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h3><p>1、前端遇到问题如下：</p>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><p>1、前端遇到问题如下：</p>
 <p><img src="/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/image-20231020090233015-1698138207603-40-1704895158886-46.png" alt="image-20231020090233015"></p>
 <p>解决方案：</p>
 <p>方法一：指定配置目录</p>
@@ -810,13 +800,13 @@
 <p><strong>请求不到后台的接口</strong></p>
 <p><img src="/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/image-20231229125307332.png" alt="image-20231229125307332"></p>
 <hr>
-<p>2、后端遇到：</p>
+<p>后端遇到：</p>
 <p>常见问题:</p>
 <p>org.springframework.context.ApplicationContextException: Failed to start bean ‘webServerStartStop’; nested exception is org.springframework.boot.web.server.WebServerException: Unable to start embedded Tomcat server</p>
 <p><img src="/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/image-20231019214926913-1698138207603-46-1704895158886-53.png" alt="image-20231019214926913"></p>
 <p>重启服务器</p>
 <hr>
-<h3 id="常用操作："><a href="#常用操作：" class="headerlink" title="常用操作："></a>常用操作：</h3><h4 id="1、固定-IP地址"><a href="#1、固定-IP地址" class="headerlink" title="1、固定 IP地址"></a>1、固定 IP地址</h4><p>访问配置文件：</p>
+<h2 id="常用操作"><a href="#常用操作" class="headerlink" title="常用操作"></a>常用操作</h2><h3 id="固定-IP地址"><a href="#固定-IP地址" class="headerlink" title="固定 IP地址"></a>固定 IP地址</h3><p>访问配置文件：</p>
 <p>vim &#x2F;etc&#x2F;sysconfig&#x2F;network-scripts&#x2F;ifcfg-ens33</p>
 <p>进行配置</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">BOOTPROTO=<span class="string">&quot;static&quot;</span></span><br><span class="line"></span><br><span class="line">IPADDR=192.168.0.112</span><br><span class="line">GATEWAY=192.168.0.1</span><br><span class="line">DNS1=114.114.114.114</span><br></pre></td></tr></table></figure>
@@ -923,7 +913,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Ubuntu-%E7%89%A9%E7%90%86%E6%9C%BA%E9%83%A8%E7%BD%B2%E4%B8%8E%E9%85%8D%E7%BD%AE"><span class="nav-number">1.</span> <span class="nav-text">Ubuntu 物理机部署与配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81%E4%BD%BF%E7%94%A8U%E7%9B%98%E5%AE%89%E8%A3%85Ubuntu%EF%BC%88Linux%E7%B3%BB%E7%BB%9F%EF%BC%89%E4%BF%9D%E5%A7%86%E6%95%99%E7%A8%8B"><span class="nav-number">1.0.1.</span> <span class="nav-text">1、使用U盘安装Ubuntu（Linux系统）保姆教程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">一、准备工作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1%E4%B8%8B%E8%BD%BDUbuntu%E7%B3%BB%E7%BB%9F%E9%95%9C%E5%83%8F%E6%96%87%E4%BB%B6"><span class="nav-number">1.0.1.2.</span> <span class="nav-text">1.1下载Ubuntu系统镜像文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2%E4%B8%8B%E8%BD%BDrufus%E5%90%AF%E5%8A%A8%E7%9B%98%E5%88%B6%E4%BD%9C%E5%B7%A5%E5%85%B7"><span class="nav-number">1.0.1.3.</span> <span class="nav-text">1.2下载rufus启动盘制作工具</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3%E5%88%B6%E4%BD%9CUbuntu%E5%90%AF%E5%8A%A8%E7%9B%98"><span class="nav-number">1.0.1.4.</span> <span class="nav-text">1.3制作Ubuntu启动盘</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E7%A3%81%E7%9B%98%E6%9F%A5%E7%9C%8B%E5%8F%8A%E5%BB%BA%E8%AE%AE%E5%88%86%E5%8C%BA"><span class="nav-number">1.0.1.5.</span> <span class="nav-text">二、磁盘查看及建议分区</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1%E6%9F%A5%E7%9C%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A3%81%E7%9B%98%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.0.1.6.</span> <span class="nav-text">2.1查看计算机磁盘格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA"><span class="nav-number">1.0.1.7.</span> <span class="nav-text">2.2磁盘分区</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E4%BD%BF%E7%94%A8U%E7%9B%98%E5%AE%89%E8%A3%85Ubuntu%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.0.1.8.</span> <span class="nav-text">三、使用U盘安装Ubuntu系统</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1%E8%BF%9B%E5%85%A5BIOS%E8%AE%BE%E7%BD%AEU%E7%9B%98%E5%90%AF%E5%8A%A8"><span class="nav-number">1.0.1.9.</span> <span class="nav-text">3.1进入BIOS设置U盘启动</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2%E6%AD%A3%E5%BC%8F%E5%AE%89%E8%A3%85%E5%B9%B6%E8%BF%9B%E8%A1%8C%E7%B3%BB%E5%88%97%E8%AE%BE%E7%BD%AE"><span class="nav-number">1.0.1.10.</span> <span class="nav-text">3.2正式安装并进行系列设置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81ssh%E8%AE%BE%E7%BD%AE"><span class="nav-number">1.0.2.</span> <span class="nav-text">2、ssh设置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%86%85%E5%AE%B9%E8%A1%A5%E5%85%85"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">内容补充;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SSH-%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="nav-number">1.0.2.2.</span> <span class="nav-text">SSH 常见问题</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81-gitlab%E5%AE%89%E8%A3%85"><span class="nav-number">1.0.3.</span> <span class="nav-text">3、 gitlab安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81%E6%9B%B4%E6%96%B0%E7%B3%BB%E7%BB%9F%E5%8C%85"><span class="nav-number">1.0.3.1.</span> <span class="nav-text">1、更新系统包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%E3%80%81%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96%E9%A1%B9"><span class="nav-number">1.0.3.2.</span> <span class="nav-text">2、安装依赖项</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3%E3%80%81%E6%B7%BB%E5%8A%A0-GitLab-Apt-%E5%AD%98%E5%82%A8%E5%BA%93"><span class="nav-number">1.0.3.3.</span> <span class="nav-text">3、添加 GitLab Apt 存储库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4%E3%80%81%E5%AE%89%E8%A3%85-Gitlab"><span class="nav-number">1.0.3.4.</span> <span class="nav-text">4、安装 Gitlab</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5%E3%80%81%E8%AE%BF%E9%97%AE-GitLab-Web-%E7%95%8C%E9%9D%A2"><span class="nav-number">1.0.3.5.</span> <span class="nav-text">5、访问 GitLab Web 界面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6%E3%80%81%E4%BF%AE%E6%94%B9gitlab%E9%BB%98%E8%AE%A4%E7%AB%AF%E5%8F%A3%E4%B8%BA8088%EF%BC%9A"><span class="nav-number">1.0.3.6.</span> <span class="nav-text">6、修改gitlab默认端口为8088：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4%E3%80%81mysql-%E5%AE%89%E8%A3%85"><span class="nav-number">1.0.4.</span> <span class="nav-text">4、mysql 安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E5%91%BD%E4%BB%A4%EF%BC%9A"><span class="nav-number">1.0.4.1.</span> <span class="nav-text">安装命令：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8Bmysql%E7%8A%B6%E6%80%81"><span class="nav-number">1.0.4.2.</span> <span class="nav-text">查看mysql状态</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9D%83%E9%99%90%E8%AE%BE%E7%BD%AE"><span class="nav-number">1.0.4.3.</span> <span class="nav-text">权限设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%9C%E7%A8%8Broot-%E7%94%A8%E6%88%B7"><span class="nav-number">1.0.4.4.</span> <span class="nav-text">远程root 用户</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5"><span class="nav-number">1.0.4.4.1.</span> <span class="nav-text">远程连接</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5%E3%80%81%E5%9C%A8Ubuntu%E4%B8%AD%E5%AE%89%E8%A3%85Redis"><span class="nav-number">1.0.5.</span> <span class="nav-text">5、在Ubuntu中安装Redis</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%AE%89%E8%A3%85redis"><span class="nav-number">1.0.5.1.</span> <span class="nav-text">1.安装redis</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E9%85%8D%E7%BD%AE%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AE"><span class="nav-number">1.0.5.2.</span> <span class="nav-text">2.配置远程访问</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E5%AE%89%E8%A3%85nginx"><span class="nav-number">1.0.6.</span> <span class="nav-text">6.安装nginx</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E5%91%BD%E4%BB%A4"><span class="nav-number">1.0.6.1.</span> <span class="nav-text">安装命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Ubuntu-%E8%AE%BE%E7%BD%AENginx%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF"><span class="nav-number">1.0.6.2.</span> <span class="nav-text">Ubuntu 设置Nginx开机自启</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-%E5%91%BD%E4%BB%A4"><span class="nav-number">1.0.6.2.1.</span> <span class="nav-text">2.命令</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-%E5%AE%89%E8%A3%85java"><span class="nav-number">1.0.7.</span> <span class="nav-text">7 安装java</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%89%8D%E6%8F%90%E6%9D%A1%E4%BB%B6"><span class="nav-number">1.0.7.1.</span> <span class="nav-text">前提条件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4-1%EF%BC%9A%E6%9B%B4%E6%96%B0-Ubuntu-%E8%BD%AF%E4%BB%B6%E5%8C%85%E5%88%97%E8%A1%A8"><span class="nav-number">1.0.7.2.</span> <span class="nav-text">步骤 1：更新 Ubuntu 软件包列表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4-2%EF%BC%9A%E5%9C%A8-Ubuntu-22-04-%E6%88%96-20-04-%E4%B8%8A%E5%AE%89%E8%A3%85-OpenJDK-17"><span class="nav-number">1.0.7.3.</span> <span class="nav-text">步骤 2：在 Ubuntu 22.04 或 20.04 上安装 OpenJDK 17</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4-3%EF%BC%9A%E7%A1%AE%E8%AE%A4-OpenJDK-%E5%B7%B2%E5%AE%89%E8%A3%85"><span class="nav-number">1.0.7.4.</span> <span class="nav-text">步骤 3：确认 OpenJDK 已安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4-4%EF%BC%9A%E8%AE%BE%E7%BD%AE%E9%BB%98%E8%AE%A4-Java-%E7%89%88%E6%9C%AC%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%89"><span class="nav-number">1.0.7.5.</span> <span class="nav-text">步骤 4：设置默认 Java 版本（可选）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4-5%EF%BC%9A%E8%AE%BE%E7%BD%AE-JAVA-HOME-%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%89"><span class="nav-number">1.0.7.6.</span> <span class="nav-text">步骤 5：设置 JAVA_HOME 环境变量（可选）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Ubuntu-%E5%88%87%E6%8D%A2JDK%E7%89%88%E6%9C%AC"><span class="nav-number">1.0.7.7.</span> <span class="nav-text">Ubuntu-切换JDK版本</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E5%90%AF%E5%8A%A8%E6%95%99%E7%A8%8B"><span class="nav-number">1.0.8.</span> <span class="nav-text">项目启动教程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E9%83%A8%E7%BD%B2-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">1.0.8.1.</span> <span class="nav-text">1 部署 常用命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%90%8E%E7%AB%AF%E9%83%A8%E7%BD%B2"><span class="nav-number">1.0.8.2.</span> <span class="nav-text">2 后端部署</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%89%8D%E7%AB%AF%E9%83%A8%E7%BD%B2"><span class="nav-number">1.0.8.3.</span> <span class="nav-text">3 前端部署</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ssh%E6%89%A9%E5%B1%95%EF%BC%9A"><span class="nav-number">1.0.8.4.</span> <span class="nav-text">ssh扩展：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="nav-number">1.0.9.</span> <span class="nav-text">常见问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%EF%BC%9A"><span class="nav-number">1.0.10.</span> <span class="nav-text">常用操作：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81%E5%9B%BA%E5%AE%9A-IP%E5%9C%B0%E5%9D%80"><span class="nav-number">1.0.10.1.</span> <span class="nav-text">1、固定 IP地址</span></a></li></ol></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8U%E7%9B%98%E5%AE%89%E8%A3%85Ubuntu"><span class="nav-number">1.</span> <span class="nav-text">使用U盘安装Ubuntu</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="nav-number">1.1.</span> <span class="nav-text">准备工作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E7%B3%BB%E7%BB%9F%E9%95%9C%E5%83%8F%E6%96%87%E4%BB%B6"><span class="nav-number">1.1.1.</span> <span class="nav-text">下载系统镜像文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E5%90%AF%E5%8A%A8%E7%9B%98%E5%88%B6%E4%BD%9C%E5%B7%A5%E5%85%B7"><span class="nav-number">1.1.2.</span> <span class="nav-text">下载启动盘制作工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%B6%E4%BD%9C%E5%90%AF%E5%8A%A8%E7%9B%98"><span class="nav-number">1.1.3.</span> <span class="nav-text">制作启动盘</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A3%81%E7%9B%98%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.1.4.</span> <span class="nav-text">查看计算机磁盘格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA"><span class="nav-number">1.1.5.</span> <span class="nav-text">磁盘分区</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ubuntu%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85"><span class="nav-number">1.2.</span> <span class="nav-text">Ubuntu系统安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9B%E5%85%A5BIOS%E8%AE%BE%E7%BD%AEU%E7%9B%98%E5%90%AF%E5%8A%A8"><span class="nav-number">1.2.1.</span> <span class="nav-text">进入BIOS设置U盘启动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AD%A3%E5%BC%8F%E5%AE%89%E8%A3%85%E5%B9%B6%E8%BF%9B%E8%A1%8C%E7%B3%BB%E5%88%97%E8%AE%BE%E7%BD%AE"><span class="nav-number">1.2.2.</span> <span class="nav-text">正式安装并进行系列设置</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#linux-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">linux 环境配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ssh-%E8%AE%BE%E7%BD%AE"><span class="nav-number">2.1.</span> <span class="nav-text">ssh 设置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%85%E5%AE%B9%E8%A1%A5%E5%85%85"><span class="nav-number">2.1.1.</span> <span class="nav-text">内容补充;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SSH-%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="nav-number">2.1.2.</span> <span class="nav-text">SSH 常见问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gitlab-%E5%AE%89%E8%A3%85"><span class="nav-number">2.2.</span> <span class="nav-text">gitlab 安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0%E7%B3%BB%E7%BB%9F%E5%8C%85"><span class="nav-number">2.2.1.</span> <span class="nav-text">更新系统包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96%E9%A1%B9"><span class="nav-number">2.2.2.</span> <span class="nav-text">安装依赖项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0-GitLab-Apt-%E5%AD%98%E5%82%A8%E5%BA%93"><span class="nav-number">2.2.3.</span> <span class="nav-text">添加 GitLab Apt 存储库</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-Gitlab"><span class="nav-number">2.3.</span> <span class="nav-text">安装 Gitlab</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BF%E9%97%AE-GitLab-Web-%E7%95%8C%E9%9D%A2"><span class="nav-number">2.3.1.</span> <span class="nav-text">访问 GitLab Web 界面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9gitlab%E9%BB%98%E8%AE%A4%E7%AB%AF%E5%8F%A3%E4%B8%BA8088%EF%BC%9A"><span class="nav-number">2.3.2.</span> <span class="nav-text">修改gitlab默认端口为8088：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mysql-%E5%AE%89%E8%A3%85"><span class="nav-number">2.4.</span> <span class="nav-text">mysql 安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E5%91%BD%E4%BB%A4%EF%BC%9A"><span class="nav-number">2.4.1.</span> <span class="nav-text">安装命令：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8Bmysql%E7%8A%B6%E6%80%81"><span class="nav-number">2.4.2.</span> <span class="nav-text">查看mysql状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9D%83%E9%99%90%E8%AE%BE%E7%BD%AE"><span class="nav-number">2.4.3.</span> <span class="nav-text">权限设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9C%E7%A8%8Broot-%E7%94%A8%E6%88%B7"><span class="nav-number">2.4.4.</span> <span class="nav-text">远程root 用户</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5"><span class="nav-number">2.4.5.</span> <span class="nav-text">远程连接</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85redis"><span class="nav-number">2.5.</span> <span class="nav-text">安装redis</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AE"><span class="nav-number">2.5.1.</span> <span class="nav-text">配置远程访问</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85nginx"><span class="nav-number">2.6.</span> <span class="nav-text">安装nginx</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E5%91%BD%E4%BB%A4"><span class="nav-number">2.6.1.</span> <span class="nav-text">安装命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ubuntu-%E8%AE%BE%E7%BD%AENginx%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF"><span class="nav-number">2.6.2.</span> <span class="nav-text">Ubuntu 设置Nginx开机自启</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85java"><span class="nav-number">2.7.</span> <span class="nav-text">安装java</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E6%8F%90%E6%9D%A1%E4%BB%B6"><span class="nav-number">2.7.1.</span> <span class="nav-text">前提条件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4-1%EF%BC%9A%E6%9B%B4%E6%96%B0-Ubuntu-%E8%BD%AF%E4%BB%B6%E5%8C%85%E5%88%97%E8%A1%A8"><span class="nav-number">2.7.2.</span> <span class="nav-text">步骤 1：更新 Ubuntu 软件包列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4-2%EF%BC%9A%E5%9C%A8-Ubuntu-22-04-%E6%88%96-20-04-%E4%B8%8A%E5%AE%89%E8%A3%85-OpenJDK-17"><span class="nav-number">2.7.3.</span> <span class="nav-text">步骤 2：在 Ubuntu 22.04 或 20.04 上安装 OpenJDK 17</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4-3%EF%BC%9A%E7%A1%AE%E8%AE%A4-OpenJDK-%E5%B7%B2%E5%AE%89%E8%A3%85"><span class="nav-number">2.7.4.</span> <span class="nav-text">步骤 3：确认 OpenJDK 已安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4-4%EF%BC%9A%E8%AE%BE%E7%BD%AE%E9%BB%98%E8%AE%A4-Java-%E7%89%88%E6%9C%AC%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%89"><span class="nav-number">2.7.5.</span> <span class="nav-text">步骤 4：设置默认 Java 版本（可选）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4-5%EF%BC%9A%E8%AE%BE%E7%BD%AE-JAVA-HOME-%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%89"><span class="nav-number">2.7.6.</span> <span class="nav-text">步骤 5：设置 JAVA_HOME 环境变量（可选）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Ubuntu-%E5%88%87%E6%8D%A2JDK%E7%89%88%E6%9C%AC"><span class="nav-number">2.7.6.1.</span> <span class="nav-text">Ubuntu-切换JDK版本</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2"><span class="nav-number">3.</span> <span class="nav-text">项目部署</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">3.1.</span> <span class="nav-text">部署 常用命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8E%E7%AB%AF%E9%83%A8%E7%BD%B2"><span class="nav-number">3.2.</span> <span class="nav-text">后端部署</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E7%AB%AF%E9%83%A8%E7%BD%B2"><span class="nav-number">3.3.</span> <span class="nav-text">前端部署</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ssh%E6%89%A9%E5%B1%95"><span class="nav-number">3.3.1.</span> <span class="nav-text">ssh扩展</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="nav-number">3.4.</span> <span class="nav-text">常见问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C"><span class="nav-number">3.5.</span> <span class="nav-text">常用操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%BA%E5%AE%9A-IP%E5%9C%B0%E5%9D%80"><span class="nav-number">3.5.1.</span> <span class="nav-text">固定 IP地址</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -982,7 +972,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2:02</span>
+    <span title="站点阅读时长">2:01</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
