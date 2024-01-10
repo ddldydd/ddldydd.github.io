@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="部署文档： 声明 部署本地win10的VMos虚拟机的CentOS7 服务器 后续安装都是在VMos虚拟机的CentOS7 服务器里进行的安装！！！ VMOS部署CentOS部分，网络资源较多，可参考网络 在 局域网络访问CentOS主机的网络配置，可参考网络，注意（大多网络配置都是将虚拟机到部署到NET上，实际部署到物理地址会更方面局域网的其他主机的访问。）  ssh链接常用命令： ssh  &amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VM虚拟机_部署篇">
+<meta property="og:url" content="http://example.com/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/index.html">
+<meta property="og:site_name" content="夏蝉之家">
+<meta property="og:description" content="部署文档： 声明 部署本地win10的VMos虚拟机的CentOS7 服务器 后续安装都是在VMos虚拟机的CentOS7 服务器里进行的安装！！！ VMOS部署CentOS部分，网络资源较多，可参考网络 在 局域网络访问CentOS主机的网络配置，可参考网络，注意（大多网络配置都是将虚拟机到部署到NET上，实际部署到物理地址会更方面局域网的其他主机的访问。）  ssh链接常用命令： ssh  &amp;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/image-20231024142751853-1698128875955-1-1698128878358-3-1704895567126-2.png">
+<meta property="og:image" content="http://example.com/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/image-20231024142854241-1698128935974-5-1704895567127-3.png">
+<meta property="og:image" content="http://example.com/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/v2-a7582ef91bab7b459ada9b1ad7ac76a0_720w-1704895567127-4.webp">
+<meta property="og:image" content="http://example.com/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/v2-998a12e393050e4b79e082d5872efede_720w-1704895567127-5.webp">
+<meta property="og:image" content="http://example.com/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/v2-a7b3b17c831d141d7c371e2bf69688cc_720w-1704895567127-6.webp">
+<meta property="og:image" content="http://example.com/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/v2-9d643a569316c7e7ceba52c14146b880_720w-1704895567127-7.webp">
+<meta property="og:image" content="http://example.com/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/v2-81eb00993ff47329a64f190f4cd684ce_720w-1704895567128-8.webp">
+<meta property="og:image" content="http://example.com/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/v2-7f496b1b55827200e22c656c2e6c2ebc_720w-1704895567128-9.webp">
+<meta property="og:image" content="http://example.com/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/v2-9cf9f2a77e9d27444360e3eb09840230_720w-1704895567128-10.webp">
+<meta property="og:image" content="http://example.com/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/v2-9da46c5c372bea8efcaa0526502d9572_720w-1704895567128-11.webp">
+<meta property="og:image" content="http://example.com/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/v2-bd7878b3d797ae7e13bb21378e5140d5_720w-1704895567128-13.webp">
+<meta property="og:image" content="http://example.com/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/v2-6e985f05038a1659dba87319f00ce9ea_720w-1704895567128-12.webp">
+<meta property="og:image" content="http://example.com/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/v2-80415169d39eafc47d7bd734c4280daf_720w-1704895567128-14.webp">
+<meta property="og:image" content="http://example.com/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/v2-bd361fb1ce1e6c8f1abafbb146c3dec2_720w-1704895567128-15.webp">
+<meta property="og:image" content="http://example.com/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/v2-c74b8274a6c903632a9619ab7144090f_720w-1704895567128-16.webp">
+<meta property="og:image" content="http://example.com/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/v2-8fdb63519abad7388c511a6cf07511dd_720w-1704895567128-17.webp">
+<meta property="og:image" content="http://example.com/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/v2-9a01398f2c9ffbb690b97a0243d9fec4_720w-1704895567128-18.webp">
+<meta property="og:image" content="http://example.com/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/v2-590a928c37fe067ae3cfd4e46130d694_720w-1704895567128-19.webp">
+<meta property="og:image" content="http://example.com/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/v2-c75430f0a3deaa05ba46b6a81bb7d95e_720w-1704895567128-20.webp">
+<meta property="og:image" content="http://example.com/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/454642-20190327130547818-180375002-1704895567128-21.jpg">
+<meta property="og:image" content="http://example.com/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/454642-20190327130555796-713925591-1704895567128-22.jpg">
+<meta property="og:image" content="http://example.com/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/454642-20190327130602386-1146755331-1704895567128-23.jpg">
+<meta property="og:image" content="http://example.com/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/454642-20190327130608863-1309058065-1704895567129-24.jpg">
+<meta property="og:image" content="http://example.com/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/454642-20190327130624051-1893751589-1704895567129-25.jpg">
+<meta property="og:image" content="http://example.com/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/454642-20190327130631043-1941151696-1704895567129-26.jpg">
+<meta property="og:image" content="http://example.com/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/454642-20190327130635687-781689277-1704895567129-27.png">
+<meta property="og:image" content="http://example.com/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/copycode.gif">
+<meta property="og:image" content="http://example.com/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/Users/XiaoBai/AppData/Roaming/Typora/typora-user-images/image-20231018094241974.png">
+<meta property="og:image" content="http://example.com/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/Users/XiaoBai/AppData/Roaming/Typora/typora-user-images/image-20231018094525894.png">
+<meta property="og:image" content="http://example.com/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/Users/XiaoBai/AppData/Roaming/Typora/typora-user-images/image-20231018102342545.png">
+<meta property="og:image" content="http://example.com/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/Users/XiaoBai/AppData/Roaming/Typora/typora-user-images/image-20231018112621982.png">
+<meta property="og:image" content="http://example.com/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/Users/XiaoBai/AppData/Roaming/Typora/typora-user-images/image-20231018112752564.png">
+<meta property="og:image" content="http://example.com/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/Users/XiaoBai/AppData/Roaming/Typora/typora-user-images/image-20231018113942407.png">
+<meta property="og:image" content="http://example.com/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/Users/XiaoBai/AppData/Roaming/Typora/typora-user-images/image-20231018114510909.png">
+<meta property="og:image" content="http://example.com/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/Users/XiaoBai/AppData/Roaming/Typora/typora-user-images/image-20231018114614033.png">
+<meta property="og:image" content="http://example.com/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/Users/XiaoBai/AppData/Roaming/Typora/typora-user-images/image-20231018114720737.png">
+<meta property="og:image" content="http://example.com/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/Users/XiaoBai/AppData/Roaming/Typora/typora-user-images/image-20231018115318043.png">
+<meta property="og:image" content="http://example.com/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/Users/XiaoBai/AppData/Roaming/Typora/typora-user-images/image-20231018145542385.png">
+<meta property="og:image" content="http://example.com/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/Users/XiaoBai/AppData/Roaming/Typora/typora-user-images/image-20231018140146231.png">
+<meta property="og:image" content="http://example.com/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/Users/XiaoBai/AppData/Roaming/Typora/typora-user-images/image-20231018151728126.png">
+<meta property="og:image" content="http://example.com/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/Users/XiaoBai/AppData/Roaming/Typora/typora-user-images/image-20231018152257252.png">
+<meta property="og:image" content="http://example.com/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/Users/XiaoBai/AppData/Roaming/Typora/typora-user-images/image-20231018152340233.png">
+<meta property="og:image" content="http://example.com/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/Users/XiaoBai/AppData/Roaming/Typora/typora-user-images/image-20231018152820669.png">
+<meta property="og:image" content="http://example.com/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/image-20231018200412155-1697766901131-5-1698138207603-35-1704895567129-29.png">
+<meta property="og:image" content="http://example.com/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/image-20231018200942055-1697766894973-3-1698138207603-38-1704895567129-28.png">
+<meta property="og:image" content="http://example.com/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/image-20231019211338924-1697766887567-1-1698138207603-37-1704895567129-31.png">
+<meta property="og:image" content="http://example.com/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/image-20231018203917602-1698138207603-36-1704895567129-30.png">
+<meta property="og:image" content="http://example.com/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/image-20231018210959644-1698138207603-39-1704895567130-33.png">
+<meta property="og:image" content="http://example.com/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/image-20231103160112329-1704895567129-32.png">
+<meta property="og:image" content="http://example.com/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/image-20231107202542223-1704895567130-34.png">
+<meta property="og:image" content="http://example.com/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/image-20231020090233015-1698138207603-40-1704895567130-35.png">
+<meta property="og:image" content="http://example.com/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/image-20231020090613256-1698138207603-42-1704895567130-36.png">
+<meta property="og:image" content="http://example.com/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/image-20231020090629683-1698138207603-41-1704895567130-37.png">
+<meta property="og:image" content="http://example.com/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/image-20231020090642496-1698138207603-43-1704895567130-38.png">
+<meta property="og:image" content="http://example.com/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/image-20231020090657062-1698138207603-45-1704895567130-39.png">
+<meta property="og:image" content="http://example.com/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/image-20231020092029001-1698138207603-44-1704895567130-40.png">
+<meta property="og:image" content="http://example.com/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/image-20231024170836183-1704895567130-41.png">
+<meta property="og:image" content="http://example.com/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/image-20231019214926913-1698138207603-46-1704895567130-42.png">
+<meta property="og:image" content="http://example.com/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/image-20231027131201590-1704895567130-43.png">
+<meta property="og:image" content="http://example.com/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/image-20231028165617795-1704895567130-44.png">
+<meta property="article:published_time" content="2024-01-10T13:58:21.000Z">
+<meta property="article:modified_time" content="2024-01-10T14:06:23.212Z">
+<meta property="article:author" content="阿呆">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/image-20231024142751853-1698128875955-1-1698128878358-3-1704895567126-2.png">
+
+<link rel="canonical" href="http://example.com/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>VM虚拟机_部署篇 | 夏蝉之家</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">夏蝉之家</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container"></div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="algolia-results">
+  <div id="algolia-stats"></div>
+  <div id="algolia-hits"></div>
+  <div id="algolia-pagination" class="algolia-pagination"></div>
+</div>
+
+      
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="阿呆">
+      <meta itemprop="description" content="书山有路勤为径，学海无涯苦作舟。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="夏蝉之家">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          VM虚拟机_部署篇
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2024-01-10 21:58:21 / 修改时间：22:06:23" itemprop="dateCreated datePublished" datetime="2024-01-10T21:58:21+08:00">2024-01-10</time>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>20k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>37 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="部署文档："><a href="#部署文档：" class="headerlink" title="部署文档："></a>部署文档：</h1><hr>
+<p>声明</p>
+<p>部署本地win10的VMos虚拟机的CentOS7 服务器</p>
+<p><strong>后续安装都是在VMos虚拟机的CentOS7 服务器里进行的安装！！！</strong></p>
+<p>VMOS部署CentOS部分，网络资源较多，可参考网络</p>
+<p>在 局域网络访问CentOS主机的网络配置，可参考网络，注意（大多网络配置都是将虚拟机到部署到NET上，实际部署到物理地址会更方面局域网的其他主机的访问。）</p>
+<hr>
+<p>ssh链接常用命令：</p>
+<p>ssh  <a href="mailto:&#x72;&#x6f;&#x6f;&#116;&#64;&#x31;&#x39;&#50;&#x2e;&#49;&#x36;&#56;&#x2e;&#48;&#46;&#x31;&#x33;&#51;">&#x72;&#x6f;&#x6f;&#116;&#64;&#x31;&#x39;&#50;&#x2e;&#49;&#x36;&#56;&#x2e;&#48;&#46;&#x31;&#x33;&#51;</a></p>
+<hr>
+<h2 id="0-Linux-常用命令"><a href="#0-Linux-常用命令" class="headerlink" title="0 Linux 常用命令"></a>0 Linux 常用命令</h2><p>将一个文件夹下的所有内容复制到另一个文件夹下</p>
+<blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cp -r /home/packageA/* /home/cp/packageB/`</span><br><span class="line">或</span><br><span class="line">`cp -r /home/packageA/. /home/cp/packageB/</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>vim 多删除</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">全选（高亮显示）：按esc后，然后ggvG或者ggVG</span><br><span class="line"></span><br><span class="line">全部复制：按esc后，然后ggyG</span><br><span class="line"></span><br><span class="line">全部删除：按esc后，然后dG</span><br><span class="line"></span><br><span class="line">解析：</span><br><span class="line"></span><br><span class="line">gg：是让光标移到首行，在vim才有效，vi中无效 </span><br><span class="line"></span><br><span class="line">v ： 是进入Visual(可视）模式 </span><br><span class="line"></span><br><span class="line">G ：光标移到最后一行 </span><br><span class="line"></span><br><span class="line">选中内容以后就可以其他的操作了，比如： </span><br><span class="line">d  删除选中内容 </span><br><span class="line">y  复制选中内容到0号寄存器 </span><br></pre></td></tr></table></figure>
+
+
+
+<p>创建文件夹子</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p forward  #可创建孩子目录</span><br></pre></td></tr></table></figure>
+
+
+
+<p>删除一个文件夹及其下面的所有文件</p>
+<blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf /home/packageA</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>-r</code>表示向下递归，不管有多少级目录，一并删除</li>
+<li><code>-f</code>表示直接强行删除，不作任何提示的意思</li>
+</ul>
+</blockquote>
+<p>rm[选项] 文件或目录</p>
+<p>选项：</p>
+<p>-f：强制删除（force），和-i选项相反，使用-f，系统将不再询问，而是直接删除目标文件或目录。</p>
+<p>-i：和-f正好相反，在删除文件或目录之前，系统会给出提示信息，使用-i可以有效防止不小心删除有用的文件或目录。</p>
+<p>-r：递归删除，主要用于删除目录，可删除指定目录及包含的所有内容，包括所有的子目录和文件。</p>
+<hr>
+<h2 id="1-安装CentOs7-虚拟机"><a href="#1-安装CentOs7-虚拟机" class="headerlink" title="1 安装CentOs7 虚拟机"></a>1 安装CentOs7 虚拟机</h2><p>VMware配置CentOS操作系统<br>1.VMware创建虚拟机<br>2.虚拟机安装CentOS系统<br>3.常见问题(含7和8常见问题)<br>4.VMware安装+Linux镜像下载+Linux系统安装全教程<br>1.VMware创建虚拟机<br>安装前说明：<br>对于之前下载好ios文件，尽量应该为他们放在一个专门的文件夹(例如：Linux-os)，方便以后操作。</p>
+<p>注意需要的软件安装源地址</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://mirrors.aliyun.com/centos/7/os/x86_64</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/image-20231024142751853-1698128875955-1-1698128878358-3-1704895567126-2.png" alt="image-20231024142751853"></p>
+<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/image-20231024142854241-1698128935974-5-1704895567127-3.png" alt="image-20231024142854241"></p>
+<hr>
+<h2 id="2-双系统安装教程"><a href="#2-双系统安装教程" class="headerlink" title="2 双系统安装教程"></a>2 双系统安装教程</h2><p>Windows+Ubuntu20.04</p>
+<p>少一点包容</p>
+<p>由于需要在Linux下写代码，之前虚拟机安装过centos，但运行速度不理想，使用颇为受限，故安装双系统，这篇教程没有繁琐赘述，重要之处以及我所遇到的一些BUG都会详细说明。</p>
+<ol>
+<li>为什么选择Ubuntu20.04</li>
+</ol>
+<p>之前使用centos，但是centos8.x已经不再维护，综合其他一些原因选择Ubuntu，而且这个发行版本会维护5年（具体到哪一年忘记了），很多需要用到的软件也会一直支持。</p>
+<ol start="2">
+<li>我的电脑配置</li>
+</ol>
+<ul>
+<li>惠普战99 工作站</li>
+<li>Windows10 家庭版 64</li>
+<li>16GRAM</li>
+<li>固态硬盘256，2T机械</li>
+</ul>
+<ol start="3">
+<li>安装方式</li>
+</ol>
+<p>上面说到了，我的固态硬盘其实所剩无几，于是选择安装在机械硬盘（需要几百兆SSD容量），我压缩了500G的机械硬盘空间来给·Ubuntu，有条件的全部在分在固态硬盘就行。</p>
+<p><strong>另外重要两点</strong></p>
+<ul>
+<li>Ubuntu的&#x2F;SWAP（虚拟内存）分区最好在固态硬盘这样读写速度会快一点（建议），具体大小根据RAM决定，后面会说明。</li>
+<li>Ubuntu的&#x2F;boot分区要分在Windows系统盘，这样才能Ubuntu启动下读取到Windows，在开机的时候可以选择加载哪个系统。</li>
+</ul>
+<p>一、制作启动硬盘</p>
+<ol>
+<li>下载Ubuntu20.04 ISO</li>
+</ol>
+<p><a href="https://link.zhihu.com/?target=https://ubuntu.com/%23download">官网入口</a>下载LTS版本，我是直接下载的，搭配迅雷下载器还是很快的几分钟吧，如果速度很慢可以从华为或者<a href="https://link.zhihu.com/?target=https://mirrors.tuna.tsinghua.edu.cn/%23">清华大学镜像网站</a>下载。</p>
+<p>2.下载 UltraISO并制作启动U盘</p>
+<p><a href="https://link.zhihu.com/?target=https://cn.ultraiso.net/xiazai.html">UltraISO官网入口</a>点免费下载试用，安装好后打开点击免费试用。</p>
+<p><strong>准备一个4G以上大小的U盘，制作过程中会格式化U盘，记得备份文件</strong></p>
+<p>选择好下载的UbuntuISO文件打开，点击【启动】→【写入硬盘映像】如图：</p>
+<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/v2-a7582ef91bab7b459ada9b1ad7ac76a0_720w-1704895567127-4.webp" alt="img"></p>
+<p>写入方式选择【USB-HDD+】</p>
+<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/v2-998a12e393050e4b79e082d5872efede_720w-1704895567127-5.webp" alt="img"></p>
+<p>点击【写入】会弹出格式化U盘提示点击确定等待写入完成即可。</p>
+<p>二、为Ubuntu分配磁盘空间</p>
+<p>我们需要在固态硬盘（也就是系统盘）分出300M-500M的空间用于Ubuntu的&#x2F;boot分区来作为启动引导文件（否则无法启动Ubuntu，具体原因百度），另外如果固态硬盘充足可以预留处&#x2F;SWAP分区的空间。</p>
+<p>swap,电脑内存8G大小就分配内存两倍的空间,8G以上跟内存一样大或者稍大1、2个G,交换空间,虚拟内存，这个建议分固态硬盘的区，不然会影响运行速度，机械硬盘也是可以用的.</p>
+<p>右键点击【此电脑】，选择【管理】→【磁盘管理】，选择想压缩的盘右键单击可以看到压缩卷，点进去就能看到可压缩大小，单位是MB，我在机械硬盘分了500G大小，固态硬盘分了20G大小。</p>
+<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/v2-a7b3b17c831d141d7c371e2bf69688cc_720w-1704895567127-6.webp" alt="img"></p>
+<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/v2-9d643a569316c7e7ceba52c14146b880_720w-1704895567127-7.webp" alt="img"></p>
+<p>这是我压缩好后的样子：</p>
+<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/v2-81eb00993ff47329a64f190f4cd684ce_720w-1704895567128-8.webp" alt="img"></p>
+<p><strong>由于电脑存储文件并非连续的，比如前面20G使用了，之间空了10G，后面的又占用了，那么这10G也就无法压缩。所以会出现可压缩空间远远小于剩余空间</strong></p>
+<p><strong>解决方法参考：</strong></p>
+<p><a href="https://link.zhihu.com/?target=https://blog.csdn.net/yturhd87b_gdvy/article/details/87933467?utm_medium=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromMachineLearnPai2~default-4.control&dist_request_id=&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromMachineLearnPai2~default-4.control">进行磁盘分区时，“可用压缩空间”远小于真实的空间大小时的设置方法</a></p>
+<p><a href="https://link.zhihu.com/?target=https://blog.csdn.net/Rained_99/article/details/54023914?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522161781081216780264038570%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=161781081216780264038570&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~baidu_landing_v2~default-1-54023914.first_rank_v2_pc_rank_v29&utm_term=c%E7%9B%98%E5%8E%8B%E7%BC%A9%E5%8D%B7%E5%8E%8B%E7%BC%A9%E7%A9%BA%E9%97%B4%E9%9D%9E%E5%B8%B8%E5%B0%8F%E6%80%8E%E4%B9%88%E5%8A%9E&spm=1018.2226.3001.4187">Windows系统压缩卷时可压缩空间远小于实际剩余空间解决方法</a></p>
+<p>三、安装Ubuntu</p>
+<ol>
+<li>查看电脑BIOS模式</li>
+</ol>
+<p>WIN+R输入msinfo32，回车确认</p>
+<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/v2-7f496b1b55827200e22c656c2e6c2ebc_720w-1704895567128-9.webp" alt="img"></p>
+<p><strong>BIOS模式，传统代表MBR，另外就是UEFI，Ubuntu是UFFI模式</strong></p>
+<ol start="2">
+<li>BiOS安装准备</li>
+</ol>
+<p>插入我们制作好的启动硬盘，开机按F10进入BiOS模式（不同的电脑进入方式可能不同，另外建议把英文改为中文，方法自行百度）</p>
+<p>不会操作先看说明，我的是按F1，选择【系统设置】→【启动选项】</p>
+<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/v2-9cf9f2a77e9d27444360e3eb09840230_720w-1704895567128-10.webp" alt="img"></p>
+<p>将【U盘&#x2F;USB硬盘】更改为首选项，我的电脑是按F5&#x2F;F6移动，F10保存。</p>
+<p>保存退出后，电脑会自动重启进入Ubuntu的安装。</p>
+<ol start="3">
+<li>开始安装</li>
+</ol>
+<p>①. 将语言改为中文或者英文，点击安装Ubuntu</p>
+<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/v2-9da46c5c372bea8efcaa0526502d9572_720w-1704895567128-11.webp" alt="img"></p>
+<p>②. 键盘布局选择【Chinese】，后面的连接网络我就跳过了，如果要选择【正常安装】要联网。</p>
+<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/v2-bd7878b3d797ae7e13bb21378e5140d5_720w-1704895567128-13.webp" alt="img"></p>
+<p>③. 由于我准备的硬盘大小充足，所以我选择【正常安装】，也可以选择【最小安装】不影响使用。其他的在图中。</p>
+<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/v2-6e985f05038a1659dba87319f00ce9ea_720w-1704895567128-12.webp" alt="img"></p>
+<p>④. 安装类型选择其他选择其他选项。</p>
+<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/v2-80415169d39eafc47d7bd734c4280daf_720w-1704895567128-14.webp" alt="img"></p>
+<p><strong>⑤. 创建分区，这是最重要的一步，我的分区如下：</strong></p>
+<p><strong>- 注意：先分逻辑区，再分主分区</strong></p>
+<ul>
+<li>1.&#x2F;swap交换分区（虚拟内存），逻辑分区，我分了16GB（8G及以下RAM选择两倍大小，以上跟RAM大小一样就行）</li>
+<li>2.&#x2F;boot分区 ，逻辑分区，默认ext4。 我分了将近300M，放置Ubuntu的启动引导文件，</li>
+<li>3.&#x2F; 根分区（root分区），逻辑分区，我选择100G就可以，默认ext4，</li>
+<li>4.&#x2F;home分区，主分区，默认ext4，我选择400G，用户的所有文件都在这里。</li>
+</ul>
+<p><strong>说明：交换分区和&#x2F;boot分区容量我都是在c盘压缩的，&#x2F;和&#x2F;home分区总共500G是在机械硬盘分的，另外根据自己的实际情况合理分配就行了，按照我的比例。</strong></p>
+<p>不清楚Linux分区的自行百度或者查看这篇文章：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/122335496">Linux下硬盘分区：根分区（&#x2F;）交换分区（&#x2F;swap）和&#x2F;boot分区</a></p>
+<p>分区按照我上面的说明来就行，我就不一一展示了，位置选择压缩好的空闲分区（或者用分区助手创建的分区，看大小和使用量就知道，创建的分区不是空闲分区，不能点加号，更改为可用就行），点左下角加号创建。</p>
+<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/v2-bd361fb1ce1e6c8f1abafbb146c3dec2_720w-1704895567128-15.webp" alt="img"></p>
+<p><strong>安装启动引导器的设备选择&#x2F;boot分区那个路径，然后点击【现在安装】</strong></p>
+<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/v2-c74b8274a6c903632a9619ab7144090f_720w-1704895567128-16.webp" alt="img"></p>
+<p>⑥. 开始安装，我只用了20分钟不到就安装好了，没有几个小时，一次成功。</p>
+<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/v2-8fdb63519abad7388c511a6cf07511dd_720w-1704895567128-17.webp" alt="img"></p>
+<ol start="4">
+<li>更改BIOS启动选项</li>
+</ol>
+<p>安装好Ubuntu之后，<strong>拔下U盘（不拔等会开机还会进入Ubuntu安装）</strong>，右上角关机，彻底关机后开机F10进入BIOS，跟之前的步骤一样，<strong>选择【系统设置】→【启动选项】，将【操作系统的启动管理员】上移</strong></p>
+<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/v2-9a01398f2c9ffbb690b97a0243d9fec4_720w-1704895567128-18.webp" alt="img"></p>
+<p>按ENTER将Ubuntu启动移到第一位，保存退出，开机进入启动界面就可以看到选项了，第一位是Ubuntu，第三个是Windows.</p>
+<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/v2-590a928c37fe067ae3cfd4e46130d694_720w-1704895567128-19.webp" alt="img"></p>
+<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/v2-c75430f0a3deaa05ba46b6a81bb7d95e_720w-1704895567128-20.webp" alt="img"></p>
+<p>四. 安装完成</p>
+<p>至此Ubuntu安装全部完成，接下来就可以愉快的使用Linux了，遇到不会的建议先查看官方文档。如果教程有什么不足之处欢迎指正评论。学无止境，希望这篇文章对你有所帮助！</p>
+<p>编辑于 2021-04-11 19:50</p>
+<hr>
+<h2 id="3-直接复制虚拟机出现网络问题"><a href="#3-直接复制虚拟机出现网络问题" class="headerlink" title="3 直接复制虚拟机出现网络问题"></a>3 直接复制虚拟机出现网络问题</h2><p><a target="_blank" rel="noopener" href="http://phpzyw.com/bc853B2wHB1lWCwQ.html">http://phpzyw.com/bc853B2wHB1lWCwQ.html</a></p>
+<p>首先我的虚拟机是复制出来的，选择我已经移到，但是结果会出现了以下情况，导致了我无法ping 通，先看下提示：</p>
+<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/454642-20190327130547818-180375002-1704895567128-21.jpg" alt="img"></p>
+<p>使用：ipconfig –all 命令查寻，果然再现有打开的虚拟机中，存在两个mac地址相同的虚拟机，所以就有思路了，修改mac地址。</p>
+<p><strong>尝试1：直接利用虚拟机自带的修改mac地址</strong></p>
+<p>选择对应的虚拟机，直接在虚拟机设置中进行修改，修改步骤如下</p>
+<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/454642-20190327130555796-713925591-1704895567128-22.jpg" alt="img"></p>
+<p>不知道是不是虚拟机没关闭的原因导致的修改无效，所以我采用了第二种方法，简单粗暴点。</p>
+<p><strong>尝试2：修改网卡的mac地址</strong></p>
+<p>选中网卡后右击，在右击菜单中点击属性，在本地连接属性对话框中，点击“配置”按钮</p>
+<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/454642-20190327130602386-1146755331-1704895567128-23.jpg" alt="img"></p>
+<p>在打开的网卡属性对话框中，点击高级选项卡；找到本地管理的地址；默认选择不存在，需要设定实际值，点击上一个圆圈选项后，输入一个12位的16进制数(我这里是已经修改过的，所以填了数字)</p>
+<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/454642-20190327130608863-1309058065-1704895567129-24.jpg" alt="img"></p>
+<p>然后再看，网络就好了</p>
+<p><strong>当然还有第三种方法，修改注册表，</strong>不过我觉得注册表修改有点麻烦，需要先找到对应的网卡，步骤如下：</p>
+<p>1、在Cortana搜索栏输入regedit，按回车键进入注册表编辑器</p>
+<p>2、定位到HKEY_LOCAL_MACHINESYSTEMCurrentControlSetControlClass{4D36E972-E325-11CE-BFC1-08002bE10318}</p>
+<p>3、每个00XX的代号都代表一个网卡（要想分辨出你想要的网卡型号，得在点击编号后，在右侧的DriverDesc值中确定型号，如下图）</p>
+<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/454642-20190327130624051-1893751589-1704895567129-25.jpg" alt="img"></p>
+<p>4、确定好网卡后，就在这个网卡的项目中新建一个字符串值，命名为NetworkAddress，内容是新的MAC地址，如下图</p>
+<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/454642-20190327130631043-1941151696-1704895567129-26.jpg" alt="img"></p>
+<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/454642-20190327130635687-781689277-1704895567129-27.png" alt="img"></p>
+<p>5、点击“确定”后修改完毕，此时需要重启连接进行验证。可以在相应的“网络连接”中单击右键，选择“禁用”，然后再点击“启用”即可</p>
+<h2 id="2-安装SSH"><a href="#2-安装SSH" class="headerlink" title="2 安装SSH"></a>2 安装SSH</h2><h3 id="2-1-安装"><a href="#2-1-安装" class="headerlink" title="2.1 安装"></a>2.1 安装</h3><p>Step 1: 检查是否已安装OpenSSH</p>
+<p>在安装OpenSSH之前，需要检查系统是否已经安装了OpenSSH。可以通过以下命令来检查：</p>
+<p>`&#96;&#96;</p>
+<p>rpm -qa | grep openssh</p>
+<p>如果输出结果中包含openssh，那么说明已经安装了OpenSSH，否则需要进行安装。</p>
+<p>Step 2: 安装OpenSSH</p>
+<p>CentOS 7使用yum软件包管理器来进行软件安装。可以通过以下命令来安装OpenSSH：</p>
+<p>sudo yum install openssh-server</p>
+<p>安装完成后，可以通过以下命令来启动OpenSSH：</p>
+<p>sudo systemctl start sshd</p>
+<p>Step 3: 配置OpenSSH</p>
+<p>默认情况下，OpenSSH配置文件位于&#x2F;etc&#x2F;ssh&#x2F;sshd_config。可以通过编辑该文件来配置OpenSSH。可以通过以下命令来编辑该文件：</p>
+<p>sudo vi &#x2F;etc&#x2F;ssh&#x2F;sshd_config</p>
+<p>在该文件中，可以配置以下内容：</p>
+<p>- 端口号：默认情况下，OpenSSH使用22端口。可以通过修改Port字段来更改端口号。</p>
+<p>- 允许的用户：默认情况下，OpenSSH允许所有用户登录。可以通过修改AllowUsers字段来限制允许登录的用户。</p>
+<p>- 允许的IP地址：可以通过修改AllowUsers字段来限制允许登录的IP地址。</p>
+<p>修改完成后，需要重新启动OpenSSH才能使配置生效：</p>
+<p>sudo systemctl restart sshd</p>
+<p>Step 4: 连接到远程计算机</p>
+<p>安装和配置OpenSSH后，可以使用ssh命令连接到远程计算机。可以使用以下命令连接到IP地址为192.168.1.100的远程计算机：</p>
+<p>ssh <a href="mailto:&#117;&#x73;&#101;&#x72;&#x6e;&#x61;&#109;&#101;&#x40;&#49;&#57;&#x32;&#x2e;&#49;&#54;&#x38;&#46;&#x31;&#46;&#x31;&#x30;&#x30;">&#117;&#x73;&#101;&#x72;&#x6e;&#x61;&#109;&#101;&#x40;&#49;&#57;&#x32;&#x2e;&#49;&#54;&#x38;&#46;&#x31;&#46;&#x31;&#x30;&#x30;</a></p>
+<p>username是远程计算机上的用户名。如果连接成功，将会提示输入密码。</p>
+<hr>
+<h3 id="2-2-使用"><a href="#2-2-使用" class="headerlink" title="2.2 使用"></a>2.2 使用</h3><p>在CentOS中开启SSH服务需要以下步骤：</p>
+<p>1.安装OpenSSH服务</p>
+<p>打开终端，输入以下命令安装OpenSSH服务：</p>
+<p>sudo yum install openssh-server</p>
+<p>2.开启SSH服务</p>
+<p>输入以下命令启动SSH服务并设置为开机启动：</p>
+<p>sudo systemctl enable sshd</p>
+<p>sudo systemctl start sshd</p>
+<p>3.设置防火墙规则</p>
+<p>输入以下命令来开启SSH端口：</p>
+<p>sudo firewall-cmd –permanent –add-service&#x3D;ssh</p>
+<p>sudo firewall-cmd –reload</p>
+<p>4.测试SSH服务</p>
+<p>在另一台计算机或移动设备上安装SSH客户端，并使用CentOS机器的IP地址或域名进行连接。若连接成功则说明SSH服务已开启成功。</p>
+<p>cnetOS7</p>
+<p>安装mysql 5 ，参考链接 </p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/519001709">安装配置_MySQL安装配置(Linux) - 知乎 (zhihu.com)</a></p>
+<h2 id="3-删除mysql数据-："><a href="#3-删除mysql数据-：" class="headerlink" title="3 删除mysql数据 ："></a>3 删除mysql数据 ：</h2><p>1、查看当前mysql安装状况</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -qa | grep mysql``# 或``yum list install | grep mysql</span><br></pre></td></tr></table></figure>
+
+<p>2、查看mysql的服务是否启动</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status mysqld</span><br></pre></td></tr></table></figure>
+
+<p>2.1、如果启动则关闭mysql服务</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop mysqld.service  # service可加可不加</span><br><span class="line"># 停止MySQL的服务</span><br><span class="line">[root@chenstudy ~]\# systemctl stop mysqld</span><br><span class="line"># 再次查看MySQL的服务状态</span><br><span class="line">[root@chenstudy ~]\# systemctl status mysqld</span><br></pre></td></tr></table></figure>
+
+<p>3、 卸载上述命令查询出的已安装程序</p>
+<p><a href="javascript:void(0);"><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/copycode.gif" alt="复制代码"></a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">yum remove mysql-community-libs-8.0.30-1.el7.x86_64</span><br><span class="line">rpm -qa | grep mysql</span><br><span class="line">yum remove mysql-community-client-plugins-8.0.30-1.el7.x86_64</span><br><span class="line">rpm -qa | grep mysql</span><br><span class="line">yum remove mysql-community-server-8.0.30-1.el7.x86_64</span><br><span class="line">rpm -qa | grep mysql</span><br></pre></td></tr></table></figure>
+
+<p>4、删除mysql相关文件</p>
+<ul>
+<li>查找相关文件</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find / -name mysql</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>删除上述命令查找出来的相关文件</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"> /usr/lib64/mysql</span><br><span class="line">rm -rf /var/lib/mysql</span><br><span class="line">rm -rf /var/lib/mysql/mysql</span><br><span class="line">rm -rf /etc/selinux/targeted/active/modules/100/mysql</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">rm -rf /etc/selinux/targeted/active/modules/100/mysql</span><br><span class="line">rm -rf /usr/share/mysql</span><br><span class="line">rm -rf /usr/lib64/mysql</span><br></pre></td></tr></table></figure>
+
+<p>5、删除my.cnf</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf /etc/my.cnf</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-安装mysql-5-7："><a href="#4-安装mysql-5-7：" class="headerlink" title="4 安装mysql 5.7："></a>4 安装mysql 5.7：</h2><p><strong>1. 使用wget命令下载</strong></p>
+<p>用<code>wget</code>命令下载到指定目录：wget -P [目录] [下载链接]</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://dev.mysql.com/get/Downloads/MySQL-5.7/mysql-5.7.36-linux-glibc2.12-x86_64.tar.gz</span><br></pre></td></tr></table></figure>
+
+<p>二、安装</p>
+<p>(参考链接 :[Centos系统安装mysql-5.7.22（tar.gz安装包）_centos.tar.gz 下载-CSDN博客](<a target="_blank" rel="noopener" href="https://blog.csdn.net/dc282614966/article/details/81098074#:~:text=1.%E5%B0%86%E4%B8%8B%E8%BD%BD%E5%A5%BD%E7%9A%84%E5%AE%89%E8%A3%85%E5%88%B0%E8%A7%A3%E5%8E%8B%E5%88%B0%2Fusr%2Flocal%E7%9B%AE%E5%BD%95%E4%B8%8B">https://blog.csdn.net/dc282614966/article/details/81098074#:~:text=1.将下载好的安装到解压到%2Fusr%2Flocal目录下</a> tar -zxvf mysql- 5.7.22 -linux-glibc 2.12 -x,-x 86 _ 64 mysql 4.为centos添加mysql用户组和mysql用户 (-s %2Fbin%2Ffalse参数指定mysql用户仅拥有所有权，而没有登录权限)) )与(<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/519001709">安装配置_MySQL安装配置(Linux) - 知乎 (zhihu.com)</a>)</p>
+<p>1.将下载好的安装到解压到&#x2F;usr&#x2F;local目录下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf mysql-5.7.36-linux-glibc2.12-x86_64.tar.gz -C /usr/local/</span><br></pre></td></tr></table></figure>
+
+<p>2.进入&#x2F;usr&#x2F;local目录</p>
+<p>cd &#x2F;usr&#x2F;local&#x2F;</p>
+<p>3.为mysql安装目录创建软链接</p>
+<p>ln -s mysql-5.7.36-linux-glibc2.12-x86_64&#x2F; mysql</p>
+<p>4.为centos添加mysql用户组和mysql用户(-s &#x2F;bin&#x2F;false参数指定mysql用户仅拥有所有权，而没有登录权限)</p>
+<p>groupadd mysql<br>useradd -r -g mysql -s &#x2F;bin&#x2F;false mysql</p>
+<p>5.进入安装mysql软件的目录，命令如下</p>
+<p>cd &#x2F;usr&#x2F;local&#x2F;mysql</p>
+<p>6.修改当前目录拥有者为新建的mysql用户，命令如下：</p>
+<p>chown -R mysql:mysql .&#x2F;</p>
+<p>7.安装mysql，命令如下：</p>
+<p>.&#x2F;bin&#x2F;mysqld –user&#x3D;mysql –basedir&#x3D;&#x2F;usr&#x2F;local&#x2F;mysql –datadir&#x3D;&#x2F;usr&#x2F;local&#x2F;mysql&#x2F;data –initialize</p>
+<p>如果出现如下图所示则为安装成功，红框部分为生成的默认密码：</p>
+<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/Users\XiaoBai\AppData\Roaming\Typora\typora-user-images\image-20231018094241974.png" alt="image-20231018094241974"></p>
+<p>8.开启mysql服务，命令如下：</p>
+<p>.&#x2F;support-files&#x2F;mysql.server start</p>
+<p>如果出现如下错误，则说明mysql配置文件&#x2F;etc&#x2F;my.cnf中的路径不对，修改内容如下，datadir和socket都修改成mysql的安装目录下，增加[client]板块，用于命令行连接mysql数据库。</p>
+<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/Users\XiaoBai\AppData\Roaming\Typora\typora-user-images\image-20231018094525894.png" alt="image-20231018094525894"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line">port=3306</span><br><span class="line">datadir=/usr/local/mysql/data</span><br><span class="line">socket=/usr/local/mysql/mysql.sock</span><br><span class="line">user=mysql</span><br><span class="line">max_connections=151</span><br><span class="line"></span><br><span class="line"># Disabling symbolic-links is recommended to prevent assorted security risks</span><br><span class="line"></span><br><span class="line">symbolic-links=0</span><br><span class="line"></span><br><span class="line"># 设置忽略大小写</span><br><span class="line"></span><br><span class="line">lower_case_table_names = 1</span><br><span class="line"></span><br><span class="line"># 指定编码</span><br><span class="line"></span><br><span class="line">character-set-server=utf8</span><br><span class="line"></span><br><span class="line">collation-server=utf8_general_ci</span><br><span class="line"></span><br><span class="line"># 开启ip绑定</span><br><span class="line"></span><br><span class="line">bind-address = 0.0.0.0</span><br><span class="line"></span><br><span class="line">[mysqld_safe]</span><br><span class="line">log-error=/var/log/mysqld.log</span><br><span class="line">pid-file=/var/run/mysqld/mysqld.pid</span><br><span class="line"></span><br><span class="line">#指定客户端连接mysql时的socket通信文件路径</span><br><span class="line">[client]</span><br><span class="line">socket=/usr/local/mysql/mysql.sock</span><br><span class="line"></span><br><span class="line">default-character-set=utf8</span><br></pre></td></tr></table></figure>
+
+<p>9.重新启开启mysql服务，如下图所示则开启成功！</p>
+<p>.&#x2F;support-files&#x2F;mysql.server start</p>
+<p>10.将mysql进程放入系统进程中，命令如下：</p>
+<p>cp support-files&#x2F;mysql.server &#x2F;etc&#x2F;init.d&#x2F;mysqld</p>
+<p>11.重新启动mysql服务，命令如下：</p>
+<p>service mysqld restart</p>
+<p>12.配置mysql环境变量</p>
+<p>vi &#x2F;etc&#x2F;profile<br>export PATH&#x3D;$PATH:&#x2F;usr&#x2F;local&#x2F;mysql&#x2F;bin</p>
+<p>保存退出，再编译下：</p>
+<p>source &#x2F;etc&#x2F;profile<br>13.使用随机密码登录mysql数据库，命令如下：</p>
+<p>mysql -u root -p</p>
+<p>14.进入mysql操作行，为root用户设置新密码（小编设为<strong>root</strong>）：</p>
+<p>在13条中输入如下命令：</p>
+<p>alter user ‘root‘@’localhost’ identified by ‘root’;</p>
+<p>15.设置允许远程连接数据库，命令如下：</p>
+<p>先选择数据库：</p>
+<p>use mysql<br>update user set user.Host&#x3D;’%’ where user.User&#x3D;’root’;<br>查看修改后的值：</p>
+<p>select user,host from user;</p>
+<p>16.刷新权限，命令如下：</p>
+<p>flush privileges;</p>
+<p>17、开启3306防火墙端口，然后即可远程连接mysql（因为我的防火墙是全部关闭，所以省略了这步）</p>
+<p>18、如果还是无法远程连接，查看&#x2F;etc&#x2F;my.cnf</p>
+<p>找到bind-address &#x3D; 127.0.0.1这一行<br>改为bind-address &#x3D; 0.0.0.0即可</p>
+<ul>
+<li></li>
+</ul>
+<p>开启mysql服务</p>
+<p>5.进入安装mysql软件的目录，命令如下</p>
+<p>cd &#x2F;usr&#x2F;local&#x2F;mysql</p>
+<p>8.开启mysql服务，命令如下：</p>
+<p>.&#x2F;support-files&#x2F;mysql.server start</p>
+<p>关闭防火墙</p>
+<p>1:查看防火状态</p>
+<p>systemctl status firewalld</p>
+<p>(已经被关闭了)</p>
+<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/Users\XiaoBai\AppData\Roaming\Typora\typora-user-images\image-20231018102342545.png" alt="image-20231018102342545"></p>
+<p>2:暂时关闭防火墙</p>
+<p>systemctl stop firewalld</p>
+<p>3:重启防火墙</p>
+<p>systemctl enable firewalld</p>
+<p>然后reboot 重启虚拟机就OK了</p>
+<hr>
+<h2 id="5-安装-redis-数据库"><a href="#5-安装-redis-数据库" class="headerlink" title="5 安装 redis 数据库"></a>5 安装 redis 数据库</h2><p>参考 [VMware虚拟机如何设置CentOS 7 磁盘扩容？_centos虚拟机磁盘扩容-CSDN博客](<a target="_blank" rel="noopener" href="https://blog.csdn.net/wuliyun88/article/details/128909346#:~:text=%E6%89%93%E5%BC%80">https://blog.csdn.net/wuliyun88/article/details/128909346#:~:text=打开</a> 虚拟机 （必须处于关 机 状态），点击【编辑 虚拟机设置,】，然后点击【 磁盘 】，接着点击【扩展】，输入修改后的最大 磁盘 容量50G，具体操作时最大容量根据自己的需求 设置 即可。)  与 <a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_33479841/article/details/107586714">史上最详细centos 7环境下安装并启动redis_centos7 redis 启动-CSDN博客</a></p>
+<p>1 下载安装包<br>首先要下载redis的安装包到centos环境中，下载方式可以先下载到本地，再利用文件传输工具传到centos环境；也可以直接利用wget命令在centos环境中直接下载（前提是centos环境处于联网状态）。本文将直接演示利用wget命令方式进行下载，对应redis的版本是4.0。命令如下：</p>
+<p>wget <a target="_blank" rel="noopener" href="http://download.redis.io/releases/redis-4.0.0.tar.gz">http://download.redis.io/releases/redis-4.0.0.tar.gz</a></p>
+<p>2.2 解压redis安装包<br>安装包下载完成之后，需要进行解压，具体指令如下：</p>
+<p>tar -xvf redis-4.0.0.tar.gz</p>
+<p>2.3 安装redis<br>由于在linux环境下安装软件需要先编译再进行安装，因此安装redis步骤如下：<br>1.进入刚才解压的文件夹，指令如下：</p>
+<p>cd redis-4.0.0</p>
+<p>2.编译安装redis，指令如下：</p>
+<p>make install</p>
+<p>成功出现</p>
+<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/Users\XiaoBai\AppData\Roaming\Typora\typora-user-images\image-20231018112621982.png" alt="image-20231018112621982"></p>
+<p>3.执行一下make test命令，若出现以下结果，则表明编译安装失败。</p>
+<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/Users\XiaoBai\AppData\Roaming\Typora\typora-user-images\image-20231018112752564.png" alt="image-20231018112752564"></p>
+<p>4.若过程中出现测试不通过，有可能是没有安装gcc环境和tcl环境，具体安装步骤可以参考以下blog：</p>
+<p>4.1遇到问题1  <a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_35887546/article/details/104794642">https://blog.csdn.net/qq_35887546/article/details/104794642</a><br>1</p>
+<p>4.2遇到问题2  <a target="_blank" rel="noopener" href="https://www.cnblogs.com/cxbhakim/p/9150953.html">https://www.cnblogs.com/cxbhakim/p/9150953.html</a><br>1</p>
+<p>4.2.1问题2参考</p>
+<p>安装redis的时候，出现了这么一个问题</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@etcd3 src]``# make test``You need tcl 8.5 or newer ``in` `order to run the Redis ``test``make``: *** [``test``] Error 1</span><br></pre></td></tr></table></figure>
+
+<p>　　</p>
+<p>安装一下8.5或者最新的tcl</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@etcd3 tmp]``# wget http://downloads.sourceforge.net/tcl/tcl8.6.1-src.tar.gz``[root@etcd3 tmp]``# tar xzvf tcl8.6.1-src.tar.gz -C /usr/local/``[root@etcd3 tmp]``# cd /usr/local/tcl8.6.1/unix/``[root@etcd3 unix]``# ./configure``[root@etcd3 unix]``# make``[root@etcd3 unix]``# make isntall</span><br></pre></td></tr></table></figure>
+
+<p>　　</p>
+<p>重新执行redis test： [root@etcd3 src]# make test </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@etcd3 src]# make test</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">\o/ All tests passed without errors!</span><br><span class="line"></span><br><span class="line">Cleanup: may take some time... OK</span><br></pre></td></tr></table></figure>
+
+<p>以上</p>
+<p>按照以上步骤，若均成功安装，则执行make test指令会显示通过。</p>
+<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/Users\XiaoBai\AppData\Roaming\Typora\typora-user-images\image-20231018113942407.png" alt="image-20231018113942407"></p>
+<p>3.启动redis<br>1.进入redis的安装目录下的src文件夹下，执行ll指令可以查看文件夹下的文件：</p>
+<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/Users\XiaoBai\AppData\Roaming\Typora\typora-user-images\image-20231018114510909.png" alt="image-20231018114510909"></p>
+<p>2.利用指令 .&#x2F;redis-server来启动redis，启动成功后会出现以下界面：</p>
+<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/Users\XiaoBai\AppData\Roaming\Typora\typora-user-images\image-20231018114614033.png" alt="image-20231018114614033"></p>
+<p>3.在虚拟机中重新复制一个会话，进入redis的安装目录，也就是src文件夹下：</p>
+<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/Users\XiaoBai\AppData\Roaming\Typora\typora-user-images\image-20231018114720737.png" alt="image-20231018114720737"></p>
+<p>4.进入到src文件夹下执行.&#x2F;redis-cli指令，启动redis客户端（前提是服务端也处于启动状态），则会显示连接成功。</p>
+<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/Users\XiaoBai\AppData\Roaming\Typora\typora-user-images\image-20231018115318043.png" alt="image-20231018115318043"></p>
+<p>5.rdis 设置默认密码</p>
+<p>5.1 方案一</p>
+<p>复制redis.conf文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /app/redis-6.2.5/</span><br><span class="line"><span class="built_in">cp</span> redis.conf /usr/local/redis/bin</span><br><span class="line"><span class="built_in">cd</span> /usr/local/redis/bin/</span><br></pre></td></tr></table></figure>
+
+<p>修改redis.conf文件</p>
+<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/Users\XiaoBai\AppData\Roaming\Typora\typora-user-images\image-20231018145542385.png" alt="image-20231018145542385"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">vim redis.conf</span><br><span class="line"><span class="comment"># 开启守护模式 224行</span></span><br><span class="line">daemonize <span class="built_in">yes</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改密码 901行</span></span><br><span class="line">requirepass juihui@2023</span><br><span class="line"></span><br><span class="line"><span class="comment">#将bind 127.0.0.1须改成 bind 0.0.0.0 否则只能在本机访问</span></span><br><span class="line"><span class="built_in">bind</span> 0.0.0.0 </span><br></pre></td></tr></table></figure>
+
+<p>后台启动项目</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在redis目录的src下指定配置文件启动</span></span><br><span class="line"><span class="built_in">cd</span> /usr/local/redis-4.0.0/src/</span><br><span class="line">./redis-server .././redis.conf</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p>5.2方案二</p>
+<p>然后是不需要重启redis服务的密码设置方式<br>这种相对简单，连接redis之后，通过命令设置，如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">config set requirepass 123456</span><br></pre></td></tr></table></figure>
+
+
+<p>如此，便将密码设置成了123456<br>设置之后，可通过以下指令查看密码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">config get requirepass</span><br></pre></td></tr></table></figure>
+
+
+
+<p><font color="red"> <strong>Redis (error) NOAUTH Authentication required.解决方法</strong> </font> </p>
+<p>出现认证问题，应该是设置了认证密码，输入密码既可以啦</p>
+<p>注意密码是字符串形式！设置为123456</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; auth &quot;123456&quot;</span><br></pre></td></tr></table></figure>
+
+<p>6 启动redis服务</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/redis-4.0.0/src/</span><br><span class="line"></span><br><span class="line"> ./redis-server</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ps aux|grep redis  查看服务</span><br><span class="line"></span><br><span class="line"> kill -s 9 2613  杀死服务</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="6-安装gitlab"><a href="#6-安装gitlab" class="headerlink" title="6 安装gitlab"></a>6 安装gitlab</h2><p>参考链接（<a target="_blank" rel="noopener" href="https://blog.csdn.net/shy871/article/details/117598669">【精选】centos7安装部署gitlab_centos7 安装gitlab-CSDN博客</a> ） 与（<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41694906/article/details/104815384">CentOs7 安装Gitlab_centos7安装gitlab-CSDN博客</a>）<br>1、安装依赖</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum install curl openssh-server openssh-clients postfix policycoreutils-python</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>2、启动ssh</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable sshd</span><br><span class="line">systemctl start sshd</span><br></pre></td></tr></table></figure>
+
+<p>3、添加http服务到firewalld,pemmanent表示永久生效，若不加–permanent系统下次启动后就会失效</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl start firewalld</span><br><span class="line">firewall-cmd --permanent --add-service=http</span><br><span class="line">systemctl reload firewalld</span><br></pre></td></tr></table></figure>
+
+<p>4、启动postfix</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable postfix</span><br><span class="line">systemctl start postfix</span><br></pre></td></tr></table></figure>
+
+<p>4.1出现错误</p>
+<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/Users\XiaoBai\AppData\Roaming\Typora\typora-user-images\image-20231018140146231.png" alt="image-20231018140146231"></p>
+<p>解决方案（<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41438223/article/details/106314215">Centos7.x启动postfix服务失败，提示 Job for postfix.service failed because the control process exited with-CSDN博客</a>）</p>
+<p>5、下载安装gitlab</p>
+<p>1.添加gitlab镜像</p>
+<p>wget <a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el7/gitlab-ce-10.0.0-ce.0.el7.x86_64.rpm">https://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el7/gitlab-ce-10.0.0-ce.0.el7.x86_64.rpm</a></p>
+<p>2.安装gitlab 安装命令：rpm -i gitlab-ce-10.0.0-ce.0.el7.x86_64.rpm</p>
+<p>3.修改gitlab配置文件指定服务器ip和自定义端口：</p>
+<p>vim  &#x2F;etc&#x2F;gitlab&#x2F;gitlab.rb </p>
+<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/Users\XiaoBai\AppData\Roaming\Typora\typora-user-images\image-20231018151728126.png" alt="image-20231018151728126"></p>
+<p>4.重置并启动GitLab</p>
+<p>执行：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gitlab-ctl reconfigure  #配置GitLab(配置完自动启动,默认账号root)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>配置成功-&gt;</p>
+<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/Users\XiaoBai\AppData\Roaming\Typora\typora-user-images\image-20231018152257252.png" alt="image-20231018152257252"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gitlab-ctl restart</span><br></pre></td></tr></table></figure>
+
+<p>运行成功 -&gt;</p>
+<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/Users\XiaoBai\AppData\Roaming\Typora\typora-user-images\image-20231018152340233.png" alt="image-20231018152340233"></p>
+<p>6.访问 GitLab页面</p>
+<p>如果没有域名，直接输入服务器ip和指定端口进行访问</p>
+<p>初始账户: root 密码:5iveL!fe</p>
+<p>第一次登录修改密码（后边会讲）</p>
+<p>关闭防火墙；登录地址 http:192.168.0.133:9090&#x2F;users&#x2F;sign_in</p>
+<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/Users\XiaoBai\AppData\Roaming\Typora\typora-user-images\image-20231018152820669.png" alt="image-20231018152820669"></p>
+<hr>
+<p>将gitlab的密码改为了 admin_gitlab</p>
+<hr>
+<p><strong>端口命令</strong></p>
+<p>CentOS 7 开放防火墙端口 命令<br>        最近CentOS7的防火墙和6不一样了， 发现以前CentOS 6 系列中的 iptables 相关命令不能用了，查了下，发现Centos 7使用firewalld代替了原来的iptables。</p>
+<p>使用方法如下：</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p><strong>关闭防火墙</strong></p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>systemctl stop firewalld.service             #停止firewall<br>systemctl disable firewalld.service        #禁止firewall开机启动</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>开启端口</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>firewall-cmd –zone&#x3D;public –add-port&#x3D;80&#x2F;tcp –permanent<br> 命令含义：<br>–zone #作用域<br>–add-port&#x3D;80&#x2F;tcp #添加端口，格式为：端口&#x2F;通讯协议<br>–permanent #永久生效，没有此参数重启后失效</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>重启防火墙<br>firewall-cmd –reload</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>常用命令介绍</p>
+<p>firewall-cmd –state                           ##查看防火墙状态，是否是running<br>firewall-cmd –reload                          ##重新载入配置，比如添加规则之后，需要执行此命令<br>firewall-cmd –get-zones                       ##列出支持的zone<br>firewall-cmd –get-services                    ##列出支持的服务，在列表中的服务是放行的<br>firewall-cmd –query-service ftp               ##查看ftp服务是否支持，返回yes或者no<br>firewall-cmd –add-service&#x3D;ftp                 ##临时开放ftp服务<br>firewall-cmd –add-service&#x3D;ftp –permanent     ##永久开放ftp服务<br>firewall-cmd –remove-service&#x3D;ftp –permanent  ##永久移除ftp服务<br>firewall-cmd –add-port&#x3D;80&#x2F;tcp –permanent     ##永久添加80端口<br>iptables -L -n                                 ##查看规则，这个命令是和iptables的相同的<br>man firewall-cmd                               ##查看帮助</p>
+<p>更多命令，使用  firewall-cmd –help 查看帮助文件</p>
+<p>重新开启防火墙：Failed to start firewalld.service: Unit firewalld.service is masked 问题解决：</p>
+<p>Failed to start firewalld.service: Unit firewalld.service is masked_七夜月光的博客-CSDN博客</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p> CentOS 7.0默认使用的是firewall作为防火墙，使用iptables必须重新设置一下</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>1、直接关闭防火墙<br>systemctl stop firewalld.service           #停止firewall<br>systemctl disable firewalld.service     #禁止firewall开机启动</p>
+<p>2、设置 iptables service<br>yum -y install iptables-services<br>如果要修改防火墙配置，如增加防火墙端口3306<br>vi &#x2F;etc&#x2F;sysconfig&#x2F;iptables<br>增加规则<br>-A INPUT -m state –state NEW -m tcp -p tcp –dport 3306 -j ACCEPT</p>
+<p>保存退出后<br>systemctl restart iptables.service #重启防火墙使配置生效<br>systemctl enable iptables.service #设置防火墙开机启动<br>最后重启系统使设置生效即可。</p>
+<p><strong>关闭gitlab</strong></p>
+<p>后来查看了官方文档中的说明后， 使用如下命令：</p>
+<p>systemctl stop gitlab-runsvdir</p>
+<p>然后</p>
+<p>ps -ef | grep gitlab</p>
+<p>发现跟gitlab相关的进程都关闭了。</p>
+<p>内存也释放了。</p>
+<p>free -mh</p>
+<p><strong>开启gitlab</strong></p>
+<ol>
+<li><p>启动systemctl start gitlab-runsvdir.service</p>
+<p>若启动时候没反应，则进行第二步，查看系统服务</p>
+</li>
+<li><p>systemctl -t target</p>
+<p>如果存在inactive dead的服务，则意味着这个服务出错了，进行第三步操作</p>
+</li>
+<li><p>systemctl list-jobs</p>
+<p>列出所有正在运行的任务，如果存在某个任务是running，其他任务waiting， 则是该任务堵塞了其他服务，停止该任务即可</p>
+</li>
+<li><p>systemctl stop xxx.service</p>
+<p>停止阻塞服务</p>
+</li>
+</ol>
+<p>5.再次启动systemctl start gitlab-runsvdir.service，则正常启动</p>
+<p>6.gitlab-ctl start 启动gitlab成功</p>
+<h2 id="7-安装jdk"><a href="#7-安装jdk" class="headerlink" title="7 安装jdk"></a>7 安装jdk</h2><hr>
+<h2 id="8-安装nginx"><a href="#8-安装nginx" class="headerlink" title="8 安装nginx"></a>8 安装nginx</h2><p>参考（部署前端项目）</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/JYSCDNKB/article/details/129632162">https://blog.csdn.net/JYSCDNKB/article/details/129632162</a></p>
+<p>CentOs7安装nginx<br>卸载nginx<br>1 先查看是否启动了 nginx 服务</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef|grep nginx</span><br></pre></td></tr></table></figure>
+
+
+<p>出现这个则 nginx 没启动服务</p>
+<p>出现这个则 nginx 启动了服务</p>
+<p>2 如果 nginx 启动了服务，则需要先关闭 nginx 服务 【没启动就略过这一步】</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kill 进程id</span><br></pre></td></tr></table></figure>
+
+
+
+<p>3 查看所有与 nginx 有关的文件夹</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find / -name nginx</span><br></pre></td></tr></table></figure>
+
+
+
+<p>4 除与 nginx 有关的文件夹</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf file /usr/local/nginx*</span><br></pre></td></tr></table></figure>
+
+
+<p>5 卸载Nginx相关的依赖</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum remove nginx</span><br></pre></td></tr></table></figure>
+
+
+<p>这样就卸载完成了</p>
+<p>安装nginx<br>查看安装nginx所需要的环境</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#查看 C++ 环境是否安装（查看版本号）</span></span><br><span class="line">gcc -v</span><br><span class="line"><span class="comment">#查看 zlib 是否安装</span></span><br><span class="line"><span class="built_in">cat</span> /usr/lib64/pkgconfig/zlib.pc</span><br><span class="line"><span class="comment">#查看 pcre 是否安装（查版本号）</span></span><br><span class="line">pcre-config --version</span><br></pre></td></tr></table></figure>
+
+
+<p>配置 nginx 安装所需的环境</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#一次安装4个插件</span></span><br><span class="line">yum -y install gcc pcre pcre-devel zlib zlib-devel openssl openssl-devel</span><br><span class="line"></span><br><span class="line"><span class="comment">#一次安装如果有问题，可以试一下分开安装（上面命令执行成功了就无需执行以下命令了）</span></span><br><span class="line"> 	<span class="comment">#安装 nginx 需要先将官网下载的源码进行编译，编译依赖 gcc 环境</span></span><br><span class="line">yum install gcc-c++</span><br><span class="line"> 	<span class="comment">#pcre是一个perl库，包括perl兼容的正则表达式库，nginx的http模块使用pcre来解析正则表达式，所以需要安装pcre库</span></span><br><span class="line">yum install -y pcre pcre-devel</span><br><span class="line"> 	<span class="comment">#zlib库提供了很多种压缩和解压缩方式nginx使用zlib对http包的内容进行gzip，所以需要安装</span></span><br><span class="line">yum install -y zlib zlib-devel</span><br><span class="line"> 	<span class="comment">#nginx 不仅支持 http 协议，还支持 https（即在ssl协议上传输http），所以需要在 Centos 安装 OpenSSL 库</span></span><br><span class="line">yum install -y openssl openssl-devel</span><br></pre></td></tr></table></figure>
+
+
+<p>安装 nginx</p>
+<p>安装 nginx</p>
+<p>1 方法一：在官网直接下载.tar.gz安装包，然后通过远程工具拉取到 linux 里面【在 &#x2F;usr&#x2F;local 里面创建个nginx文件夹，拉进来。（也可以拉到其他地方）】<br>2 方法二：使用wget命令下载，确保系统已经安装了wget，如果没有安装，执行 yum install wget 安装。<br>这里使用方法二进行安装：</p>
+<p>1 进入 usr&#x2F;local 里面创建 nginx 文件夹，方便后期删除干净</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#进入usr下的local目录</span></span><br><span class="line"><span class="built_in">cd</span> usr/local</span><br><span class="line"><span class="comment">#在local目录下创建 mysql 文件夹</span></span><br><span class="line"><span class="built_in">mkdir</span> nginx</span><br><span class="line"><span class="comment">#进入nginx目录</span></span><br><span class="line"><span class="built_in">cd</span> nginx</span><br></pre></td></tr></table></figure>
+
+
+
+<p>2 通过 wget 下载 nginx 安装包</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://nginx.org/download/nginx-1.21.6.tar.gz</span><br></pre></td></tr></table></figure>
+
+
+
+<p>3 解压 并进入解压后的目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#解压</span></span><br><span class="line">tar xvf nginx-1.21.6.tar.gz</span><br><span class="line"><span class="comment">#进入解压后的目录</span></span><br><span class="line"><span class="built_in">cd</span> nginx-1.21.6</span><br></pre></td></tr></table></figure>
+
+
+
+<p>4 配置（带有https模块）【需要进入解压后的目录】</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./configure --prefix=/usr/local/nginx --with-http_stub_status_module --with-http_ssl_module</span><br></pre></td></tr></table></figure>
+
+
+
+<p>5 编译和安装【需要进入解压后的目录】</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#编译</span></span><br><span class="line">make</span><br><span class="line"><span class="comment">#安装</span></span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+
+
+<p>6  启动、关闭 nginx 服务</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">###启动服务</span></span><br><span class="line"><span class="comment">#需要先进入sbin目录下</span></span><br><span class="line"><span class="built_in">cd</span> /usr/local/nginx/sbin</span><br><span class="line"><span class="comment">#启动nginx服务</span></span><br><span class="line">./nginx</span><br><span class="line"></span><br><span class="line"><span class="comment">###关闭服务</span></span><br><span class="line"><span class="comment">#需要先进入sbin目录下</span></span><br><span class="line"><span class="built_in">cd</span> /usr/local/nginx/sbin</span><br><span class="line"><span class="comment">#关闭nginx服务</span></span><br><span class="line">./nginx -s stop</span><br></pre></td></tr></table></figure>
+
+
+
+
+<p>到这里 nginx 就安装完成了</p>
+<p>其他命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">####端口号操作</span></span><br><span class="line"><span class="comment">#查询开启的所有端口</span></span><br><span class="line">firewall-cmd --list-port</span><br><span class="line"><span class="comment">#设置80端口开启</span></span><br><span class="line">firewall-cmd --zone=public --add-port=80/tcp --permanent</span><br><span class="line"><span class="comment">#验证80端口是否开启成功 (单个端口查询)</span></span><br><span class="line">firewall-cmd --zone=public --query-port=80/tcp</span><br><span class="line"><span class="comment">#设置80端口关闭</span></span><br><span class="line">firewall-cmd --zone=public --remove-port=80/tcp --permanent</span><br><span class="line"></span><br><span class="line"><span class="comment">####防火墙操作</span></span><br><span class="line"><span class="comment">#检查防火墙是否开启</span></span><br><span class="line">systemctl status firewalld</span><br><span class="line"><span class="comment">#开机自启防火墙</span></span><br><span class="line">systemctl <span class="built_in">enable</span> firewalld</span><br><span class="line"><span class="comment">#开机禁止自启防火墙</span></span><br><span class="line">systemctl <span class="built_in">disable</span> firewalld</span><br><span class="line"><span class="comment">#启动</span></span><br><span class="line">systemctl start firewalld</span><br><span class="line"><span class="comment">#关闭</span></span><br><span class="line">systemctl stop firewalld</span><br><span class="line"><span class="comment">#重启</span></span><br><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="项目启动教程"><a href="#项目启动教程" class="headerlink" title="项目启动教程"></a>项目启动教程</h1><h2 id="1-部署-常用命令"><a href="#1-部署-常用命令" class="headerlink" title="1 部署 常用命令"></a>1 部署 常用命令</h2><p>通过ssh命令 在项目地址下传输文件的命令</p>
+<p>在对应的文件下的地址栏目输入cmd </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># 将后端jar包传到服务器输入如下代码</span><br><span class="line">scp -r forward-admin.<span class="property">jar</span> root@<span class="number">192.168</span><span class="number">.0</span><span class="number">.133</span>:<span class="regexp">/usr/</span>local/project/forward/server/</span><br><span class="line"></span><br><span class="line">    scp -r dts-admin-api.<span class="property">jar</span> root@<span class="number">192.168</span><span class="number">.0</span><span class="number">.112</span>:<span class="regexp">/usr/</span>local/project/shopping/admin-server/</span><br><span class="line">        nohup  java -jar /usr/local/project/shopping/admin-server/dts-admin-api.<span class="property">jar</span>  &amp;</span><br><span class="line">            </span><br><span class="line">     scp -r dts-merchant-api.<span class="property">jar</span> root@<span class="number">192.168</span><span class="number">.0</span><span class="number">.112</span>:<span class="regexp">/usr/</span>local/project/shopping/merchant-server/    </span><br><span class="line">            nohup  java -jar /usr/local/project/shopping/merchant-server/dts-merchant-api.<span class="property">jar</span>  &amp;</span><br><span class="line">    </span><br><span class="line">     scp -r dts-wx-api.<span class="property">jar</span> root@<span class="number">192.168</span><span class="number">.0</span><span class="number">.112</span>:<span class="regexp">/usr/</span>local/project/shopping/wx-server/ </span><br><span class="line">          nohup  java -jar /usr/local/project/shopping/wx-server/dts-wx-api.<span class="property">jar</span>  &amp;</span><br><span class="line">         </span><br><span class="line">#将前端的dist输入如下的代码</span><br><span class="line">scp -r dist root@<span class="number">192.168</span><span class="number">.0</span><span class="number">.133</span>:<span class="regexp">/usr/</span>local/project/forward/web/</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="2-后端部署"><a href="#2-后端部署" class="headerlink" title="2 后端部署"></a>2 后端部署</h2><p>2.1 首先将springBoot的项目进行打包 -&gt; 参考网络教程</p>
+<p>2.2 将jar包的License文件进行替换操作</p>
+<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/image-20231018200412155-1697766901131-5-1698138207603-35-1704895567129-29.png" alt="image-20231018200412155"></p>
+<p>2.3 找到jar包文件夹</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 将打包的 forward-admin.<span class="property">jar</span> 远程传送到linux服务器的”/usr/local/project/forward/server/“  目录下</span><br><span class="line"></span><br><span class="line">scp -r forward-admin.<span class="property">jar</span> root@<span class="number">192.168</span><span class="number">.0</span><span class="number">.112</span>:<span class="regexp">/usr/</span>local/project/forward/server/</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/image-20231018200942055-1697766894973-3-1698138207603-38-1704895567129-28.png" alt="image-20231018200942055"></p>
+<p>2.4 在服务器启动jar包</p>
+<p>2.4.1 进入到jar包保存的目录</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#进入到jar包目录</span><br><span class="line">cd  /usr/local/project/forward/server/</span><br></pre></td></tr></table></figure>
+
+<p>2.4.2 启动java的jar程序</p>
+<p>（1）直接启动，控制台退出则关掉应用</p>
+<p>java -jar forward-admin.jar</p>
+<p>（2）后台启动，控制台退出不会关掉应用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#打包命令</span></span><br><span class="line"><span class="built_in">nohup</span> java -jar forward-admin.jar &amp;</span><br><span class="line"><span class="comment">#本服务器的打包命令</span></span><br><span class="line"><span class="built_in">nohup</span> java -jar /usr/local/project/forward/server/forward-admin.jar  &amp;</span><br></pre></td></tr></table></figure>
+
+<p>（3）后台启动并且输出日志，控制台退出不会关掉应用</p>
+<p>nohup java -jar forward-admin.jar &gt;&gt; .&#x2F;register.log 2&gt;&amp;1 &amp;</p>
+<p>（3）后台启动(加内存)并且输出日志，控制台退出不会关掉应用</p>
+<p>nohup java -jar -Xms1024m -Xmx2048m forward-admin.jar&gt;&gt; .&#x2F;register.log 2&gt;&amp;1 &amp;</p>
+<p>2.4.3 关闭java程序</p>
+<p> （1）查询java应用程序</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef|grep java</span><br></pre></td></tr></table></figure>
+
+<p> （2）强制杀掉进程</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kill -<span class="number">9</span> xxx</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-前端部署"><a href="#3-前端部署" class="headerlink" title="3 前端部署"></a>3 前端部署</h2><p>3.1 将前端的vue项目进行打包 -&gt;参考网路</p>
+<p>打包命令:  npm run build:test</p>
+<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/image-20231019211338924-1697766887567-1-1698138207603-37-1704895567129-31.png" alt="image-20231019211338924"></p>
+<p>3.2 将dist文件上传到服务器</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 将打包的 dist 远程传送到linux服务器的”/usr/local/project/forward/web/“  目录下</span><br><span class="line"></span><br><span class="line">scp -r dist root@192.168.0.112:/usr/local/project/forward/web/</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">scp -r dist root@192.168.0.112:/usr/local/project/shopping/admin-web/</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/image-20231018203917602-1698138207603-36-1704895567129-30.png" alt="image-20231018203917602"></p>
+<p>3.3 设置nginx的配置 的Server下 插入如下代码</p>
+<p>3.3.1 server的配置代码</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">        <span class="attribute">listen</span>       <span class="number">8082</span>;</span><br><span class="line">        <span class="attribute">server_name</span>  localhost;</span><br><span class="line"></span><br><span class="line">		<span class="section">location</span> / &#123;</span><br><span class="line">            <span class="attribute">root</span>   /usr/local/project/forward/web/dist;</span><br><span class="line">			<span class="attribute">try_files</span> <span class="variable">$uri</span> <span class="variable">$uri</span>/ /index.html;</span><br><span class="line">            <span class="attribute">index</span>  index.html index.htm;</span><br><span class="line">        &#125;</span><br><span class="line">		</span><br><span class="line">        <span class="section">location</span> /test-api/&#123;</span><br><span class="line">            <span class="attribute">proxy_set_header</span> Host <span class="variable">$http_host</span>;</span><br><span class="line">            <span class="attribute">proxy_set_header</span> X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">            <span class="attribute">proxy_set_header</span> REMOTE-HOST <span class="variable">$remote_addr</span>;</span><br><span class="line">            <span class="attribute">proxy_set_header</span> X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">            <span class="attribute">proxy_pass</span> http://localhost:8081/;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="section">location</span> /profile/ &#123;</span><br><span class="line">            <span class="attribute">proxy_pass</span> http://localhost:808/profile/;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="attribute">error_page</span>   <span class="number">500</span> <span class="number">502</span> <span class="number">503</span> <span class="number">504</span>  /50x.html;</span><br><span class="line">        <span class="section">location</span> = /50x.html &#123;</span><br><span class="line">            <span class="attribute">root</span>   html;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p> 将上面的代码保存到   -&gt;  nginx下的cnfig下的nginx.conf，保存到server同级下，设置如下图所示，</p>
+<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/image-20231018210959644-1698138207603-39-1704895567130-33.png" alt="image-20231018210959644"></p>
+<p>3.3.2 重启nginx </p>
+<p>重启一下nginx -s reload 即可</p>
+<hr>
+<p>图片地址问题：</p>
+<p>图片问题一般需要再后端的 （ 对图片等数据订单一个配置 ）修改后打包。</p>
+<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/image-20231103160112329-1704895567129-32.png" alt="image-20231103160112329"></p>
+<h2 id="ssh扩展："><a href="#ssh扩展：" class="headerlink" title="ssh扩展："></a>ssh扩展：</h2><p>从服务器下载东西到本地windos</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -r -P 9000  root@192.168.0.119:~/storage/pictures/1.jpg   D:/</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/image-20231107202542223-1704895567130-34.png" alt="image-20231107202542223"></p>
+<p>在本地windos上传东西到服务器</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">scp -r dist root@192.168.0.133:/usr/local/project/forward/web/</span><br><span class="line"></span><br><span class="line"><span class="comment"># dist 是windos的文件夹子 ，-r 递归上传 ，/usr/local/project/forward/web/  服务器的地址</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><p>1、前端遇到问题如下：</p>
+<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/image-20231020090233015-1698138207603-40-1704895567130-35.png" alt="image-20231020090233015"></p>
+<p>解决方案：</p>
+<p>方法一：指定配置目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo /usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx.conf</span><br></pre></td></tr></table></figure>
+
+<p>方法二：在logs下新建一个nginx.pid文件</p>
+<p><strong>1.进入nginx的logs目录查看文件，发现没有nginx.pid文件</strong></p>
+<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/image-20231020090613256-1698138207603-42-1704895567130-36.png" alt="image-20231020090613256"></p>
+<p><strong>2.创建一个nginx.pid文件</strong></p>
+<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/image-20231020090629683-1698138207603-41-1704895567130-37.png" alt="image-20231020090629683"></p>
+<p><strong>3.编辑nginx.pid文件，文件内容为1473，保存退出</strong></p>
+<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/image-20231020090642496-1698138207603-43-1704895567130-38.png" alt="image-20231020090642496"></p>
+<p><strong>4.在sbin目录下启动nginx并测试关闭</strong></p>
+<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/image-20231020090657062-1698138207603-45-1704895567130-39.png" alt="image-20231020090657062"></p>
+<p>成功解决问题</p>
+<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/image-20231020092029001-1698138207603-44-1704895567130-40.png" alt="image-20231020092029001"></p>
+<p>需要打包为test文件， npm run build:test </p>
+<p>打包其他的环境，需要改变Server配置。</p>
+<p>3.4在地址栏进行地址访问 比如当前项目 </p>
+<p>后端 192.168.0.133:8081</p>
+<p>前端 192.168.0.133:8082</p>
+<hr>
+<p>遇到问题     <strong>nginx: [alert] kill(17451, 1) failed (3: No such process)</strong></p>
+<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/image-20231024170836183-1704895567130-41.png" alt="image-20231024170836183"></p>
+<p>解决方案</p>
+<p>进入sbin文件执行命令 .&#x2F;nginx -c &#x2F;usr&#x2F;local&#x2F;nginx&#x2F;conf&#x2F;nginx.conf</p>
+<p>然后再次执行命令 .&#x2F;nginx -s reload </p>
+<hr>
+<hr>
+<p>2、后端遇到：</p>
+<p>常见问题:</p>
+<p>org.springframework.context.ApplicationContextException: Failed to start bean ‘webServerStartStop’; nested exception is org.springframework.boot.web.server.WebServerException: Unable to start embedded Tomcat server</p>
+<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/image-20231019214926913-1698138207603-46-1704895567130-42.png" alt="image-20231019214926913"></p>
+<p>重启服务器</p>
+<hr>
+<h1 id="常用操作："><a href="#常用操作：" class="headerlink" title="常用操作："></a>常用操作：</h1><h2 id="1、固定-IP地址"><a href="#1、固定-IP地址" class="headerlink" title="1、固定 IP地址"></a>1、固定 IP地址</h2><p>访问配置文件：</p>
+<p>vim &#x2F;etc&#x2F;sysconfig&#x2F;network-scripts&#x2F;ifcfg-ens33</p>
+<p>进行配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">BOOTPROTO=<span class="string">&quot;static&quot;</span></span><br><span class="line"></span><br><span class="line">IPADDR=192.168.0.112</span><br><span class="line">GATEWAY=192.168.0.1</span><br><span class="line">DNS1=114.114.114.114</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/image-20231027131201590-1704895567130-43.png" alt="image-20231027131201590"></p>
+<p>进行重启服务器</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reboot</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/image-20231028165617795-1704895567130-44.png" alt="image-20231028165617795"></p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>阿呆
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://example.com/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/" title="VM虚拟机_部署篇">http://example.com/2024/01/10/VM虚拟机-部署篇/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/" rel="prev" title="Ubuntu20部署">
+      <i class="fa fa-chevron-left"></i> Ubuntu20部署
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2024/01/10/hello-world/" rel="next" title="Hello World">
+      Hello World <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2%E6%96%87%E6%A1%A3%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">部署文档：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#0-Linux-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">1.1.</span> <span class="nav-text">0 Linux 常用命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%AE%89%E8%A3%85CentOs7-%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="nav-number">1.2.</span> <span class="nav-text">1 安装CentOs7 虚拟机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%8F%8C%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B"><span class="nav-number">1.3.</span> <span class="nav-text">2 双系统安装教程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E7%9B%B4%E6%8E%A5%E5%A4%8D%E5%88%B6%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%87%BA%E7%8E%B0%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%98"><span class="nav-number">1.4.</span> <span class="nav-text">3 直接复制虚拟机出现网络问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%AE%89%E8%A3%85SSH"><span class="nav-number">1.5.</span> <span class="nav-text">2 安装SSH</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E5%AE%89%E8%A3%85"><span class="nav-number">1.5.1.</span> <span class="nav-text">2.1 安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E4%BD%BF%E7%94%A8"><span class="nav-number">1.5.2.</span> <span class="nav-text">2.2 使用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%88%A0%E9%99%A4mysql%E6%95%B0%E6%8D%AE-%EF%BC%9A"><span class="nav-number">1.6.</span> <span class="nav-text">3 删除mysql数据 ：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E5%AE%89%E8%A3%85mysql-5-7%EF%BC%9A"><span class="nav-number">1.7.</span> <span class="nav-text">4 安装mysql 5.7：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E5%AE%89%E8%A3%85-redis-%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">1.8.</span> <span class="nav-text">5 安装 redis 数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-%E5%AE%89%E8%A3%85gitlab"><span class="nav-number">1.9.</span> <span class="nav-text">6 安装gitlab</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-%E5%AE%89%E8%A3%85jdk"><span class="nav-number">1.10.</span> <span class="nav-text">7 安装jdk</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-%E5%AE%89%E8%A3%85nginx"><span class="nav-number">1.11.</span> <span class="nav-text">8 安装nginx</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E5%90%AF%E5%8A%A8%E6%95%99%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">项目启动教程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E9%83%A8%E7%BD%B2-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">2.1.</span> <span class="nav-text">1 部署 常用命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%90%8E%E7%AB%AF%E9%83%A8%E7%BD%B2"><span class="nav-number">2.2.</span> <span class="nav-text">2 后端部署</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%89%8D%E7%AB%AF%E9%83%A8%E7%BD%B2"><span class="nav-number">2.3.</span> <span class="nav-text">3 前端部署</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ssh%E6%89%A9%E5%B1%95%EF%BC%9A"><span class="nav-number">2.4.</span> <span class="nav-text">ssh扩展：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="nav-number">2.5.</span> <span class="nav-text">常见问题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%EF%BC%9A"><span class="nav-number">3.</span> <span class="nav-text">常用操作：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1%E3%80%81%E5%9B%BA%E5%AE%9A-IP%E5%9C%B0%E5%9D%80"><span class="nav-number">3.1.</span> <span class="nav-text">1、固定 IP地址</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">阿呆</p>
+  <div class="site-description" itemprop="description">书山有路勤为径，学海无涯苦作舟。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">阿呆</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">67k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">2:02</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="//cdn.jsdelivr.net/npm/algoliasearch@4/dist/algoliasearch-lite.umd.js"></script>
+<script src="//cdn.jsdelivr.net/npm/instantsearch.js@4/dist/instantsearch.production.min.js"></script>
+<script src="/js/algolia-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
