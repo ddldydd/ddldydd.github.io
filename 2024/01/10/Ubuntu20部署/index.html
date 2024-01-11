@@ -17,81 +17,82 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"ddldydd.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="使用U盘安装Ubuntu准备工作 需要一个8GB或者8GB以上的空U盘（由于制作启动盘需要格式化U盘，建议提前备份U盘数据）  下载系统镜像文件 浏览器搜索Ubuntu或者直接复制网址进入网站选择对应的版本进行下载（官网默认最新版本且下载速度较慢，建议使用镜像站下载） 官网网址：https:&#x2F;&#x2F;cn.ubuntu.com&#x2F;download&#x2F;desktop    清华大学镜像站：https:&#x2F;&#x2F;mi">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Ubuntu20部署">
-<meta property="og:url" content="http://example.com/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/index.html">
+<meta property="og:title" content="Ubuntu20 部署">
+<meta property="og:url" content="http://ddldydd.github.io/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/index.html">
 <meta property="og:site_name" content="夏蝉之家">
 <meta property="og:description" content="使用U盘安装Ubuntu准备工作 需要一个8GB或者8GB以上的空U盘（由于制作启动盘需要格式化U盘，建议提前备份U盘数据）  下载系统镜像文件 浏览器搜索Ubuntu或者直接复制网址进入网站选择对应的版本进行下载（官网默认最新版本且下载速度较慢，建议使用镜像站下载） 官网网址：https:&#x2F;&#x2F;cn.ubuntu.com&#x2F;download&#x2F;desktop    清华大学镜像站：https:&#x2F;&#x2F;mi">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/c995d143ad4bd113fe5811337dcd02044afb0583-1704895158881-1.png">
-<meta property="og:image" content="http://example.com/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/9f2f070828381f303516d6918363ea036e06f06d-1704895158883-2.png">
-<meta property="og:image" content="http://example.com/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/58ee3d6d55fbb2fb5efd2e6d7f2886af4723dc6c-1704895158883-3.png">
-<meta property="og:image" content="http://example.com/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/e7cd7b899e510fb3b9042467fd516e9ed0430c8a-1704895158883-4.png">
-<meta property="og:image" content="http://example.com/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/6f061d950a7b020809fae29340bb54d8572cc87b-1704895158883-5.png">
-<meta property="og:image" content="http://example.com/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/d009b3de9c82d158cbebba97a568bfd3bc3e421c-1704895158883-6.png">
-<meta property="og:image" content="http://example.com/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/902397dda144ad34e4bc505cf8c0aaff30ad855c-1704895158884-7.png">
-<meta property="og:image" content="http://example.com/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/bf096b63f6246b60fa670ba4cb9abc47500fa267-1704895158884-8.png">
-<meta property="og:image" content="http://example.com/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/fd039245d688d43f9be7791d4d7c74100ff43b04-1704895158884-9.png">
-<meta property="og:image" content="http://example.com/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/cf1b9d16fdfaaf515c2eaebead3632e5f11f7a4b-1704895158884-10.png">
-<meta property="og:image" content="http://example.com/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/2f738bd4b31c8701779ff749001d38240608ffe6-1704895158884-11.png">
-<meta property="og:image" content="http://example.com/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/8694a4c27d1ed21b2d4bf23c8c0c7bcf53da3fd2-1704895158884-12.png">
-<meta property="og:image" content="http://example.com/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/38dbb6fd5266d0160b88a7e0be49720c37fa35d5-1704895158884-13.png">
-<meta property="og:image" content="http://example.com/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/2f738bd4b31c87011f5f00200f1d38240508fffd-1704895158884-14.png">
-<meta property="og:image" content="http://example.com/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/dbb44aed2e738bd483cb94a089e921dd267ff922-1704895158884-15.jpeg">
-<meta property="og:image" content="http://example.com/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/c83d70cf3bc79f3d41e7fa4b8dc36b1a728b2930-1704895158884-16.jpeg">
-<meta property="og:image" content="http://example.com/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/838ba61ea8d3fd1f42b77611192c831494ca5fc8-1704895158884-17.jpeg">
-<meta property="og:image" content="http://example.com/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/86d6277f9e2f0708706bed03c1461e92a901f231-1704895158884-18.jpeg">
-<meta property="og:image" content="http://example.com/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/ac6eddc451da81cb2e0c471c7904761d0b2431e2-1704895158884-19.jpeg">
-<meta property="og:image" content="http://example.com/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/cefc1e178a82b901a7f4b84951ef0f7c3812efd9-1704895158884-20.jpeg">
-<meta property="og:image" content="http://example.com/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/562c11dfa9ec8a13f8a9aa4fd6613784a1ecc058-1704895158885-21.jpeg">
-<meta property="og:image" content="http://example.com/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/5882b2b7d0a20cf4992f370c516bed3dadaf9910-1704895158885-22.jpeg">
-<meta property="og:image" content="http://example.com/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/8644ebf81a4c510f2ded5bdb473b8326d52aa5b0-1704895158885-23.jpeg">
-<meta property="og:image" content="http://example.com/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/9e3df8dcd100baa195f0eb4b6a721f19cafc2ecb-1704895158885-24.jpeg">
-<meta property="og:image" content="http://example.com/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/0823dd54564e9258ef31131bbce07753cdbf4eaf-1704895158885-27.jpeg">
-<meta property="og:image" content="http://example.com/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/10dfa9ec8a1363278e8d84e7b7ed06e709fac774-1704895158885-25.jpeg">
-<meta property="og:image" content="http://example.com/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/e824b899a9014c083d1ee1982319a4037bf4f450-1704895158885-26.jpeg">
-<meta property="og:image" content="http://example.com/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/810a19d8bc3eb13506ee29ba8e7c0ed8fd1f4477-1704895158885-28.jpeg">
-<meta property="og:image" content="http://example.com/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/d6ca7bcb0a46f21fe92c4f7fd546cd6b0c33ae6b-1704895158885-30.jpeg">
-<meta property="og:image" content="http://example.com/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/960a304e251f95caef21047ff875d93565095294-1704895158885-29.jpeg">
-<meta property="og:image" content="http://example.com/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/c995d143ad4bd113671f812a6acd02044afb0540-1704895158885-31.jpeg">
-<meta property="og:image" content="http://example.com/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/5366d0160924ab180453aa661d9840c67a890b83-1704895158885-32.jpeg">
-<meta property="og:image" content="http://example.com/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/f11f3a292df5e0fecabfc968760292a35fdf72a5-1704895158885-33.jpeg">
-<meta property="og:image" content="http://example.com/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/562c11dfa9ec8a13902d3489cc613784a0ecc016-1704895158886-34.jpeg">
-<meta property="og:image" content="http://example.com/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/image-20231121140233416-1704895158886-35.png">
-<meta property="og:image" content="http://example.com/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/image-20231025202453987.png">
-<meta property="og:image" content="http://example.com/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/bVcOEXA.png">
-<meta property="og:image" content="http://example.com/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/e7d743fcb082401a9b6d026fc0a902ee-1704895158886-36.png">
-<meta property="og:image" content="http://example.com/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/87b871ee15b5489fae6e9ac1e72f7966-1704895158886-37.png">
-<meta property="og:image" content="http://example.com/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/562ae6ca146d48a5902bc964453cd69c-1704895158886-38.png">
-<meta property="og:image" content="http://example.com/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/image-20231018200412155-1697766901131-5-1698138207603-35-1704895158886-39.png">
-<meta property="og:image" content="http://example.com/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/image-20231018200942055-1697766894973-3-1698138207603-38-1704895158886-40.png">
-<meta property="og:image" content="http://example.com/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/image-20231019211338924-1697766887567-1-1698138207603-37-1704895158886-41.png">
-<meta property="og:image" content="http://example.com/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/image-20231018203917602-1698138207603-36-1704895158886-42.png">
-<meta property="og:image" content="http://example.com/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/image-20231018210959644-1698138207603-39-1704895158886-43.png">
-<meta property="og:image" content="http://example.com/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/image-20231103160112329-1704895158886-44.png">
-<meta property="og:image" content="http://example.com/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/image-20231107202542223-1704895158886-45.png">
-<meta property="og:image" content="http://example.com/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/image-20231020090233015-1698138207603-40-1704895158886-46.png">
-<meta property="og:image" content="http://example.com/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/image-20231020090613256-1698138207603-42-1704895158886-47.png">
-<meta property="og:image" content="http://example.com/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/image-20231020090629683-1698138207603-41-1704895158886-48.png">
-<meta property="og:image" content="http://example.com/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/image-20231020090642496-1698138207603-43-1704895158886-49.png">
-<meta property="og:image" content="http://example.com/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/image-20231020090657062-1698138207603-45-1704895158886-50.png">
-<meta property="og:image" content="http://example.com/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/image-20231020092029001-1698138207603-44-1704895158886-51.png">
-<meta property="og:image" content="http://example.com/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/image-20231024170836183-1704895158886-52.png">
-<meta property="og:image" content="http://example.com/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/image-20231229125307332.png">
-<meta property="og:image" content="http://example.com/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/image-20231019214926913-1698138207603-46-1704895158886-53.png">
-<meta property="og:image" content="http://example.com/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/image-20231027131201590-1704895158886-54.png">
-<meta property="og:image" content="http://example.com/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/image-20231028165617795-1704895158887-55.png">
+<meta property="og:image" content="http://ddldydd.github.io/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/c995d143ad4bd113fe5811337dcd02044afb0583-1704895158881-1.png">
+<meta property="og:image" content="http://ddldydd.github.io/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/9f2f070828381f303516d6918363ea036e06f06d-1704895158883-2.png">
+<meta property="og:image" content="http://ddldydd.github.io/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/58ee3d6d55fbb2fb5efd2e6d7f2886af4723dc6c-1704895158883-3.png">
+<meta property="og:image" content="http://ddldydd.github.io/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/e7cd7b899e510fb3b9042467fd516e9ed0430c8a-1704895158883-4.png">
+<meta property="og:image" content="http://ddldydd.github.io/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/6f061d950a7b020809fae29340bb54d8572cc87b-1704895158883-5.png">
+<meta property="og:image" content="http://ddldydd.github.io/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/d009b3de9c82d158cbebba97a568bfd3bc3e421c-1704895158883-6.png">
+<meta property="og:image" content="http://ddldydd.github.io/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/902397dda144ad34e4bc505cf8c0aaff30ad855c-1704895158884-7.png">
+<meta property="og:image" content="http://ddldydd.github.io/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/bf096b63f6246b60fa670ba4cb9abc47500fa267-1704895158884-8.png">
+<meta property="og:image" content="http://ddldydd.github.io/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/fd039245d688d43f9be7791d4d7c74100ff43b04-1704895158884-9.png">
+<meta property="og:image" content="http://ddldydd.github.io/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/cf1b9d16fdfaaf515c2eaebead3632e5f11f7a4b-1704895158884-10.png">
+<meta property="og:image" content="http://ddldydd.github.io/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/2f738bd4b31c8701779ff749001d38240608ffe6-1704895158884-11.png">
+<meta property="og:image" content="http://ddldydd.github.io/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/8694a4c27d1ed21b2d4bf23c8c0c7bcf53da3fd2-1704895158884-12.png">
+<meta property="og:image" content="http://ddldydd.github.io/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/38dbb6fd5266d0160b88a7e0be49720c37fa35d5-1704895158884-13.png">
+<meta property="og:image" content="http://ddldydd.github.io/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/2f738bd4b31c87011f5f00200f1d38240508fffd-1704895158884-14.png">
+<meta property="og:image" content="http://ddldydd.github.io/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/dbb44aed2e738bd483cb94a089e921dd267ff922-1704895158884-15.jpeg">
+<meta property="og:image" content="http://ddldydd.github.io/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/c83d70cf3bc79f3d41e7fa4b8dc36b1a728b2930-1704895158884-16.jpeg">
+<meta property="og:image" content="http://ddldydd.github.io/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/838ba61ea8d3fd1f42b77611192c831494ca5fc8-1704895158884-17.jpeg">
+<meta property="og:image" content="http://ddldydd.github.io/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/86d6277f9e2f0708706bed03c1461e92a901f231-1704895158884-18.jpeg">
+<meta property="og:image" content="http://ddldydd.github.io/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/ac6eddc451da81cb2e0c471c7904761d0b2431e2-1704895158884-19.jpeg">
+<meta property="og:image" content="http://ddldydd.github.io/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/cefc1e178a82b901a7f4b84951ef0f7c3812efd9-1704895158884-20.jpeg">
+<meta property="og:image" content="http://ddldydd.github.io/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/562c11dfa9ec8a13f8a9aa4fd6613784a1ecc058-1704895158885-21.jpeg">
+<meta property="og:image" content="http://ddldydd.github.io/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/5882b2b7d0a20cf4992f370c516bed3dadaf9910-1704895158885-22.jpeg">
+<meta property="og:image" content="http://ddldydd.github.io/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/8644ebf81a4c510f2ded5bdb473b8326d52aa5b0-1704895158885-23.jpeg">
+<meta property="og:image" content="http://ddldydd.github.io/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/9e3df8dcd100baa195f0eb4b6a721f19cafc2ecb-1704895158885-24.jpeg">
+<meta property="og:image" content="http://ddldydd.github.io/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/0823dd54564e9258ef31131bbce07753cdbf4eaf-1704895158885-27.jpeg">
+<meta property="og:image" content="http://ddldydd.github.io/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/10dfa9ec8a1363278e8d84e7b7ed06e709fac774-1704895158885-25.jpeg">
+<meta property="og:image" content="http://ddldydd.github.io/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/e824b899a9014c083d1ee1982319a4037bf4f450-1704895158885-26.jpeg">
+<meta property="og:image" content="http://ddldydd.github.io/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/810a19d8bc3eb13506ee29ba8e7c0ed8fd1f4477-1704895158885-28.jpeg">
+<meta property="og:image" content="http://ddldydd.github.io/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/d6ca7bcb0a46f21fe92c4f7fd546cd6b0c33ae6b-1704895158885-30.jpeg">
+<meta property="og:image" content="http://ddldydd.github.io/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/960a304e251f95caef21047ff875d93565095294-1704895158885-29.jpeg">
+<meta property="og:image" content="http://ddldydd.github.io/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/c995d143ad4bd113671f812a6acd02044afb0540-1704895158885-31.jpeg">
+<meta property="og:image" content="http://ddldydd.github.io/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/5366d0160924ab180453aa661d9840c67a890b83-1704895158885-32.jpeg">
+<meta property="og:image" content="http://ddldydd.github.io/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/f11f3a292df5e0fecabfc968760292a35fdf72a5-1704895158885-33.jpeg">
+<meta property="og:image" content="http://ddldydd.github.io/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/562c11dfa9ec8a13902d3489cc613784a0ecc016-1704895158886-34.jpeg">
+<meta property="og:image" content="http://ddldydd.github.io/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/image-20231121140233416-1704895158886-35.png">
+<meta property="og:image" content="http://ddldydd.github.io/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/image-20231025202453987.png">
+<meta property="og:image" content="http://ddldydd.github.io/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/bVcOEXA.png">
+<meta property="og:image" content="http://ddldydd.github.io/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/e7d743fcb082401a9b6d026fc0a902ee-1704895158886-36.png">
+<meta property="og:image" content="http://ddldydd.github.io/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/87b871ee15b5489fae6e9ac1e72f7966-1704895158886-37.png">
+<meta property="og:image" content="http://ddldydd.github.io/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/562ae6ca146d48a5902bc964453cd69c-1704895158886-38.png">
+<meta property="og:image" content="http://ddldydd.github.io/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/image-20231018200412155-1697766901131-5-1698138207603-35-1704895158886-39.png">
+<meta property="og:image" content="http://ddldydd.github.io/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/image-20231018200942055-1697766894973-3-1698138207603-38-1704895158886-40.png">
+<meta property="og:image" content="http://ddldydd.github.io/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/image-20231019211338924-1697766887567-1-1698138207603-37-1704895158886-41.png">
+<meta property="og:image" content="http://ddldydd.github.io/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/image-20231018203917602-1698138207603-36-1704895158886-42.png">
+<meta property="og:image" content="http://ddldydd.github.io/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/image-20231018210959644-1698138207603-39-1704895158886-43.png">
+<meta property="og:image" content="http://ddldydd.github.io/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/image-20231103160112329-1704895158886-44.png">
+<meta property="og:image" content="http://ddldydd.github.io/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/image-20231107202542223-1704895158886-45.png">
+<meta property="og:image" content="http://ddldydd.github.io/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/image-20231020090233015-1698138207603-40-1704895158886-46.png">
+<meta property="og:image" content="http://ddldydd.github.io/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/image-20231020090613256-1698138207603-42-1704895158886-47.png">
+<meta property="og:image" content="http://ddldydd.github.io/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/image-20231020090629683-1698138207603-41-1704895158886-48.png">
+<meta property="og:image" content="http://ddldydd.github.io/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/image-20231020090642496-1698138207603-43-1704895158886-49.png">
+<meta property="og:image" content="http://ddldydd.github.io/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/image-20231020090657062-1698138207603-45-1704895158886-50.png">
+<meta property="og:image" content="http://ddldydd.github.io/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/image-20231020092029001-1698138207603-44-1704895158886-51.png">
+<meta property="og:image" content="http://ddldydd.github.io/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/image-20231024170836183-1704895158886-52.png">
+<meta property="og:image" content="http://ddldydd.github.io/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/image-20231229125307332.png">
+<meta property="og:image" content="http://ddldydd.github.io/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/image-20231019214926913-1698138207603-46-1704895158886-53.png">
+<meta property="og:image" content="http://ddldydd.github.io/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/image-20231027131201590-1704895158886-54.png">
+<meta property="og:image" content="http://ddldydd.github.io/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/image-20231028165617795-1704895158887-55.png">
 <meta property="article:published_time" content="2024-01-10T13:58:04.000Z">
-<meta property="article:modified_time" content="2024-01-10T14:43:19.277Z">
+<meta property="article:modified_time" content="2024-01-11T04:28:40.978Z">
 <meta property="article:author" content="阿呆">
+<meta property="article:tag" content="ubuntu">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/c995d143ad4bd113fe5811337dcd02044afb0583-1704895158881-1.png">
+<meta name="twitter:image" content="http://ddldydd.github.io/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/c995d143ad4bd113fe5811337dcd02044afb0583-1704895158881-1.png">
 
-<link rel="canonical" href="http://example.com/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/">
+<link rel="canonical" href="http://ddldydd.github.io/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/">
 
 
 <script id="page-configurations">
@@ -104,7 +105,7 @@
   };
 </script>
 
-  <title>Ubuntu20部署 | 夏蝉之家</title>
+  <title>Ubuntu20 部署 | 夏蝉之家</title>
   
 
 
@@ -187,9 +188,19 @@
     <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
 
   </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
         <li class="menu-item menu-item-archives">
 
     <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-commonweal">
+
+    <a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -244,7 +255,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/">
+    <link itemprop="mainEntityOfPage" href="http://ddldydd.github.io/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -257,7 +268,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Ubuntu20部署
+          Ubuntu20 部署
         </h1>
 
         <div class="post-meta">
@@ -266,10 +277,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2024-01-10 21:58:04 / 修改时间：22:43:19" itemprop="dateCreated datePublished" datetime="2024-01-10T21:58:04+08:00">2024-01-10</time>
+              <time title="创建时间：2024-01-10 21:58:04" itemprop="dateCreated datePublished" datetime="2024-01-10T21:58:04+08:00">2024-01-10</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-01-11 12:28:40" itemprop="dateModified" datetime="2024-01-11T12:28:40+08:00">2024-01-11</time>
+              </span>
 
           
             <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
@@ -831,7 +848,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://example.com/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/" title="Ubuntu20部署">http://example.com/2024/01/10/Ubuntu20部署/</a>
+    <a href="http://ddldydd.github.io/2024/01/10/Ubuntu20%E9%83%A8%E7%BD%B2/" title="Ubuntu20 部署">http://ddldydd.github.io/2024/01/10/Ubuntu20部署/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -841,6 +858,9 @@
 
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/ubuntu/" rel="tag"># ubuntu</a>
+          </div>
 
         
 
@@ -848,12 +868,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2024/01/10/termux%E9%83%A8%E7%BD%B2/" rel="prev" title="termux部署">
-      <i class="fa fa-chevron-left"></i> termux部署
+    <a href="/2024/01/10/termux%E9%83%A8%E7%BD%B2/" rel="prev" title="termux 部署">
+      <i class="fa fa-chevron-left"></i> termux 部署
     </a></div>
       <div class="post-nav-item">
-    <a href="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/" rel="next" title="VM虚拟机_部署篇">
-      VM虚拟机_部署篇 <i class="fa fa-chevron-right"></i>
+    <a href="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/" rel="next" title="VM 虚拟机_部署篇">
+      VM 虚拟机_部署篇 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -931,6 +951,12 @@
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
   </nav>
 </div>
   <div class="cc-license motion-element" itemprop="license">
@@ -974,9 +1000,28 @@
     </span>
     <span title="站点阅读时长">2:01</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
-  </div>
 
+
+
+<!-- 网站运行时间的设置 -->
+<span id="timeDate">载入天数...</span>
+<span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("03/01/2023 10:00:00"); //此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒.";
+    }
+setInterval("createtime()",250);
+</script>
         
 <div class="busuanzi-count">
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
@@ -1055,5 +1100,4 @@
 
   
 
-</body>
-</html>
+<script async>window.onload=function(){var a=document.createElement('script'),b=document.getElementsByTagName('script')[0];a.type='text/javascript',a.async=!0,a.src='/sw-register.js?v='+Date.now(),b.parentNode.insertBefore(a,b)};</script></body></html>
