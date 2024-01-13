@@ -308,7 +308,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-01-11 12:29:28" itemprop="dateModified" datetime="2024-01-11T12:29:28+08:00">2024-01-11</time>
+                <time title="修改时间：2024-01-12 19:00:29" itemprop="dateModified" datetime="2024-01-12T19:00:29+08:00">2024-01-12</time>
               </span>
 
           <br>
@@ -324,7 +324,7 @@
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>37 分钟</span>
+              <span>36 分钟</span>
             </span>
 
         </div>
@@ -336,17 +336,17 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="部署文档："><a href="#部署文档：" class="headerlink" title="部署文档："></a>部署文档：</h1><hr>
-<p>声明</p>
+          <h1 id><a href="#" class="headerlink" title></a></h1><hr>
+<h1 id="Linux-系统安装"><a href="#Linux-系统安装" class="headerlink" title="Linux 系统安装"></a>Linux 系统安装</h1><p>声明</p>
 <p>部署本地win10的VMos虚拟机的CentOS7 服务器</p>
 <p><strong>后续安装都是在VMos虚拟机的CentOS7 服务器里进行的安装！！！</strong></p>
 <p>VMOS部署CentOS部分，网络资源较多，可参考网络</p>
 <p>在 局域网络访问CentOS主机的网络配置，可参考网络，注意（大多网络配置都是将虚拟机到部署到NET上，实际部署到物理地址会更方面局域网的其他主机的访问。）</p>
 <hr>
 <p>ssh链接常用命令：</p>
-<p>ssh  <a href="mailto:&#x72;&#x6f;&#x6f;&#x74;&#64;&#49;&#x39;&#x32;&#46;&#49;&#54;&#56;&#x2e;&#48;&#46;&#49;&#x33;&#x33;">&#x72;&#x6f;&#x6f;&#x74;&#64;&#49;&#x39;&#x32;&#46;&#49;&#54;&#56;&#x2e;&#48;&#46;&#49;&#x33;&#x33;</a></p>
+<p>ssh  <a href="mailto:&#x72;&#111;&#111;&#x74;&#x40;&#49;&#x39;&#50;&#46;&#x31;&#54;&#x38;&#46;&#x30;&#x2e;&#x31;&#x33;&#51;">&#x72;&#111;&#111;&#x74;&#x40;&#49;&#x39;&#50;&#46;&#x31;&#54;&#x38;&#46;&#x30;&#x2e;&#x31;&#x33;&#51;</a></p>
 <hr>
-<h2 id="0-Linux-常用命令"><a href="#0-Linux-常用命令" class="headerlink" title="0 Linux 常用命令"></a>0 Linux 常用命令</h2><p>将一个文件夹下的所有内容复制到另一个文件夹下</p>
+<h2 id="Linux-常用命令"><a href="#Linux-常用命令" class="headerlink" title="Linux 常用命令"></a>Linux 常用命令</h2><p>将一个文件夹下的所有内容复制到另一个文件夹下</p>
 <blockquote>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cp -r /home/packageA/* /home/cp/packageB/`</span><br><span class="line">或</span><br><span class="line">`cp -r /home/packageA/. /home/cp/packageB/</span><br></pre></td></tr></table></figure>
 </blockquote>
@@ -375,7 +375,7 @@
 <p>-i：和-f正好相反，在删除文件或目录之前，系统会给出提示信息，使用-i可以有效防止不小心删除有用的文件或目录。</p>
 <p>-r：递归删除，主要用于删除目录，可删除指定目录及包含的所有内容，包括所有的子目录和文件。</p>
 <hr>
-<h2 id="1-安装CentOs7-虚拟机"><a href="#1-安装CentOs7-虚拟机" class="headerlink" title="1 安装CentOs7 虚拟机"></a>1 安装CentOs7 虚拟机</h2><p>VMware配置CentOS操作系统<br>1.VMware创建虚拟机<br>2.虚拟机安装CentOS系统<br>3.常见问题(含7和8常见问题)<br>4.VMware安装+Linux镜像下载+Linux系统安装全教程<br>1.VMware创建虚拟机<br>安装前说明：<br>对于之前下载好ios文件，尽量应该为他们放在一个专门的文件夹(例如：Linux-os)，方便以后操作。</p>
+<h2 id="安装CentOs7-虚拟机"><a href="#安装CentOs7-虚拟机" class="headerlink" title="安装CentOs7 虚拟机"></a>安装CentOs7 虚拟机</h2><p>VMware配置CentOS操作系统<br>1.VMware创建虚拟机<br>2.虚拟机安装CentOS系统<br>3.常见问题(含7和8常见问题)<br>4.VMware安装+Linux镜像下载+Linux系统安装全教程<br>1.VMware创建虚拟机<br>安装前说明：<br>对于之前下载好ios文件，尽量应该为他们放在一个专门的文件夹(例如：Linux-os)，方便以后操作。</p>
 <p>注意需要的软件安装源地址</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://mirrors.aliyun.com/centos/7/os/x86_64</span><br></pre></td></tr></table></figure>
 
@@ -384,7 +384,7 @@
 <p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/image-20231024142751853-1698128875955-1-1698128878358-3-1704895567126-2.png" alt="image-20231024142751853"></p>
 <p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/image-20231024142854241-1698128935974-5-1704895567127-3.png" alt="image-20231024142854241"></p>
 <hr>
-<h2 id="2-双系统安装教程"><a href="#2-双系统安装教程" class="headerlink" title="2 双系统安装教程"></a>2 双系统安装教程</h2><p>Windows+Ubuntu20.04</p>
+<h2 id="双系统安装教程"><a href="#双系统安装教程" class="headerlink" title="双系统安装教程"></a>双系统安装教程</h2><p>Windows+Ubuntu20.04</p>
 <p>少一点包容</p>
 <p>由于需要在Linux下写代码，之前虚拟机安装过centos，但运行速度不理想，使用颇为受限，故安装双系统，这篇教程没有繁琐赘述，重要之处以及我所遇到的一些BUG都会详细说明。</p>
 <ol>
@@ -488,7 +488,8 @@
 <p>至此Ubuntu安装全部完成，接下来就可以愉快的使用Linux了，遇到不会的建议先查看官方文档。如果教程有什么不足之处欢迎指正评论。学无止境，希望这篇文章对你有所帮助！</p>
 <p>编辑于 2021-04-11 19:50</p>
 <hr>
-<h2 id="3-直接复制虚拟机出现网络问题"><a href="#3-直接复制虚拟机出现网络问题" class="headerlink" title="3 直接复制虚拟机出现网络问题"></a>3 直接复制虚拟机出现网络问题</h2><p><a target="_blank" rel="noopener" href="http://phpzyw.com/bc853B2wHB1lWCwQ.html">http://phpzyw.com/bc853B2wHB1lWCwQ.html</a></p>
+<p><strong>直接复制虚拟机出现网络问题</strong></p>
+<p><a target="_blank" rel="noopener" href="http://phpzyw.com/bc853B2wHB1lWCwQ.html">http://phpzyw.com/bc853B2wHB1lWCwQ.html</a></p>
 <p>首先我的虚拟机是复制出来的，选择我已经移到，但是结果会出现了以下情况，导致了我无法ping 通，先看下提示：</p>
 <p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/454642-20190327130547818-180375002-1704895567128-21.jpg" alt="img"></p>
 <p>使用：ipconfig –all 命令查寻，果然再现有打开的虚拟机中，存在两个mac地址相同的虚拟机，所以就有思路了，修改mac地址。</p>
@@ -511,7 +512,7 @@
 <p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/454642-20190327130631043-1941151696-1704895567129-26.jpg" alt="img"></p>
 <p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/454642-20190327130635687-781689277-1704895567129-27.png" alt="img"></p>
 <p>5、点击“确定”后修改完毕，此时需要重启连接进行验证。可以在相应的“网络连接”中单击右键，选择“禁用”，然后再点击“启用”即可</p>
-<h2 id="2-安装SSH"><a href="#2-安装SSH" class="headerlink" title="2 安装SSH"></a>2 安装SSH</h2><h3 id="2-1-安装"><a href="#2-1-安装" class="headerlink" title="2.1 安装"></a>2.1 安装</h3><p>Step 1: 检查是否已安装OpenSSH</p>
+<h1 id="安装SSH"><a href="#安装SSH" class="headerlink" title="安装SSH"></a>安装SSH</h1><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>Step 1: 检查是否已安装OpenSSH</p>
 <p>在安装OpenSSH之前，需要检查系统是否已经安装了OpenSSH。可以通过以下命令来检查：</p>
 <p>`&#96;&#96;</p>
 <p>rpm -qa | grep openssh</p>
@@ -532,10 +533,10 @@
 <p>sudo systemctl restart sshd</p>
 <p>Step 4: 连接到远程计算机</p>
 <p>安装和配置OpenSSH后，可以使用ssh命令连接到远程计算机。可以使用以下命令连接到IP地址为192.168.1.100的远程计算机：</p>
-<p>ssh <a href="mailto:&#x75;&#115;&#101;&#114;&#x6e;&#x61;&#109;&#x65;&#64;&#x31;&#57;&#x32;&#46;&#x31;&#x36;&#x38;&#x2e;&#49;&#46;&#x31;&#x30;&#x30;">&#x75;&#115;&#101;&#114;&#x6e;&#x61;&#109;&#x65;&#64;&#x31;&#57;&#x32;&#46;&#x31;&#x36;&#x38;&#x2e;&#49;&#46;&#x31;&#x30;&#x30;</a></p>
+<p>ssh <a href="mailto:&#117;&#x73;&#x65;&#114;&#x6e;&#x61;&#x6d;&#101;&#64;&#49;&#x39;&#x32;&#46;&#49;&#x36;&#56;&#x2e;&#x31;&#x2e;&#49;&#x30;&#x30;">&#117;&#x73;&#x65;&#114;&#x6e;&#x61;&#x6d;&#101;&#64;&#49;&#x39;&#x32;&#46;&#49;&#x36;&#56;&#x2e;&#x31;&#x2e;&#49;&#x30;&#x30;</a></p>
 <p>username是远程计算机上的用户名。如果连接成功，将会提示输入密码。</p>
 <hr>
-<h3 id="2-2-使用"><a href="#2-2-使用" class="headerlink" title="2.2 使用"></a>2.2 使用</h3><p>在CentOS中开启SSH服务需要以下步骤：</p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>在CentOS中开启SSH服务需要以下步骤：</p>
 <p>1.安装OpenSSH服务</p>
 <p>打开终端，输入以下命令安装OpenSSH服务：</p>
 <p>sudo yum install openssh-server</p>
@@ -552,7 +553,7 @@
 <p>cnetOS7</p>
 <p>安装mysql 5 ，参考链接 </p>
 <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/519001709">安装配置_MySQL安装配置(Linux) - 知乎 (zhihu.com)</a></p>
-<h2 id="3-删除mysql数据-："><a href="#3-删除mysql数据-：" class="headerlink" title="3 删除mysql数据 ："></a>3 删除mysql数据 ：</h2><p>1、查看当前mysql安装状况</p>
+<h2 id="删除mysql数据-："><a href="#删除mysql数据-：" class="headerlink" title="删除mysql数据 ："></a>删除mysql数据 ：</h2><p>1、查看当前mysql安装状况</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -qa | grep mysql``# 或``yum list install | grep mysql</span><br></pre></td></tr></table></figure>
 
 <p>2、查看mysql的服务是否启动</p>
@@ -562,7 +563,6 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop mysqld.service  # service可加可不加</span><br><span class="line"># 停止MySQL的服务</span><br><span class="line">[root@chenstudy ~]\# systemctl stop mysqld</span><br><span class="line"># 再次查看MySQL的服务状态</span><br><span class="line">[root@chenstudy ~]\# systemctl status mysqld</span><br></pre></td></tr></table></figure>
 
 <p>3、 卸载上述命令查询出的已安装程序</p>
-<p><a href="javascript:void(0);"><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/copycode.gif" alt="复制代码"></a></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">yum remove mysql-community-libs-8.0.30-1.el7.x86_64</span><br><span class="line">rpm -qa | grep mysql</span><br><span class="line">yum remove mysql-community-client-plugins-8.0.30-1.el7.x86_64</span><br><span class="line">rpm -qa | grep mysql</span><br><span class="line">yum remove mysql-community-server-8.0.30-1.el7.x86_64</span><br><span class="line">rpm -qa | grep mysql</span><br></pre></td></tr></table></figure>
 
 <p>4、删除mysql相关文件</p>
@@ -579,155 +579,102 @@
 <p>5、删除my.cnf</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf /etc/my.cnf</span><br></pre></td></tr></table></figure>
 
-<h2 id="4-安装mysql-5-7："><a href="#4-安装mysql-5-7：" class="headerlink" title="4 安装mysql 5.7："></a>4 安装mysql 5.7：</h2><p><strong>1. 使用wget命令下载</strong></p>
+<h1 id="安装mysql-5-7："><a href="#安装mysql-5-7：" class="headerlink" title="安装mysql 5.7："></a>安装mysql 5.7：</h1><p><strong>使用wget命令下载</strong></p>
 <p>用<code>wget</code>命令下载到指定目录：wget -P [目录] [下载链接]</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://dev.mysql.com/get/Downloads/MySQL-5.7/mysql-5.7.36-linux-glibc2.12-x86_64.tar.gz</span><br></pre></td></tr></table></figure>
 
-<p>二、安装</p>
+<p><strong>安装</strong></p>
 <p>(参考链接 :[Centos系统安装mysql-5.7.22（tar.gz安装包）_centos.tar.gz 下载-CSDN博客](<a target="_blank" rel="noopener" href="https://blog.csdn.net/dc282614966/article/details/81098074#:~:text=1.%E5%B0%86%E4%B8%8B%E8%BD%BD%E5%A5%BD%E7%9A%84%E5%AE%89%E8%A3%85%E5%88%B0%E8%A7%A3%E5%8E%8B%E5%88%B0%2Fusr%2Flocal%E7%9B%AE%E5%BD%95%E4%B8%8B">https://blog.csdn.net/dc282614966/article/details/81098074#:~:text=1.将下载好的安装到解压到%2Fusr%2Flocal目录下</a> tar -zxvf mysql- 5.7.22 -linux-glibc 2.12 -x,-x 86 _ 64 mysql 4.为centos添加mysql用户组和mysql用户 (-s %2Fbin%2Ffalse参数指定mysql用户仅拥有所有权，而没有登录权限)) )与(<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/519001709">安装配置_MySQL安装配置(Linux) - 知乎 (zhihu.com)</a>)</p>
-<p>1.将下载好的安装到解压到&#x2F;usr&#x2F;local目录下</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf mysql-5.7.36-linux-glibc2.12-x86_64.tar.gz -C /usr/local/</span><br></pre></td></tr></table></figure>
+<h2 id="1-使用wget命令下载"><a href="#1-使用wget命令下载" class="headerlink" title="1. 使用wget命令下载"></a><strong>1. 使用wget命令下载</strong></h2><p>用<code>wget</code>命令下载到指定目录：wget -P [目录] [下载链接]</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://dev.mysql.com/get/Downloads/MySQL-5.7/mysql-5.7.36-linux-glibc2.12-x86_64.tar.gz</span><br></pre></td></tr></table></figure>
 
-<p>2.进入&#x2F;usr&#x2F;local目录</p>
-<p>cd &#x2F;usr&#x2F;local&#x2F;</p>
-<p>3.为mysql安装目录创建软链接</p>
-<p>ln -s mysql-5.7.36-linux-glibc2.12-x86_64&#x2F; mysql</p>
-<p>4.为centos添加mysql用户组和mysql用户(-s &#x2F;bin&#x2F;false参数指定mysql用户仅拥有所有权，而没有登录权限)</p>
-<p>groupadd mysql<br>useradd -r -g mysql -s &#x2F;bin&#x2F;false mysql</p>
-<p>5.进入安装mysql软件的目录，命令如下</p>
-<p>cd &#x2F;usr&#x2F;local&#x2F;mysql</p>
-<p>6.修改当前目录拥有者为新建的mysql用户，命令如下：</p>
-<p>chown -R mysql:mysql .&#x2F;</p>
-<p>7.安装mysql，命令如下：</p>
-<p>.&#x2F;bin&#x2F;mysqld –user&#x3D;mysql –basedir&#x3D;&#x2F;usr&#x2F;local&#x2F;mysql –datadir&#x3D;&#x2F;usr&#x2F;local&#x2F;mysql&#x2F;data –initialize</p>
-<p>如果出现如下图所示则为安装成功，红框部分为生成的默认密码：</p>
-<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/Users\XiaoBai\AppData\Roaming\Typora\typora-user-images\image-20231018094241974.png" alt="image-20231018094241974"></p>
-<p>8.开启mysql服务，命令如下：</p>
-<p>.&#x2F;support-files&#x2F;mysql.server start</p>
-<p>如果出现如下错误，则说明mysql配置文件&#x2F;etc&#x2F;my.cnf中的路径不对，修改内容如下，datadir和socket都修改成mysql的安装目录下，增加[client]板块，用于命令行连接mysql数据库。</p>
-<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/Users\XiaoBai\AppData\Roaming\Typora\typora-user-images\image-20231018094525894.png" alt="image-20231018094525894"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line">port=3306</span><br><span class="line">datadir=/usr/local/mysql/data</span><br><span class="line">socket=/usr/local/mysql/mysql.sock</span><br><span class="line">user=mysql</span><br><span class="line">max_connections=151</span><br><span class="line"></span><br><span class="line"># Disabling symbolic-links is recommended to prevent assorted security risks</span><br><span class="line"></span><br><span class="line">symbolic-links=0</span><br><span class="line"></span><br><span class="line"># 设置忽略大小写</span><br><span class="line"></span><br><span class="line">lower_case_table_names = 1</span><br><span class="line"></span><br><span class="line"># 指定编码</span><br><span class="line"></span><br><span class="line">character-set-server=utf8</span><br><span class="line"></span><br><span class="line">collation-server=utf8_general_ci</span><br><span class="line"></span><br><span class="line"># 开启ip绑定</span><br><span class="line"></span><br><span class="line">bind-address = 0.0.0.0</span><br><span class="line"></span><br><span class="line">[mysqld_safe]</span><br><span class="line">log-error=/var/log/mysqld.log</span><br><span class="line">pid-file=/var/run/mysqld/mysqld.pid</span><br><span class="line"></span><br><span class="line">#指定客户端连接mysql时的socket通信文件路径</span><br><span class="line">[client]</span><br><span class="line">socket=/usr/local/mysql/mysql.sock</span><br><span class="line"></span><br><span class="line">default-character-set=utf8</span><br></pre></td></tr></table></figure>
+<h2 id="2-压缩包解压"><a href="#2-压缩包解压" class="headerlink" title="2. 压缩包解压"></a><strong>2. 压缩包解压</strong></h2><p>使用<code>tar</code>命令解压到指定目录：tar -zxvf [压缩包] -C [目录]</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf mysql-5.7.36-linux-glibc2.12-x86_64.tar.gz -C /usr/local</span><br></pre></td></tr></table></figure>
 
-<p>9.重新启开启mysql服务，如下图所示则开启成功！</p>
-<p>.&#x2F;support-files&#x2F;mysql.server start</p>
-<p>10.将mysql进程放入系统进程中，命令如下：</p>
-<p>cp support-files&#x2F;mysql.server &#x2F;etc&#x2F;init.d&#x2F;mysqld</p>
-<p>11.重新启动mysql服务，命令如下：</p>
-<p>service mysqld restart</p>
-<p>12.配置mysql环境变量</p>
-<p>vi &#x2F;etc&#x2F;profile<br>export PATH&#x3D;$PATH:&#x2F;usr&#x2F;local&#x2F;mysql&#x2F;bin</p>
-<p>保存退出，再编译下：</p>
-<p>source &#x2F;etc&#x2F;profile<br>13.使用随机密码登录mysql数据库，命令如下：</p>
-<p>mysql -u root -p</p>
-<p>14.进入mysql操作行，为root用户设置新密码（小编设为<strong>root</strong>）：</p>
-<p>在13条中输入如下命令：</p>
-<p>alter user ‘root‘@’localhost’ identified by ‘root’;</p>
-<p>15.设置允许远程连接数据库，命令如下：</p>
-<p>先选择数据库：</p>
-<p>use mysql<br>update user set user.Host&#x3D;’%’ where user.User&#x3D;’root’;<br>查看修改后的值：</p>
-<p>select user,host from user;</p>
-<p>16.刷新权限，命令如下：</p>
-<p>flush privileges;</p>
-<p>17、开启3306防火墙端口，然后即可远程连接mysql（因为我的防火墙是全部关闭，所以省略了这步）</p>
-<p>18、如果还是无法远程连接，查看&#x2F;etc&#x2F;my.cnf</p>
-<p>找到bind-address &#x3D; 127.0.0.1这一行<br>改为bind-address &#x3D; 0.0.0.0即可</p>
-<ul>
-<li></li>
-</ul>
-<p>开启mysql服务</p>
-<p>5.进入安装mysql软件的目录，命令如下</p>
-<p>cd &#x2F;usr&#x2F;local&#x2F;mysql</p>
-<p>8.开启mysql服务，命令如下：</p>
-<p>.&#x2F;support-files&#x2F;mysql.server start</p>
+<h2 id="3-创建数据库目录"><a href="#3-创建数据库目录" class="headerlink" title="3. 创建数据库目录"></a><strong>3. 创建数据库目录</strong></h2><p>进入MySQL目录，创建数据库目录，注意这是存放数据的目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/local/</span><br><span class="line"><span class="built_in">ln</span> -s mysql-5.7.36-linux-glibc2.12-x86_64 mysql</span><br><span class="line"><span class="built_in">cd</span> ./mysql</span><br><span class="line"><span class="built_in">mkdir</span> data</span><br></pre></td></tr></table></figure>
+
+<p>给数据库目录赋予权限</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> -R 777 /usr/local/mysql/data</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-创建用户、组"><a href="#4-创建用户、组" class="headerlink" title="4. 创建用户、组"></a><strong>4. 创建用户、组</strong></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">groupadd mysql</span><br><span class="line">useradd -g mysql mysql</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-修改MySQL配置文件"><a href="#5-修改MySQL配置文件" class="headerlink" title="5. 修改MySQL配置文件"></a><strong>5. 修改MySQL配置文件</strong></h2><p>进入my.cnf配置文件，如果没有这个文件，可以直接创建</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/my.cnf</span><br></pre></td></tr></table></figure>
+
+<p>点击<code>i</code>进入编辑模式，粘贴下面内容</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line">bind-address=0.0.0.0</span><br><span class="line">port=3306</span><br><span class="line">user=mysql</span><br><span class="line">basedir=/usr/local/mysql</span><br><span class="line">datadir=/usr/local/mysql/data</span><br><span class="line">socket=/tmp/mysql.sock</span><br><span class="line">log-error=/usr/local/mysql/data/mysql.err</span><br><span class="line">pid-file=/usr/local/mysql/data/mysql.pid</span><br><span class="line"><span class="comment">#character config</span></span><br><span class="line">character_set_server=utf8mb4</span><br><span class="line">symbolic-links=0</span><br><span class="line">explicit_defaults_for_timestamp=<span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="6-初始化MySQL"><a href="#6-初始化MySQL" class="headerlink" title="6. 初始化MySQL"></a><strong>6. 初始化MySQL</strong></h2><p>进入MySQL bin 目录下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/local/mysql/bin</span><br><span class="line">./mysqld --initialize --user=mysql --datadir=/usr/local/mysql/data/ --basedir=/usr/local/mysql/</span><br></pre></td></tr></table></figure>
+
+<p>出现如下报错</p>
+<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/image-20240112160755858.png" alt="image-20240112160755858"></p>
+<blockquote>
+<p>解决方案</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># 查询是否安装 libaio</span></span><br><span class="line">[root@iZgw0h7bkppxogfh5fxtufZ usr]<span class="comment"># rpm -qa|grep libaio</span></span><br><span class="line">[root@iZgw0h7bkppxogfh5fxtufZ usr]<span class="comment"># </span></span><br><span class="line"><span class="comment"># 安装 libaio</span></span><br><span class="line">[root@iZgw0h7bkppxogfh5fxtufZ usr]<span class="comment"># yum install -y libaio</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/image-20240112161110063.png" alt="image-20240112161110063"></p>
+<p>重新初始化 mysql 就可以了</p>
+<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/image-20240112161233488.png" alt="image-20240112161233488"></p>
+<h2 id="7-查看MySQL密码"><a href="#7-查看MySQL密码" class="headerlink" title="7. 查看MySQL密码"></a><strong>7. 查看MySQL密码</strong></h2><p>输入命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> /usr/local/mysql/data/mysql.err</span><br></pre></td></tr></table></figure>
+
+<p>这时候在最底部会看到root用户的默认密码，例如下面的ABCD@#$%1234</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[Note] A temporarypassword is generated <span class="keyword">for</span> root@localhost: ABCD@<span class="comment">#$%1234</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="8-添加软连接"><a href="#8-添加软连接" class="headerlink" title="8. 添加软连接"></a><strong>8. 添加软连接</strong></h2><p>备注：正常情况下需要到MySQL的bin目录和support-files目录下执行命令，为了避免麻烦才推荐添加软连接。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ln</span> -s /usr/local/mysql/support-files/mysql.server /etc/init.d/mysql</span><br><span class="line"><span class="built_in">ln</span> -s /usr/local/mysql/bin/mysql /usr/bin/mysql</span><br></pre></td></tr></table></figure>
+
+<p>添加成功后，在任意位置输入启动命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 启动：</span></span><br><span class="line">service mysql start</span><br><span class="line"><span class="comment"># 重启：</span></span><br><span class="line">service mysql restart</span><br></pre></td></tr></table></figure>
+
+<h2 id="9-登录，修改信息"><a href="#9-登录，修改信息" class="headerlink" title="9. 登录，修改信息"></a><strong>9. 登录，修改信息</strong></h2><p>使用root账号进行登录，密码是步骤7的数据</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -p</span><br><span class="line">ABCD@<span class="comment">#$%1234</span></span><br></pre></td></tr></table></figure>
+
+<p>修改密码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> password=password(<span class="string">&#x27;root@1234&#x27;</span>);</span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
+
+<p>修改访问权限</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">use mysql;</span><br><span class="line">update user <span class="built_in">set</span> Host=<span class="string">&#x27;%&#x27;</span> <span class="built_in">where</span> User=<span class="string">&#x27;root&#x27;</span>;</span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
+
+
+
 <p>关闭防火墙</p>
 <p>1:查看防火状态</p>
 <p>systemctl status firewalld</p>
 <p>(已经被关闭了)</p>
-<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/Users\XiaoBai\AppData\Roaming\Typora\typora-user-images\image-20231018102342545.png" alt="image-20231018102342545"></p>
 <p>2:暂时关闭防火墙</p>
 <p>systemctl stop firewalld</p>
 <p>3:重启防火墙</p>
 <p>systemctl enable firewalld</p>
 <p>然后reboot 重启虚拟机就OK了</p>
 <hr>
-<h2 id="5-安装-redis-数据库"><a href="#5-安装-redis-数据库" class="headerlink" title="5 安装 redis 数据库"></a>5 安装 redis 数据库</h2><p>参考 [VMware虚拟机如何设置CentOS 7 磁盘扩容？_centos虚拟机磁盘扩容-CSDN博客](<a target="_blank" rel="noopener" href="https://blog.csdn.net/wuliyun88/article/details/128909346#:~:text=%E6%89%93%E5%BC%80">https://blog.csdn.net/wuliyun88/article/details/128909346#:~:text=打开</a> 虚拟机 （必须处于关 机 状态），点击【编辑 虚拟机设置,】，然后点击【 磁盘 】，接着点击【扩展】，输入修改后的最大 磁盘 容量50G，具体操作时最大容量根据自己的需求 设置 即可。)  与 <a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_33479841/article/details/107586714">史上最详细centos 7环境下安装并启动redis_centos7 redis 启动-CSDN博客</a></p>
-<p>1 下载安装包<br>首先要下载redis的安装包到centos环境中，下载方式可以先下载到本地，再利用文件传输工具传到centos环境；也可以直接利用wget命令在centos环境中直接下载（前提是centos环境处于联网状态）。本文将直接演示利用wget命令方式进行下载，对应redis的版本是4.0。命令如下：</p>
-<p>wget <a target="_blank" rel="noopener" href="http://download.redis.io/releases/redis-4.0.0.tar.gz">http://download.redis.io/releases/redis-4.0.0.tar.gz</a></p>
-<p>2.2 解压redis安装包<br>安装包下载完成之后，需要进行解压，具体指令如下：</p>
-<p>tar -xvf redis-4.0.0.tar.gz</p>
-<p>2.3 安装redis<br>由于在linux环境下安装软件需要先编译再进行安装，因此安装redis步骤如下：<br>1.进入刚才解压的文件夹，指令如下：</p>
-<p>cd redis-4.0.0</p>
-<p>2.编译安装redis，指令如下：</p>
-<p>make install</p>
-<p>成功出现</p>
-<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/Users\XiaoBai\AppData\Roaming\Typora\typora-user-images\image-20231018112621982.png" alt="image-20231018112621982"></p>
-<p>3.执行一下make test命令，若出现以下结果，则表明编译安装失败。</p>
-<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/Users\XiaoBai\AppData\Roaming\Typora\typora-user-images\image-20231018112752564.png" alt="image-20231018112752564"></p>
-<p>4.若过程中出现测试不通过，有可能是没有安装gcc环境和tcl环境，具体安装步骤可以参考以下blog：</p>
-<p>4.1遇到问题1  <a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_35887546/article/details/104794642">https://blog.csdn.net/qq_35887546/article/details/104794642</a><br>1</p>
-<p>4.2遇到问题2  <a target="_blank" rel="noopener" href="https://www.cnblogs.com/cxbhakim/p/9150953.html">https://www.cnblogs.com/cxbhakim/p/9150953.html</a><br>1</p>
-<p>4.2.1问题2参考</p>
-<p>安装redis的时候，出现了这么一个问题</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@etcd3 src]``# make test``You need tcl 8.5 or newer ``in` `order to run the Redis ``test``make``: *** [``test``] Error 1</span><br></pre></td></tr></table></figure>
-
-<p>　　</p>
-<p>安装一下8.5或者最新的tcl</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@etcd3 tmp]``# wget http://downloads.sourceforge.net/tcl/tcl8.6.1-src.tar.gz``[root@etcd3 tmp]``# tar xzvf tcl8.6.1-src.tar.gz -C /usr/local/``[root@etcd3 tmp]``# cd /usr/local/tcl8.6.1/unix/``[root@etcd3 unix]``# ./configure``[root@etcd3 unix]``# make``[root@etcd3 unix]``# make isntall</span><br></pre></td></tr></table></figure>
-
-<p>　　</p>
-<p>重新执行redis test： [root@etcd3 src]# make test </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@etcd3 src]# make test</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">\o/ All tests passed without errors!</span><br><span class="line"></span><br><span class="line">Cleanup: may take some time... OK</span><br></pre></td></tr></table></figure>
-
-<p>以上</p>
-<p>按照以上步骤，若均成功安装，则执行make test指令会显示通过。</p>
-<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/Users\XiaoBai\AppData\Roaming\Typora\typora-user-images\image-20231018113942407.png" alt="image-20231018113942407"></p>
-<p>3.启动redis<br>1.进入redis的安装目录下的src文件夹下，执行ll指令可以查看文件夹下的文件：</p>
-<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/Users\XiaoBai\AppData\Roaming\Typora\typora-user-images\image-20231018114510909.png" alt="image-20231018114510909"></p>
-<p>2.利用指令 .&#x2F;redis-server来启动redis，启动成功后会出现以下界面：</p>
-<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/Users\XiaoBai\AppData\Roaming\Typora\typora-user-images\image-20231018114614033.png" alt="image-20231018114614033"></p>
-<p>3.在虚拟机中重新复制一个会话，进入redis的安装目录，也就是src文件夹下：</p>
-<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/Users\XiaoBai\AppData\Roaming\Typora\typora-user-images\image-20231018114720737.png" alt="image-20231018114720737"></p>
-<p>4.进入到src文件夹下执行.&#x2F;redis-cli指令，启动redis客户端（前提是服务端也处于启动状态），则会显示连接成功。</p>
-<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/Users\XiaoBai\AppData\Roaming\Typora\typora-user-images\image-20231018115318043.png" alt="image-20231018115318043"></p>
-<p>5.rdis 设置默认密码</p>
-<p>5.1 方案一</p>
-<p>复制redis.conf文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /app/redis-6.2.5/</span><br><span class="line"><span class="built_in">cp</span> redis.conf /usr/local/redis/bin</span><br><span class="line"><span class="built_in">cd</span> /usr/local/redis/bin/</span><br></pre></td></tr></table></figure>
-
-<p>修改redis.conf文件</p>
-<p><img src="/2024/01/10/VM%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%83%A8%E7%BD%B2%E7%AF%87/Users\XiaoBai\AppData\Roaming\Typora\typora-user-images\image-20231018145542385.png" alt="image-20231018145542385"></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">vim redis.conf</span><br><span class="line"><span class="comment"># 开启守护模式 224行</span></span><br><span class="line">daemonize <span class="built_in">yes</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改密码 901行</span></span><br><span class="line">requirepass juihui@2023</span><br><span class="line"></span><br><span class="line"><span class="comment">#将bind 127.0.0.1须改成 bind 0.0.0.0 否则只能在本机访问</span></span><br><span class="line"><span class="built_in">bind</span> 0.0.0.0 </span><br></pre></td></tr></table></figure>
-
-<p>后台启动项目</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在redis目录的src下指定配置文件启动</span></span><br><span class="line"><span class="built_in">cd</span> /usr/local/redis-4.0.0/src/</span><br><span class="line">./redis-server .././redis.conf</span><br></pre></td></tr></table></figure>
+<h1 id="安装-redis-数据库"><a href="#安装-redis-数据库" class="headerlink" title="安装 redis 数据库"></a>安装 redis 数据库</h1><h2 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h2><p>redis 的安装极为简单，使用 CentOS 7 自带的 yum 安装即可</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install redis</span><br></pre></td></tr></table></figure>
 
 
 
-
-
-<p>5.2方案二</p>
-<p>然后是不需要重启redis服务的密码设置方式<br>这种相对简单，连接redis之后，通过命令设置，如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">config set requirepass 123456</span><br></pre></td></tr></table></figure>
-
-
-<p>如此，便将密码设置成了123456<br>设置之后，可通过以下指令查看密码</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">config get requirepass</span><br></pre></td></tr></table></figure>
+<h2 id="启动等操作"><a href="#启动等操作" class="headerlink" title="启动等操作"></a>启动等操作</h2><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># 启动</span><br><span class="line">systemctl start redis</span><br><span class="line"></span><br><span class="line"># 查看状态</span><br><span class="line">systemctl status redis</span><br><span class="line"></span><br><span class="line"># 停止</span><br><span class="line">systemctl stop redis</span><br><span class="line"></span><br><span class="line"># 重启</span><br><span class="line">systemctl restart redis</span><br></pre></td></tr></table></figure>
 
 
 
-<p><font color="red"> <strong>Redis (error) NOAUTH Authentication required.解决方法</strong> </font> </p>
-<p>出现认证问题，应该是设置了认证密码，输入密码既可以啦</p>
-<p>注意密码是字符串形式！设置为123456</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; auth &quot;123456&quot;</span><br></pre></td></tr></table></figure>
-
-<p>6 启动redis服务</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/redis-4.0.0/src/</span><br><span class="line"></span><br><span class="line"> ./redis-server</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ps aux|grep redis  查看服务</span><br><span class="line"></span><br><span class="line"> kill -s 9 2613  杀死服务</span><br></pre></td></tr></table></figure>
+<h2 id="查看版本号"><a href="#查看版本号" class="headerlink" title="查看版本号"></a>查看版本号</h2><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">redis-server -v</span><br><span class="line">redis-server --version</span><br><span class="line"></span><br><span class="line">输出</span><br><span class="line">Redis server v=3.2.12 sha=00000000:0 malloc=jemalloc-3.6.0 bits=64 </span><br><span class="line">build=7897e7d0e13773f</span><br></pre></td></tr></table></figure>
 
 
 
-<h2 id="6-安装gitlab"><a href="#6-安装gitlab" class="headerlink" title="6 安装gitlab"></a>6 安装gitlab</h2><p>参考链接（<a target="_blank" rel="noopener" href="https://blog.csdn.net/shy871/article/details/117598669">【精选】centos7安装部署gitlab_centos7 安装gitlab-CSDN博客</a> ） 与（<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41694906/article/details/104815384">CentOs7 安装Gitlab_centos7安装gitlab-CSDN博客</a>）<br>1、安装依赖</p>
+<h2 id="验证安装"><a href="#验证安装" class="headerlink" title="验证安装"></a>验证安装</h2><p>安装 <code>redis</code>，都会附带安装 <code>redis-cli</code>，这是 Redis 的客户端工具</p>
+<p>我们可以使用它，验证 redis 是否正常运行</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"># 进入客户端</span><br><span class="line">redis-cli</span><br><span class="line"></span><br><span class="line"># 成功连接并且进入客户端</span><br><span class="line">127.0.0.1:6379&gt; </span><br><span class="line"></span><br><span class="line"># 添加数据</span><br><span class="line">127.0.0.1:6379&gt; set test-key test-value</span><br><span class="line">OK</span><br><span class="line"></span><br><span class="line"># 查询数据</span><br><span class="line">127.0.0.1:6379&gt; get test-key</span><br><span class="line">&quot;test-value&quot;</span><br><span class="line"></span><br><span class="line"># 删除数据</span><br><span class="line">127.0.0.1:6379&gt; del test-key</span><br><span class="line">(integer) 1</span><br><span class="line"></span><br><span class="line"># 退出客户端</span><br><span class="line">127.0.0.1:6379&gt; exit</span><br></pre></td></tr></table></figure>
+
+<p>能正常连接，且操作数据，表示安装成功。</p>
+<h2 id="开启远程连接"><a href="#开启远程连接" class="headerlink" title="开启远程连接"></a>开启远程连接</h2><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"># 进入并编辑redsi.conf文件</span><br><span class="line">vim /etc/redis.conf</span><br><span class="line"></span><br><span class="line"># 找到bind 127.0.0.1 将其注释（#）或修改为 bind 0.0.0.0</span><br><span class="line">bind 0.0.0.0</span><br><span class="line"></span><br><span class="line"># 为了安全，我们需要开启密码保护</span><br><span class="line"># 找到 # requirepass xxx ，默认是被注释的，将注释符号去掉，并添加自己的密码</span><br><span class="line"># 找到它要往下拉很久，我们也可以直接在 bind 0.0.0.0 下面添加一个 requirepass xxx</span><br><span class="line">requirepass 123456</span><br><span class="line"></span><br><span class="line"># 开启守护线程</span><br><span class="line">daemonize yes</span><br><span class="line"></span><br><span class="line"># 按 esc 键，并输入 :wq 保存</span><br><span class="line"></span><br><span class="line"># 重启，让配置生效</span><br><span class="line">systemctl restart redis</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="开放端口"><a href="#开放端口" class="headerlink" title="开放端口"></a>开放端口</h2><p>腾讯云和阿里云的服务器，请到控制台 - 服务器 - 安全组 - 开放6379端口，否则远端无法登录。</p>
+<h1 id="安装gitlab"><a href="#安装gitlab" class="headerlink" title="安装gitlab"></a>安装gitlab</h1><p>参考链接（<a target="_blank" rel="noopener" href="https://blog.csdn.net/shy871/article/details/117598669">【精选】centos7安装部署gitlab_centos7 安装gitlab-CSDN博客</a> ） 与（<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41694906/article/details/104815384">CentOs7 安装Gitlab_centos7安装gitlab-CSDN博客</a>）<br>1、安装依赖</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum install curl openssh-server openssh-clients postfix policycoreutils-python</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>2、启动ssh</p>
@@ -834,8 +781,35 @@
 </ol>
 <p>5.再次启动systemctl start gitlab-runsvdir.service，则正常启动</p>
 <p>6.gitlab-ctl start 启动gitlab成功</p>
-<h2 id="7-安装jdk"><a href="#7-安装jdk" class="headerlink" title="7 安装jdk"></a>7 安装jdk</h2><hr>
-<h2 id="8-安装nginx"><a href="#8-安装nginx" class="headerlink" title="8 安装nginx"></a>8 安装nginx</h2><p>参考（部署前端项目）</p>
+<h1 id="安装jdk"><a href="#安装jdk" class="headerlink" title="安装jdk"></a>安装jdk</h1><hr>
+<p>方法一：利用yum源来安装jdk（此方法不需要配置环境变量）</p>
+<p>查看yum库中的java安装包 ：yum -y list java*</p>
+<p>安装需要的jdk版本的所有java程序：yum -y install java-1.8.0-openjdk*</p>
+<p>方法二：用rpm安装jdk(可以使用man rpm命令查看rpm的帮助文档)</p>
+<p>使用Xftp将下载好的jdk-8u152-linux-x64.rpm上传到CentOs上去</p>
+<p>使用rpm命令安装： rpm -ivh jdk-8u152-linux-x64.rpm</p>
+<p>(默认安装在&#x2F;usr&#x2F;java目录下，不用配置环境变量)</p>
+<p>方法三：手动解压JDK的压缩包，然后设置环境变量</p>
+<p>1、使用Xftp将下载好的jdk-8u152-linux-x64.tar.gz上传到CentOs上去</p>
+<p>2、复制安装包到&#x2F;usr&#x2F;java目录中(目录可以自己选)：cp jdk-8u152-linux-x64.tar.gz &#x2F;usr&#x2F;java</p>
+<p>3、切换到&#x2F;usr&#x2F;java目录下：cd &#x2F;usr&#x2F;java</p>
+<p>4、解压缩包：tar -zxvf jdk-8u152-linux-x64.tar.gz</p>
+<p>5、配置环境变量</p>
+<p>使用vim &#x2F;etc&#x2F;profile 编辑profile文件 输入： vim &#x2F;etc&#x2F;profile</p>
+<p>向文件里面追加以下内容：</p>
+<p>#set java environment</p>
+<p>JAVA_HOME&#x3D;&#x2F;usr&#x2F;java&#x2F;jdk1.8.0_152</p>
+<p>JRE_HOME&#x3D;$JAVA_HOME&#x2F;jre</p>
+<p>PATH&#x3D;$PATH:$JAVA_HOME&#x2F;bin:$JRE_HOME&#x2F;bin</p>
+<p>CLASSPATH&#x3D;.:$JAVA_HOME&#x2F;lib&#x2F;dt.jar:$JAVA_HOME&#x2F;lib&#x2F;tools.jar:$JRE_HOME&#x2F;lib</p>
+<p>export JAVA_HOME JRE_HOME PATH CLASSPATH</p>
+<p>注释：</p>
+<p>JAVA_HOME指明JDK安装路径，就是刚才安装时所选择的路径，此路径下包括lib，bin，jre等文件夹（tomcat，Eclipse的运行都需要依靠此变量）。</p>
+<p>CLASSPATH为java加载类(class or lib)路径，只有类在classpath中，java命令才能识别，设：.:$JAVA_HOME&#x2F;lib&#x2F;dt.jar:$JAVA_HOME&#x2F;lib&#x2F;tools.jar:$JRE_HOME&#x2F;lib。CLASSPATH变量值中的.表示当前目录</p>
+<p>PATH使得系统可以在任何路径下识别java命令，设为：$JAVA_HOME&#x2F;bin:$JRE_HOME&#x2F;bin。</p>
+<p>特别注意：环境变量值的结尾没有任何符号，不同值之间用:隔开（windows中用;）。</p>
+<p>5、使配置文件生效：source &#x2F;etc&#x2F;profile</p>
+<h1 id="安装nginx"><a href="#安装nginx" class="headerlink" title="安装nginx"></a>安装nginx</h1><p>参考（部署前端项目）</p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/JYSCDNKB/article/details/129632162">https://blog.csdn.net/JYSCDNKB/article/details/129632162</a></p>
 <p>CentOs7安装nginx<br>卸载nginx<br>1 先查看是否启动了 nginx 服务</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef|grep nginx</span><br></pre></td></tr></table></figure>
@@ -1069,7 +1043,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-01-11 12:28:40" itemprop="dateModified" datetime="2024-01-11T12:28:40+08:00">2024-01-11</time>
+                <time title="修改时间：2024-01-12 15:16:12" itemprop="dateModified" datetime="2024-01-12T15:16:12+08:00">2024-01-12</time>
               </span>
 
           <br>
@@ -3623,7 +3597,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">67k</span>
+    <span title="站点总字数">66k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
