@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"ddldydd.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="因为之前的文章：Termux 高级终端安装使用配置教程 篇幅太长了，而且手机用户浏览起来已经很卡顿了，所以单独把之前冗长的 Termux API 部分开了一篇文章来记录，提高用户的浏览体验。 准备工作安装 Termux:API下载地址  Termux:API Google Play 下载地址 Termux:API F-Droid 下载地址   请勿在 Google Play 和 F-Droid 之">
+<meta property="og:type" content="article">
+<meta property="og:title" content="termu API">
+<meta property="og:url" content="http://ddldydd.github.io/2024/02/22/termu%20API/index.html">
+<meta property="og:site_name" content="夏蝉之家">
+<meta property="og:description" content="因为之前的文章：Termux 高级终端安装使用配置教程 篇幅太长了，而且手机用户浏览起来已经很卡顿了，所以单独把之前冗长的 Termux API 部分开了一篇文章来记录，提高用户的浏览体验。 准备工作安装 Termux:API下载地址  Termux:API Google Play 下载地址 Termux:API F-Droid 下载地址   请勿在 Google Play 和 F-Droid 之">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-02-22T14:00:09.000Z">
+<meta property="article:modified_time" content="2024-03-17T08:35:21.437Z">
+<meta property="article:author" content="阿呆">
+<meta property="article:tag" content="termux api">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://ddldydd.github.io/2024/02/22/termu%20API/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>termu API | 夏蝉之家</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">夏蝉之家</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-commonweal">
+
+    <a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container"></div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="algolia-results">
+  <div id="algolia-stats"></div>
+  <div id="algolia-hits"></div>
+  <div id="algolia-pagination" class="algolia-pagination"></div>
+</div>
+
+      
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://ddldydd.github.io/2024/02/22/termu%20API/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="阿呆">
+      <meta itemprop="description" content="书山有路勤为径，学海无涯苦作舟。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="夏蝉之家">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          termu API
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-02-22 22:00:09" itemprop="dateCreated datePublished" datetime="2024-02-22T22:00:09+08:00">2024-02-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-03-17 16:35:21" itemprop="dateModified" datetime="2024-03-17T16:35:21+08:00">2024-03-17</time>
+              </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>13k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>23 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>因为之前的文章：<a target="_blank" rel="noopener" href="https://www.sqlsec.com/2018/05/termux.html">Termux 高级终端安装使用配置教程</a> 篇幅太长了，而且手机用户浏览起来已经很卡顿了，所以单独把之前冗长的 Termux API 部分开了一篇文章来记录，提高用户的浏览体验。</p>
+<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><h2 id="安装-Termux-API"><a href="#安装-Termux-API" class="headerlink" title="安装 Termux:API"></a>安装 Termux:API</h2><p><strong>下载地址</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://play.google.com/store/apps/details?id=com.termux.api">Termux:API Google Play 下载地址</a></li>
+<li><a target="_blank" rel="noopener" href="https://f-droid.org/packages/com.termux.api/">Termux:API F-Droid 下载地址</a></li>
+</ul>
+<blockquote>
+<p>请勿在 Google Play 和 F-Droid 之间混合安装 Termux 和 插件。</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://image.3001.net/images/20200420/1587370530651.jpg">![img](termu API&#x2F;1587370530651.jpg)</a></p>
+<h2 id="给-app-权限"><a href="#给-app-权限" class="headerlink" title="给 app 权限"></a>给 app 权限</h2><p>因为 Termux-api 可以直接操作手机底层，所以我们需要到手机的设置里面给 这个 APP 的权限全部开了，这样下面操作的时候就不会提示权限不允许的情况了。</p>
+<p><a target="_blank" rel="noopener" href="https://image.3001.net/images/20200420/15873722473744.jpg">![img](termu API&#x2F;15873722473744.jpg)</a></p>
+<h2 id="安装-Termux-api-软件包"><a href="#安装-Termux-api-软件包" class="headerlink" title="安装 Termux-api 软件包"></a>安装 Termux-api 软件包</h2><p>手机安装完 Termux-api 的 APP 后，Termux 终端里面必须安装对应的包后才可以与手机底层硬件进行交互。</p>
+<p>Bash</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BASH</span><br><span class="line">pkg install termux-api</span><br></pre></td></tr></table></figure>
+
+<p>下面只列举一些可能会用到的，想要获取更多关于 <code>Termux-api</code> 的话，那就去参考官方文档.</p>
+<h1 id="获取设备信息相关"><a href="#获取设备信息相关" class="headerlink" title="获取设备信息相关"></a>获取设备信息相关</h1><h2 id="电池信息"><a href="#电池信息" class="headerlink" title="电池信息"></a>电池信息</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BASH</span><br><span class="line">termux-battery-status</span><br></pre></td></tr></table></figure>
+
+<p>参数无，返回信息是 JSON 格式。 可以看到电池的 - 健康状况 - 电量百分比 - 温度情况等：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">BASH&#123;</span><br><span class="line">  &quot;health&quot;: &quot;GOOD&quot;,</span><br><span class="line">  &quot;percentage&quot;: 100,</span><br><span class="line">  &quot;plugged&quot;: &quot;UNPLUGGED&quot;,</span><br><span class="line">  &quot;status&quot;: &quot;DISCHARGING&quot;,</span><br><span class="line">  &quot;temperature&quot;: 24.600000381469727</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="获取相机信息"><a href="#获取相机信息" class="headerlink" title="获取相机信息"></a>获取相机信息</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BASH</span><br><span class="line">termux-camera-info</span><br></pre></td></tr></table></figure>
+
+<p>参数无，返回信息是 JSON 格式。</p>
+<h2 id="获取通讯录列表"><a href="#获取通讯录列表" class="headerlink" title="获取通讯录列表"></a>获取通讯录列表</h2><p>参数无，返回信息是 JSON 格式。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BASH</span><br><span class="line">termux-contact-list  </span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://image.3001.net/images/20200420/15873737022902.jpg">![img](termu API&#x2F;15873737022902.jpg)</a></p>
+<h2 id="查看红外载波频率"><a href="#查看红外载波频率" class="headerlink" title="查看红外载波频率"></a>查看红外载波频率</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BASH</span><br><span class="line">termux-infrared-frequencies</span><br></pre></td></tr></table></figure>
+
+<h2 id="获取无线电信息"><a href="#获取无线电信息" class="headerlink" title="获取无线电信息"></a>获取无线电信息</h2><p>无参数，返回格式是 JSON 格式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BASH</span><br><span class="line">termux-telephony-cellinfo</span><br></pre></td></tr></table></figure>
+
+<h2 id="查看手机运营商信息"><a href="#查看手机运营商信息" class="headerlink" title="查看手机运营商信息"></a>查看手机运营商信息</h2><p>无参数，返回格式是 JSON 格式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BASH</span><br><span class="line">termux-telephony-deviceinfo</span><br></pre></td></tr></table></figure>
+
+<p>国光的实际测试返回值：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">JSON&#123;</span><br><span class="line">  &quot;data_enabled&quot;: &quot;true&quot;,</span><br><span class="line">  &quot;data_activity&quot;: &quot;dormant&quot;,</span><br><span class="line">  &quot;data_state&quot;: &quot;disconnected&quot;,</span><br><span class="line">  &quot;device_id&quot;: null,</span><br><span class="line">  &quot;device_software_version&quot;: &quot;00&quot;,</span><br><span class="line">  &quot;phone_count&quot;: 2,</span><br><span class="line">  &quot;phone_type&quot;: &quot;gsm&quot;,</span><br><span class="line">  &quot;network_operator&quot;: &quot;46001&quot;,</span><br><span class="line">  &quot;network_operator_name&quot;: &quot;中国联通&quot;,</span><br><span class="line">  &quot;network_country_iso&quot;: &quot;cn&quot;,</span><br><span class="line">  &quot;network_type&quot;: &quot;lte&quot;,</span><br><span class="line">  &quot;network_roaming&quot;: false,</span><br><span class="line">  &quot;sim_country_iso&quot;: &quot;cn&quot;,</span><br><span class="line">  &quot;sim_operator&quot;: &quot;46011&quot;,</span><br><span class="line">  &quot;sim_operator_name&quot;: &quot;中国联通&quot;,</span><br><span class="line">  &quot;sim_serial_number&quot;: null,</span><br><span class="line">  &quot;sim_subscriber_id&quot;: null,</span><br><span class="line">  &quot;sim_state&quot;: &quot;ready&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="获取-tts-语音引擎信息"><a href="#获取-tts-语音引擎信息" class="headerlink" title="获取 tts 语音引擎信息"></a>获取 tts 语音引擎信息</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BASH</span><br><span class="line">termux-tts-engines</span><br></pre></td></tr></table></figure>
+
+<p>国光的实际演示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">JSON[</span><br><span class="line">  &#123;</span><br><span class="line">    &quot;name&quot;: &quot;com.google.android.tts&quot;,</span><br><span class="line">    &quot;label&quot;: &quot;Google 文字转语音引擎&quot;,</span><br><span class="line">    &quot;default&quot;: false</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    &quot;name&quot;: &quot;com.xiaomi.mibrain.speech&quot;,</span><br><span class="line">    &quot;label&quot;: &quot;小爱语音引擎&quot;,</span><br><span class="line">    &quot;default&quot;: true</span><br><span class="line">  &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<h2 id="获取-USB-设备信息"><a href="#获取-USB-设备信息" class="headerlink" title="获取 USB 设备信息"></a>获取 USB 设备信息</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BASH</span><br><span class="line">termux-usb [-l | [-r] [-e 命令] 设备]</span><br></pre></td></tr></table></figure>
+
+<p>选项细节：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">PROPERTIES-l               列出可用设备</span><br><span class="line">-r               如果尚未授予权限，则显示 权限请求对话框</span><br><span class="line">-e command       执行指定的命令</span><br></pre></td></tr></table></figure>
+
+<p>Android Termux 下要读取 USB 内容或者 U 盘的时候，还需要安装如下依赖包：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BASH</span><br><span class="line">pkg install termux-api libusb clang -y</span><br></pre></td></tr></table></figure>
+
+<p>有些包我们上面已经安装过了。下面国光来实际演示一下这个 API 的使用：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">BASH$ termux-usb -l</span><br><span class="line">[</span><br><span class="line">  &quot;/dev/bus/usb/001/002&quot;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p>可以看到国光我这个 512GB 的 M.2 SSD 已经显示在列表中了 (装作不经意间说出来的样子，类似于朱一旦不经意间露出自己的劳力士一样 2333)</p>
+<p>请求访问权限：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">BASHtermux-usb -r /dev/bus/usb/001/002</span><br><span class="line"></span><br><span class="line">Access granted.</span><br></pre></td></tr></table></figure>
+
+<p>下面级可以尝试写代码去访问这个 USB 设备内容了:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">CODE</span><br><span class="line">usbtest.c</span><br><span class="line">C#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;assert.h&gt;</span><br><span class="line">#include &lt;libusb-1.0/libusb.h&gt;</span><br><span class="line"></span><br><span class="line">int main(int argc, char **argv) &#123;</span><br><span class="line">    libusb_context *context;</span><br><span class="line">    libusb_device_handle *handle;</span><br><span class="line">    libusb_device *device;</span><br><span class="line">    struct libusb_device_descriptor desc;</span><br><span class="line">    unsigned char buffer[256];</span><br><span class="line">    int fd;</span><br><span class="line">    assert((argc &gt; 1) &amp;&amp; (sscanf(argv[1], &quot;%d&quot;, &amp;fd) == 1));</span><br><span class="line">    assert(!libusb_init(&amp;context));</span><br><span class="line">    assert(!libusb_wrap_sys_device(context, (intptr_t) fd, &amp;handle));</span><br><span class="line">    device = libusb_get_device(handle);</span><br><span class="line">    assert(!libusb_get_device_descriptor(device, &amp;desc));</span><br><span class="line">    printf(&quot;Vendor ID: %04x\n&quot;, desc.idVendor);</span><br><span class="line">    printf(&quot;Product ID: %04x\n&quot;, desc.idProduct);</span><br><span class="line">    assert(libusb_get_string_descriptor_ascii(handle, desc.iManufacturer, buffer, 256) &gt;= 0);</span><br><span class="line">    printf(&quot;Manufacturer: %s\n&quot;, buffer);</span><br><span class="line">    assert(libusb_get_string_descriptor_ascii(handle, desc.iProduct, buffer, 256) &gt;= 0);</span><br><span class="line">    printf(&quot;Product: %s\n&quot;, buffer);</span><br><span class="line">    assert(libusb_get_string_descriptor_ascii(handle, desc.iSerialNumber, buffer, 256) &gt;= 0);</span><br><span class="line">    printf(&quot;Serial No: %s\n&quot;, buffer);</span><br><span class="line">    libusb_exit(context);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>代码内容主要是 显示有关 USB 设备的一些基本信息，参数就是我们的设备信息。让我们编译一下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BASH</span><br><span class="line">gcc usbtest.c -lusb-1.0 -o usbtest</span><br></pre></td></tr></table></figure>
+
+<p>编译完成后会生成可执行的文件 <code>usbtest</code> ，接下来通过 这个 API 来执行这个文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">BASHtermux-usb -e ./usbtest /dev/bus/usb/001/002</span><br><span class="line"></span><br><span class="line">Vendor ID: 152d</span><br><span class="line">Product ID: 0576</span><br><span class="line">Manufacturer: Hikvision</span><br><span class="line">Product: Hikvision External Disk</span><br><span class="line">Serial No: 0123456789ABCDEF</span><br></pre></td></tr></table></figure>
+
+<p>糟糕 暴露了我的 512GB 的 SSD 居然是最廉价的 海康威视，溜了溜了 逃～</p>
+<h2 id="获取当前-WiFi-连接信息"><a href="#获取当前-WiFi-连接信息" class="headerlink" title="获取当前 WiFi 连接信息"></a>获取当前 WiFi 连接信息</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">BASHtermux-wifi-connectioninfo</span><br><span class="line">&#123;</span><br><span class="line">  &quot;bssid&quot;: &quot;xx:xx:00:00:00:00&quot;,</span><br><span class="line">  &quot;frequency_mhz&quot;: 5785,</span><br><span class="line">  &quot;ip&quot;: &quot;192.168.31.124&quot;,</span><br><span class="line">  &quot;link_speed_mbps&quot;: 130,</span><br><span class="line">  &quot;mac_address&quot;: &quot;xx:xx:00:00:00:00&quot;,</span><br><span class="line">  &quot;network_id&quot;: -1,</span><br><span class="line">  &quot;rssi&quot;: -69,</span><br><span class="line">  &quot;ssid&quot;: &quot;&lt;unknown ssid&gt;&quot;,</span><br><span class="line">  &quot;ssid_hidden&quot;: true,</span><br><span class="line">  &quot;supplicant_state&quot;: &quot;COMPLETED&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="获取-WiFi-扫描信息"><a href="#获取-WiFi-扫描信息" class="headerlink" title="获取 WiFi 扫描信息"></a>获取 WiFi 扫描信息</h2><p>国光在 Android 10 上没有成功执行过这个 API， 不过以前的一加 5 是可以执行的下面的图 是以前的老图:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BASH</span><br><span class="line">termux-wifi-scaninfo</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://image.3001.net/images/20180503/15253138725488.png">![img](termu API&#x2F;15253138725488.png)</a></p>
+<h1 id="调用设置设备相关"><a href="#调用设置设备相关" class="headerlink" title="调用设置设备相关"></a>调用设置设备相关</h1><h2 id="调整屏幕亮度"><a href="#调整屏幕亮度" class="headerlink" title="调整屏幕亮度"></a>调整屏幕亮度</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CODE</span><br><span class="line">termux-brightness [亮度]</span><br></pre></td></tr></table></figure>
+
+<p>亮度的值在 0 ~ 255 之间，国光这里测试了 255 并达不到手机的最大亮度</p>
+<h2 id="拍摄照片"><a href="#拍摄照片" class="headerlink" title="拍摄照片"></a>拍摄照片</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BASH</span><br><span class="line">termux-camera-photo [-c camera-id] output-file</span><br></pre></td></tr></table></figure>
+
+<p><code>camera-id</code>：相机的 id，默认是 0， 相机 id 可以通过隔壁的命令来获取</p>
+<p>下面的命令表示 使用 相机 id 为 0 即后置的相机来拍摄 (id 1 为前置相机)，保存的文件在当前路径下 名字叫 guoguang.jpg</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BASH</span><br><span class="line">termux-camera-photo -c 0 guoguang.jpg</span><br></pre></td></tr></table></figure>
+
+<p>国光看了下后置拍摄出来的照片，有点看不下去。前置相机效果还不错，可能是因为现在手机是多个摄像头的原因，Termux 的相机算法上面没有做到足够好的优化。</p>
+<h2 id="获取与设置剪贴板"><a href="#获取与设置剪贴板" class="headerlink" title="获取与设置剪贴板"></a>获取与设置剪贴板</h2><p><strong>查看当前剪贴板内容</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BASH</span><br><span class="line">termux-clipboard-get</span><br></pre></td></tr></table></figure>
+
+<p><strong>设置新的剪贴板内容</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BASH</span><br><span class="line">termux-clipboard-set PHP是世界上最好的语言</span><br></pre></td></tr></table></figure>
+
+<p><strong>效果演示</strong></p>
+<p><a target="_blank" rel="noopener" href="https://image.3001.net/images/20180503/15253126104329.png">![img](termu API&#x2F;15253126104329.png)</a></p>
+<h2 id="调用系统下载器"><a href="#调用系统下载器" class="headerlink" title="调用系统下载器"></a>调用系统下载器</h2><p>直接调用系统下载器，不返回任何值。而且国光我现在还没有搞清楚下载的文件到哪里去了：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BASH</span><br><span class="line">termux-download [-d 描述] [-t 标题] 下载的目标地址</span><br></pre></td></tr></table></figure>
+
+<p>国光的演示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BASH</span><br><span class="line">termux-download -d &#x27;Termux下载测试&#x27; -t &#x27;QQ.apk&#x27; &#x27;https://qd.myapp.com/myapp/qqteam/QQ_JS/qqlite_4.0.0.1025_537062065.apk&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://image.3001.net/images/20200420/1587380032335.jpg">![img](termu API&#x2F;1587380032335.jpg)</a></p>
+<h2 id="调用指纹传感器"><a href="#调用指纹传感器" class="headerlink" title="调用指纹传感器"></a>调用指纹传感器</h2><p>该 API 仅适用于 Android 6 及其以上版本，不接受任何参数，返回 JSON 格式。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BASH</span><br><span class="line">termux-fingerprint</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://image.3001.net/images/20200420/15873809591596.jpg">![img](termu API&#x2F;15873809591596.jpg)</a></p>
+<p>返回内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">JSON&#123;</span><br><span class="line">  &quot;errors&quot;: [],</span><br><span class="line">  &quot;failed_attempts&quot;: 0,</span><br><span class="line">  &quot;auth_result&quot;: &quot;AUTH_RESULT_SUCCESS&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="调用红外发射"><a href="#调用红外发射" class="headerlink" title="调用红外发射"></a>调用红外发射</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BASH</span><br><span class="line">termux-infrared-transmit -f 发射频率</span><br></pre></td></tr></table></figure>
+
+<p>频率以逗号分隔，例如 <code>20,50,20,30</code> ，仅传输短于 2 秒的码型。</p>
+<h2 id="调用手机定位"><a href="#调用手机定位" class="headerlink" title="调用手机定位"></a>调用手机定位</h2><p>输出格式为 JSON 格式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BASH</span><br><span class="line">termux-location [-p 定位方式] [-r 定位请求]</span><br></pre></td></tr></table></figure>
+
+<p>细节参数：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BASH-p provider [gps/network/passive] (默认: gps)</span><br><span class="line">-r request   [once/last/updates] (默认: once)</span><br></pre></td></tr></table></figure>
+
+<p>实际演示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BASH</span><br><span class="line">termux-location -p network</span><br></pre></td></tr></table></figure>
+
+<p>返回内容（关键地方已经打马赛克处理了 防止网友顺着网线打过来）:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">JSON&#123;</span><br><span class="line">  &quot;latitude&quot;: xx.xxxxxxx,</span><br><span class="line">  &quot;longitude&quot;: xx.xxxxxxx,</span><br><span class="line">  &quot;altitude&quot;: 0.0,</span><br><span class="line">  &quot;accuracy&quot;: xx.0,</span><br><span class="line">  &quot;vertical_accuracy&quot;: 0.0,</span><br><span class="line">  &quot;bearing&quot;: 0.0,</span><br><span class="line">  &quot;speed&quot;: 0.0,</span><br><span class="line">  &quot;elapsedMs&quot;: 7,</span><br><span class="line">  &quot;provider&quot;: &quot;network&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="播放媒体文件"><a href="#播放媒体文件" class="headerlink" title="播放媒体文件"></a>播放媒体文件</h2><p>使用 Media Player API 播放指定的文件。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BASH</span><br><span class="line">termux-media-player [命令] [参数]</span><br></pre></td></tr></table></figure>
+
+<p>详细参数：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">BASHinfo        # 显示当前播放信息</span><br><span class="line">play        # 恢复播放</span><br><span class="line">play &lt;file&gt; # 播放指定文件</span><br><span class="line">pause       # 暂停播放</span><br><span class="line">stop        # 停止退出播放</span><br></pre></td></tr></table></figure>
+
+<p>国光的实际演示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">BASH# 播放 hacker.mp4 视频</span><br><span class="line">$ termux-media-player play hacker.mp4</span><br><span class="line">Now Playing: hacker.mp4</span><br><span class="line"></span><br><span class="line"># 查看当前播放信息</span><br><span class="line">$ termux-media-player info</span><br><span class="line">Status: Playing</span><br><span class="line">Track: hacker.mp4</span><br><span class="line">Current Position: 01:28 / 15:13</span><br><span class="line"></span><br><span class="line"># 退出播放</span><br><span class="line">$ termux-media-player stop</span><br><span class="line">Stopped playback</span><br><span class="line">Track cleared</span><br></pre></td></tr></table></figure>
+
+<h2 id="调用麦克风"><a href="#调用麦克风" class="headerlink" title="调用麦克风"></a>调用麦克风</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CODE</span><br><span class="line">termux-microphone-record [参数]</span><br></pre></td></tr></table></figure>
+
+<p>参数细节：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">PROPERTIES-d           使用默认设置录制</span><br><span class="line">-f &lt;file&gt;    录制到特定文件</span><br><span class="line">-l &lt;limit&gt;   使用指定的时间录制（以秒为单位，无限制为0）</span><br><span class="line">-e &lt;encoder&gt; 使用指定的编码器录制（aac， amr_wb，amr_nb）</span><br><span class="line">-b &lt;bitrate&gt; 使用指定的比特率录制（以kbps为单位）</span><br><span class="line">-r &lt;rate&gt;    使用指定的采样率录制（以Hz为单位）</span><br><span class="line">-c &lt;count&gt;   使用指定的通道录制（1， 2，...）- </span><br><span class="line">-i           获取有关当前录音的信息</span><br><span class="line">-q           退出录音</span><br></pre></td></tr></table></figure>
+
+<p>国光的实际演示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">BASH$ termux-microphone-record -d</span><br><span class="line">Recording started: /storage/emulated/0/TermuxAudioRecording_2020-04-20_19-50-51.m4a</span><br><span class="line">Max Duration: 15:00</span><br><span class="line"></span><br><span class="line">$ termux-microphone-record -i</span><br><span class="line">&#123;</span><br><span class="line">  &quot;isRecording&quot;: true,</span><br><span class="line">  &quot;outputFile&quot;: &quot;\/storage\/emulated\/0\/TermuxAudioRecording_2020-04-20_19-50-51.m4a&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$ termux-microphone-record -q</span><br><span class="line">Recording finished: /storage/emulated/0/TermuxAudioRecording_2020-04-20_19-50-51.m4a</span><br></pre></td></tr></table></figure>
+
+<h2 id="显示系统通知"><a href="#显示系统通知" class="headerlink" title="显示系统通知"></a>显示系统通知</h2><p>显示系统通知，通知内容使用 <code>-c</code> 或者 <code>--content</code> 读取，或者从 <code>stdin</code> 读取</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BASH</span><br><span class="line">termux-notification [选项]</span><br></pre></td></tr></table></figure>
+
+<p><strong>选项细节</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">PROPERTIES--action action          按下通知时要执行的动作</span><br><span class="line">--alert-once             不会在编辑通知时发出警报</span><br><span class="line">--button1 text           文本将显示在第一个通知按钮上</span><br><span class="line">--button1-action action  动作将在第一个通知按钮上执行</span><br><span class="line">--button2 text           在第二个通知按钮上显示的文本</span><br><span class="line">--button2-action action  在第二个通知按钮上执行的动作</span><br><span class="line">--button3 text           在第三通知按钮上显示的文本</span><br><span class="line">--button3-action action  在第三个通知按钮上执行的动作通知按钮</span><br><span class="line">-c/--content content     内容显示在通知中 将优先于stdin</span><br><span class="line">--group group            通知组（与同一组的通知一起显示）</span><br><span class="line">-h/--help                显示此帮助</span><br><span class="line">--help-actions           显示action的帮助</span><br><span class="line">-i/--id id               通知id（将覆盖以前的任何通知具有相同ID的图像）</span><br><span class="line">--image-path path        路径将在通知中显示的图像的绝对路径</span><br><span class="line">--led-color rrggbb       闪烁的led颜色为RRGGBB（默认值：无）</span><br><span class="line">--led-off milliseconds   毫秒数使指示灯在闪烁时熄灭（默认值：800）</span><br><span class="line">--led-on milliseconds    毫秒指示灯在闪烁时点亮的毫秒数（默认值：800）</span><br><span class="line">--on-delete action       清除通知时要执行的操作</span><br><span class="line">--ongoing                锁定通知</span><br><span class="line">--priority prio          通知优先级（高/低/最大/最小/默认）</span><br><span class="line">--sound                  通知时播放声音</span><br><span class="line">-t/--title title         要显示的通知标题</span><br><span class="line">--vibrate pattern        振动力度 逗号分隔，如500,1000,200</span><br><span class="line">--type type              要使用的通知样式（default/media）</span><br></pre></td></tr></table></figure>
+
+<p><strong>媒体通知参数</strong></p>
+<p>当你要使用 <code>--type media</code> 的时候详细参数：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">PROPERTIES--media-next             在媒体 下一个按钮 上执行的操作</span><br><span class="line">--media-pause            在媒体 暂停按钮 上执行的操作</span><br><span class="line">--media-play             在媒体 播放按钮 上执行的操作</span><br><span class="line">--media-previous         在媒体 上一个按钮 上执行的操作</span><br></pre></td></tr></table></figure>
+
+<p>国光的演示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BASH</span><br><span class="line">termux-notification -t &#x27;国光的Termu通知测试&#x27; -c &#x27;Hello Termux&#x27; --type default</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://image.3001.net/images/20200420/15873849054713.jpg">![img](termu API&#x2F;15873849054713.jpg)</a></p>
+<h2 id="拨打电话"><a href="#拨打电话" class="headerlink" title="拨打电话"></a>拨打电话</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BASH</span><br><span class="line">termux-telephony-call [号码]</span><br></pre></td></tr></table></figure>
+
+<p>拨打电话给 <code>10001</code> 中国电信，查看下话费有没有欠费？</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BASH</span><br><span class="line">termux-telephony-call 10001</span><br></pre></td></tr></table></figure>
+
+<h2 id="临时窗口通知"><a href="#临时窗口通知" class="headerlink" title="临时窗口通知"></a>临时窗口通知</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BASH</span><br><span class="line">termux-toast [选项] [通知]</span><br></pre></td></tr></table></figure>
+
+<p>选项参数：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">PROPERTIES-h  显示帮助信息</span><br><span class="line">-b  设置背景色（默认：gray）</span><br><span class="line">-c  设置文本颜色（默认：white）</span><br><span class="line">-g  设置吐司的位置：[top, middle, or bottom]（默认：middle）</span><br></pre></td></tr></table></figure>
+
+<p>颜色可以是标准名称 比如说:red 也可以是十六进制值如<code>＃FF0000</code>，无效的颜色将恢复为默认值。</p>
+<p>国光的实际演示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BASH</span><br><span class="line">termux-toast -b white -c black Hello Termux</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://image.3001.net/images/20200420/15873858146246.jpg">![img](termu API&#x2F;15873858146246.jpg)</a></p>
+<h2 id="开关闪光灯"><a href="#开关闪光灯" class="headerlink" title="开关闪光灯"></a>开关闪光灯</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BASH</span><br><span class="line">termux-torch [on | off]</span><br></pre></td></tr></table></figure>
+
+<h2 id="调用-tts-语音引擎"><a href="#调用-tts-语音引擎" class="headerlink" title="调用 tts 语音引擎"></a>调用 tts 语音引擎</h2><p>使用系统文本语音转换（TTS）引擎朗读文本。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BSAH</span><br><span class="line">termux-tts-speak [-e 引擎] [-l 语言] [-n 区域] [-v 变体] [-p 音调] [-r 速率] [-s ] [要说的话]</span><br></pre></td></tr></table></figure>
+
+<p>选项细节：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">BASH-e engine    # 要使用的 tts 语音引擎 (详见 termux-tts-engines 这个命令)</span><br><span class="line">-l language  # 要说的语言类别</span><br><span class="line">-n region    # 语言的地区</span><br><span class="line">-v variant   # 语言的变体</span><br><span class="line">-p pitch     # 语音的语调，1 是默认的正常值</span><br><span class="line">-r rate      # 语音的语速，1 是默认的正常值</span><br><span class="line">-s stream    # 要使用的音频流 (默认是 NOTIFICATION) 还可以选择ALARM, MUSIC, NOTIFICATION, RING, SYSTEM, VOICE_CALL之一</span><br></pre></td></tr></table></figure>
+
+<p>国光的实际测试：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BASH</span><br><span class="line">termux-tts-speak -e &quot;com.xiaomi.mibrain.speech&quot; &#x27;大家转载文章注意标明文章出处啊&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>哦豁，是不是被语音引擎的朗读吓一跳，这样可以就可以用 Termux 去调用小爱语音引擎来说一些骚话了。</p>
+<h2 id="震动手机"><a href="#震动手机" class="headerlink" title="震动手机"></a>震动手机</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BASH</span><br><span class="line">termux-vibrate [选项]</span><br></pre></td></tr></table></figure>
+
+<p>选项细节：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BASH-d duration  #  以毫秒为单位的振动持续时间（默认值：1000）</span><br><span class="line">-f           # 在静默模式下也会强制振动</span><br></pre></td></tr></table></figure>
+
+<h2 id="更换手机壁纸"><a href="#更换手机壁纸" class="headerlink" title="更换手机壁纸"></a>更换手机壁纸</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CODE</span><br><span class="line">termux-wallpaper [选项]</span><br></pre></td></tr></table></figure>
+
+<p>选项细节：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">BASH-f &lt;file&gt;  # 将 file 文件设为壁纸</span><br><span class="line">-u &lt;url&gt;   # 从 URL 中获取壁纸</span><br><span class="line">-l         # 为锁屏设置壁纸 (Android N 及其以上)</span><br></pre></td></tr></table></figure>
+
+<p>国光的测试：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BASHtermux-wallpaper  -u &#x27;https://cn.bing.com/th?id=OHR.BluebellWood_ZH-CN8128422960_1920x1080.jpg&#x27;</span><br><span class="line">Wallpaper set successfully!</span><br></pre></td></tr></table></figure>
+
+<p>哦豁，那样自动换壁纸的操作 岂不是就很简单了！这个国光下面单独开章节来讲解。</p>
+<h2 id="开启关闭-WiFi"><a href="#开启关闭-WiFi" class="headerlink" title="开启关闭 WiFi"></a>开启关闭 WiFi</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BASH</span><br><span class="line">termux-wifi-enable [true | false]</span><br></pre></td></tr></table></figure>
+
+<h1 id="交互对话框部件"><a href="#交互对话框部件" class="headerlink" title="交互对话框部件"></a>交互对话框部件</h1><p>这个功能有点强大，可以与用户进行交互，输出格式是 JSON</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BASH</span><br><span class="line">termux-dialog  [选项]</span><br></pre></td></tr></table></figure>
+
+<p>基本用法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">VERILOG-l, list   列出所有小部件及其选项</span><br><span class="line">-t, title  标题设置输入对话框的标题（可选）</span><br></pre></td></tr></table></figure>
+
+<p>选项说明具体看下面国光的实际演示：</p>
+<h2 id="confirm"><a href="#confirm" class="headerlink" title="confirm"></a>confirm</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">PROPERTIESconfirm - 显示确认对话框</span><br><span class="line">    [-i 提示] 文本提示 (可选)</span><br><span class="line">    [-t 标题] 设置对话框标题 (可选)</span><br></pre></td></tr></table></figure>
+
+<p>国光的演示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BASH</span><br><span class="line">termux-dialog confirm -i &#x27;Hello Termux&#x27; -t &#x27;confirm测试&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://image.3001.net/images/20200420/15873743704162.jpg">![img](termu API&#x2F;15873743704162.jpg)</a></p>
+<p>返回内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">JSON&#123;</span><br><span class="line">  &quot;code&quot;: 0,</span><br><span class="line">  &quot;text&quot;: &quot;yes&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="checkbox"><a href="#checkbox" class="headerlink" title="checkbox"></a>checkbox</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">PROPERTIEScheckbox - 使用复选框选择多个值</span><br><span class="line">    [-v &quot;,,,&quot;] 多个值用逗号隔开 (必选)</span><br><span class="line">    [-t 标题] 设置对话框的标题 (可选)</span><br></pre></td></tr></table></figure>
+
+<p>国光的演示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BASH</span><br><span class="line">termux-dialog checkbox -v &#x27;Overwatch,GTA5,LOL&#x27; -t &#x27;平时喜欢玩啥游戏&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://image.3001.net/images/20200420/15873748583525.jpg">![img](termu API&#x2F;15873748583525.jpg)</a></p>
+<p>返回内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">JSON&#123;</span><br><span class="line">  &quot;code&quot;: -1,</span><br><span class="line">  &quot;text&quot;: &quot;[Overwatch]&quot;,</span><br><span class="line">  &quot;values&quot;: [</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;index&quot;: 0,</span><br><span class="line">      &quot;text&quot;: &quot;Overwatch&quot;</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="counter"><a href="#counter" class="headerlink" title="counter"></a>counter</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">PROPERTIEScounter - 选择指定范围内的数字</span><br><span class="line">    [-r 最小值,最大值,开始值] 3个值用逗号隔开 (可选l)</span><br><span class="line">    [-t 标题] 设置对话框的标题 (可选)</span><br></pre></td></tr></table></figure>
+
+<p>国光的演示：</p>
+<p><a target="_blank" rel="noopener" href="https://image.3001.net/images/20200420/15873766335596.jpg">![哎呀 国光的身高暴露了](termu API&#x2F;15873766335596.jpg)</a></p>
+<p>返回内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">JSON&#123;</span><br><span class="line">  &quot;code&quot;: -1,</span><br><span class="line">  &quot;text&quot;: &quot;181&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="date"><a href="#date" class="headerlink" title="date"></a>date</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">PROPERTIESdate - 选择一个日期e</span><br><span class="line">    [-d &quot;dd-MM-yyyy k:m:s&quot;] 用于日期小部件输出的SimpleDateFormat模式(可选)</span><br><span class="line">    [-t 标题] 设置对话框的标题 (可选)</span><br></pre></td></tr></table></figure>
+
+<p>国光的演示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BASH</span><br><span class="line">termux-dialog date -d &#x27;yyyy-MM-dd&#x27; -t &#x27;你的出生日期是?&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://image.3001.net/images/20200420/15873771368014.jpg">![img](termu API&#x2F;15873771368014.jpg)</a></p>
+<p>返回内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">JSON&#123;</span><br><span class="line">  &quot;code&quot;: -1,</span><br><span class="line">  &quot;text&quot;: &quot;2020-04-20&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="radio"><a href="#radio" class="headerlink" title="radio"></a>radio</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">PROPERTIESradio - 从单选按钮中选择一个值</span><br><span class="line">    [-v &quot;,,,&quot;] 多个值用逗号隔开 (必选)</span><br><span class="line">    [-t 标题] 设置对话框的标题 (可选)</span><br></pre></td></tr></table></figure>
+
+<p>国光的演示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BASH</span><br><span class="line">termux-dialog radio -v &#x27;小哥哥,小姐姐&#x27; -t &#x27;你的性别是?&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://image.3001.net/images/20200420/15873781275987.jpg">![img](termu API&#x2F;15873781275987.jpg)</a></p>
+<p>返回内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">JSON&#123;</span><br><span class="line">  &quot;code&quot;: -1,</span><br><span class="line">  &quot;text&quot;: &quot;小哥哥&quot;,</span><br><span class="line">  &quot;index&quot;: 0</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="sheet"><a href="#sheet" class="headerlink" title="sheet"></a>sheet</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">PROPERTIESsheet - 从底部工作表中选择一个值</span><br><span class="line">    [-v &quot;,,,&quot;] 多个值用逗号隔开 (必选)</span><br><span class="line">    [-t 标题] 设置对话框的标题 (可选)</span><br></pre></td></tr></table></figure>
+
+<p>国光的演示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BASH</span><br><span class="line">termux-dialog sheet -v &#x27;菜鸡,国光&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://image.3001.net/images/20200420/15873784445059.jpg">![img](termu API&#x2F;15873784445059.jpg)</a></p>
+<p>返回内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">JSON&#123;</span><br><span class="line">  &quot;code&quot;: 0,</span><br><span class="line">  &quot;text&quot;: &quot;国光&quot;,</span><br><span class="line">  &quot;index&quot;: 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="spinner"><a href="#spinner" class="headerlink" title="spinner"></a>spinner</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">PROPERTIESspinner - 从下拉微调器中选择一个值</span><br><span class="line">    [-v &quot;,,,&quot;] 多个值用逗号隔开 (必选)</span><br><span class="line">    [-t 标题] 设置对话框的标题 (可选)</span><br></pre></td></tr></table></figure>
+
+<p>国光的演示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BASH</span><br><span class="line">termux-dialog spinner -v &#x27;国光,光光&#x27; -t &#x27;你最喜欢的博主是?&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://image.3001.net/images/20200420/15873786619272.jpg">![img](termu API&#x2F;15873786619272.jpg)</a></p>
+<p>返回内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">JSON&#123;</span><br><span class="line">  &quot;code&quot;: -1,</span><br><span class="line">  &quot;text&quot;: &quot;国光&quot;,</span><br><span class="line">  &quot;index&quot;: 0</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="text"><a href="#text" class="headerlink" title="text"></a>text</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">PROPERTIEStext - 输入文本（如果未指定小部件，则为默认值）</span><br><span class="line">    [-i 提示] 文本提示（可选）</span><br><span class="line">    [-m] 多行输入（可选）*</span><br><span class="line">    [-n] 输入数字 （可选）*</span><br><span class="line">    [-p] 输入密码（可选）</span><br><span class="line">    [-t 标题] 设置对话框的标题 (可选)</span><br><span class="line">       *不能将[-m]与[-n]一起使用</span><br></pre></td></tr></table></figure>
+
+<p>国光的演示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BASH</span><br><span class="line">termux-dialog text -i &#x27;密码:&#x27; -t &#x27;请输入核弹爆炸密码&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://image.3001.net/images/20200420/15873791181885.jpg">![img](termu API&#x2F;15873791181885.jpg)</a></p>
+<p>返回内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">JSON&#123;</span><br><span class="line">  &quot;code&quot;: -1,</span><br><span class="line">  &quot;text&quot;: &quot;666666&quot;,</span><br><span class="line">  &quot;index&quot;: 0</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="time"><a href="#time" class="headerlink" title="time"></a>time</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PROPERTIEStime - 选择一个时间值</span><br><span class="line">     [-t 标题] 设置对话框的标题 (可选)</span><br></pre></td></tr></table></figure>
+
+<p>国光的演示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BASH</span><br><span class="line">termux-dialog time -t &#x27;你每天多少点睡觉?&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://image.3001.net/images/20200420/15873792448544.jpg">![img](termu API&#x2F;15873792448544.jpg)</a></p>
+<p>返回内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">JSON&#123;</span><br><span class="line">  &quot;code&quot;: -1,</span><br><span class="line">  &quot;text&quot;: &quot;19:30&quot;,</span><br><span class="line">  &quot;index&quot;: 0</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="支持一下"><a href="#支持一下" class="headerlink" title="支持一下"></a>支持一下</h1><p>本文可能实际上也没有啥技术含量，但是写起来还是比较浪费时间的，在这个喧嚣浮躁的时代，个人博客越来越没有人看了，写博客感觉一直是用爱发电的状态。如果你恰巧财力雄厚，感觉本文对你有所帮助的话，可以考虑打赏一下本文，用以维持高昂的服务器运营费用（域名费用、服务器费用、CDN 费用等）</p>
+<table>
+<thead>
+<tr>
+<th>微信<a target="_blank" rel="noopener" href="https://image.3001.net/images/20200421/1587449920128.jpg">![img](termu API&#x2F;1587449920128.jpg)</a></th>
+<th>支付宝<a target="_blank" rel="noopener" href="https://image.3001.net/images/20200421/15874503376388.jpg">![img](termu API&#x2F;15874503376388.jpg)</a></th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>没想到文章加入打赏列表没几天 就有热心网友打赏了 于是国光我用 Bootstrap 重写了一个页面 用以感谢 支持我的朋友，详情请看 <a target="_blank" rel="noopener" href="https://www.sqlsec.com/reward/">打赏列表 | 国光</a></p>
+<p>​      </p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>阿呆
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://ddldydd.github.io/2024/02/22/termu%20API/" title="termu API">http://ddldydd.github.io/2024/02/22/termu API/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/termux-api/" rel="tag"># termux api</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/01/10/hello-world/" rel="prev" title="Hello World">
+      <i class="fa fa-chevron-left"></i> Hello World
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2024/02/22/nvm-%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/" rel="next" title="nvm 安装教程">
+      nvm 安装教程 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="nav-number">1.</span> <span class="nav-text">准备工作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-Termux-API"><span class="nav-number">1.1.</span> <span class="nav-text">安装 Termux:API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%99-app-%E6%9D%83%E9%99%90"><span class="nav-number">1.2.</span> <span class="nav-text">给 app 权限</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-Termux-api-%E8%BD%AF%E4%BB%B6%E5%8C%85"><span class="nav-number">1.3.</span> <span class="nav-text">安装 Termux-api 软件包</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E8%AE%BE%E5%A4%87%E4%BF%A1%E6%81%AF%E7%9B%B8%E5%85%B3"><span class="nav-number">2.</span> <span class="nav-text">获取设备信息相关</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%B5%E6%B1%A0%E4%BF%A1%E6%81%AF"><span class="nav-number">2.1.</span> <span class="nav-text">电池信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E7%9B%B8%E6%9C%BA%E4%BF%A1%E6%81%AF"><span class="nav-number">2.2.</span> <span class="nav-text">获取相机信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E9%80%9A%E8%AE%AF%E5%BD%95%E5%88%97%E8%A1%A8"><span class="nav-number">2.3.</span> <span class="nav-text">获取通讯录列表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E7%BA%A2%E5%A4%96%E8%BD%BD%E6%B3%A2%E9%A2%91%E7%8E%87"><span class="nav-number">2.4.</span> <span class="nav-text">查看红外载波频率</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E6%97%A0%E7%BA%BF%E7%94%B5%E4%BF%A1%E6%81%AF"><span class="nav-number">2.5.</span> <span class="nav-text">获取无线电信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E6%89%8B%E6%9C%BA%E8%BF%90%E8%90%A5%E5%95%86%E4%BF%A1%E6%81%AF"><span class="nav-number">2.6.</span> <span class="nav-text">查看手机运营商信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96-tts-%E8%AF%AD%E9%9F%B3%E5%BC%95%E6%93%8E%E4%BF%A1%E6%81%AF"><span class="nav-number">2.7.</span> <span class="nav-text">获取 tts 语音引擎信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96-USB-%E8%AE%BE%E5%A4%87%E4%BF%A1%E6%81%AF"><span class="nav-number">2.8.</span> <span class="nav-text">获取 USB 设备信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8D-WiFi-%E8%BF%9E%E6%8E%A5%E4%BF%A1%E6%81%AF"><span class="nav-number">2.9.</span> <span class="nav-text">获取当前 WiFi 连接信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96-WiFi-%E6%89%AB%E6%8F%8F%E4%BF%A1%E6%81%AF"><span class="nav-number">2.10.</span> <span class="nav-text">获取 WiFi 扫描信息</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B0%83%E7%94%A8%E8%AE%BE%E7%BD%AE%E8%AE%BE%E5%A4%87%E7%9B%B8%E5%85%B3"><span class="nav-number">3.</span> <span class="nav-text">调用设置设备相关</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%83%E6%95%B4%E5%B1%8F%E5%B9%95%E4%BA%AE%E5%BA%A6"><span class="nav-number">3.1.</span> <span class="nav-text">调整屏幕亮度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8B%8D%E6%91%84%E7%85%A7%E7%89%87"><span class="nav-number">3.2.</span> <span class="nav-text">拍摄照片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E4%B8%8E%E8%AE%BE%E7%BD%AE%E5%89%AA%E8%B4%B4%E6%9D%BF"><span class="nav-number">3.3.</span> <span class="nav-text">获取与设置剪贴板</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%83%E7%94%A8%E7%B3%BB%E7%BB%9F%E4%B8%8B%E8%BD%BD%E5%99%A8"><span class="nav-number">3.4.</span> <span class="nav-text">调用系统下载器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%83%E7%94%A8%E6%8C%87%E7%BA%B9%E4%BC%A0%E6%84%9F%E5%99%A8"><span class="nav-number">3.5.</span> <span class="nav-text">调用指纹传感器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%83%E7%94%A8%E7%BA%A2%E5%A4%96%E5%8F%91%E5%B0%84"><span class="nav-number">3.6.</span> <span class="nav-text">调用红外发射</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%83%E7%94%A8%E6%89%8B%E6%9C%BA%E5%AE%9A%E4%BD%8D"><span class="nav-number">3.7.</span> <span class="nav-text">调用手机定位</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%92%AD%E6%94%BE%E5%AA%92%E4%BD%93%E6%96%87%E4%BB%B6"><span class="nav-number">3.8.</span> <span class="nav-text">播放媒体文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%83%E7%94%A8%E9%BA%A6%E5%85%8B%E9%A3%8E"><span class="nav-number">3.9.</span> <span class="nav-text">调用麦克风</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E7%B3%BB%E7%BB%9F%E9%80%9A%E7%9F%A5"><span class="nav-number">3.10.</span> <span class="nav-text">显示系统通知</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8B%A8%E6%89%93%E7%94%B5%E8%AF%9D"><span class="nav-number">3.11.</span> <span class="nav-text">拨打电话</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%B4%E6%97%B6%E7%AA%97%E5%8F%A3%E9%80%9A%E7%9F%A5"><span class="nav-number">3.12.</span> <span class="nav-text">临时窗口通知</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E5%85%B3%E9%97%AA%E5%85%89%E7%81%AF"><span class="nav-number">3.13.</span> <span class="nav-text">开关闪光灯</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%83%E7%94%A8-tts-%E8%AF%AD%E9%9F%B3%E5%BC%95%E6%93%8E"><span class="nav-number">3.14.</span> <span class="nav-text">调用 tts 语音引擎</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9C%87%E5%8A%A8%E6%89%8B%E6%9C%BA"><span class="nav-number">3.15.</span> <span class="nav-text">震动手机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9B%B4%E6%8D%A2%E6%89%8B%E6%9C%BA%E5%A3%81%E7%BA%B8"><span class="nav-number">3.16.</span> <span class="nav-text">更换手机壁纸</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E5%90%AF%E5%85%B3%E9%97%AD-WiFi"><span class="nav-number">3.17.</span> <span class="nav-text">开启关闭 WiFi</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%A4%E4%BA%92%E5%AF%B9%E8%AF%9D%E6%A1%86%E9%83%A8%E4%BB%B6"><span class="nav-number">4.</span> <span class="nav-text">交互对话框部件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#confirm"><span class="nav-number">4.1.</span> <span class="nav-text">confirm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#checkbox"><span class="nav-number">4.2.</span> <span class="nav-text">checkbox</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#counter"><span class="nav-number">4.3.</span> <span class="nav-text">counter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#date"><span class="nav-number">4.4.</span> <span class="nav-text">date</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#radio"><span class="nav-number">4.5.</span> <span class="nav-text">radio</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sheet"><span class="nav-number">4.6.</span> <span class="nav-text">sheet</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#spinner"><span class="nav-number">4.7.</span> <span class="nav-text">spinner</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#text"><span class="nav-number">4.8.</span> <span class="nav-text">text</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#time"><span class="nav-number">4.9.</span> <span class="nav-text">time</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%94%AF%E6%8C%81%E4%B8%80%E4%B8%8B"><span class="nav-number">5.</span> <span class="nav-text">支持一下</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">阿呆</p>
+  <div class="site-description" itemprop="description">书山有路勤为径，学海无涯苦作舟。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">阿呆</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">156k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">4:43</span>
+</div>
+
+
+
+<!-- 网站运行时间的设置 -->
+<span id="timeDate">载入天数...</span>
+<span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("03/01/2023 10:00:00"); //此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒.";
+    }
+setInterval("createtime()",250);
+</script>
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/canvas_sphere.min.js"></script>
+
+
+  
+
+
+
+
+  
+<script src="//cdn.jsdelivr.net/npm/algoliasearch@4/dist/algoliasearch-lite.umd.js"></script>
+<script src="//cdn.jsdelivr.net/npm/instantsearch.js@4/dist/instantsearch.production.min.js"></script>
+<script src="/js/algolia-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+</html>
+
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+
+<!-- 添加看板娘 -->
+<script src="https://cdn.jsdelivr.net/gh/ddldydd/live2d-widget/autoload.js"></script>
